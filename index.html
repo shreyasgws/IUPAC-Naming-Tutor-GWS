@@ -10,10 +10,57 @@
 </head>
 
 <body>
+    <div id="cursor-glow"></div>
+    <div id="fog-bg"></div>
     <div class="container" id="app-container">
         
         <!-- Home View -->
         <div id="home-view" class="view">
+            <div class="particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <svg class="molecule molecule-1" width="120" height="120" viewBox="0 0 120 120">
+                <circle cx="60" cy="30" r="15" fill="rgba(34,197,94,1)"/>
+                <circle cx="30" cy="75" r="15" fill="rgba(16,185,129,1)"/>
+                <circle cx="90" cy="75" r="15" fill="rgba(20,184,166,1)"/>
+                <line x1="60" y1="45" x2="45" y2="60" stroke="rgba(255,255,255,0.5)" stroke-width="3"/>
+                <line x1="75" y1="60" x2="60" y2="45" stroke="rgba(255,255,255,0.5)" stroke-width="3"/>
+                <line x1="45" y1="75" x2="75" y2="75" stroke="rgba(255,255,255,0.5)" stroke-width="3"/>
+            </svg>
+            <svg class="molecule molecule-2" width="100" height="100" viewBox="0 0 100 100">
+                <circle cx="50" cy="20" r="12" fill="rgba(52,211,153,1)"/>
+                <circle cx="20" cy="60" r="12" fill="rgba(6,95,70,1)"/>
+                <circle cx="80" cy="60" r="12" fill="rgba(110,231,183,1)"/>
+                <circle cx="50" cy="80" r="10" fill="rgba(34,197,94,1)"/>
+                <line x1="50" y1="32" x2="30" y2="52" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+                <line x1="50" y1="32" x2="70" y2="52" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+                <line x1="30" y1="68" x2="50" y2="70" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+                <line x1="70" y1="68" x2="50" y2="70" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+            </svg>
+            <svg class="molecule molecule-3" width="80" height="80" viewBox="0 0 80 80">
+                <circle cx="40" cy="10" r="10" fill="rgba(167,243,208,1)"/>
+                <circle cx="10" cy="50" r="10" fill="rgba(16,185,129,1)"/>
+                <circle cx="70" cy="50" r="10" fill="rgba(20,184,166,1)"/>
+                <circle cx="40" cy="70" r="8" fill="rgba(5,150,105,1)"/>
+                <line x1="40" y1="20" x2="20" y2="42" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+                <line x1="40" y1="20" x2="60" y2="42" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+                <line x1="20" y1="58" x2="40" y2="62" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+                <line x1="60" y1="58" x2="40" y2="62" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+            </svg>
             <header>
                 <h1>IUPAC Naming Practice</h1>
                 <p>Welcome! Choose your practice mode below.</p>
@@ -46,6 +93,41 @@
                 <h1>Complete Basics</h1>
                 <p>Welcome to the IUPAC tutorial center. Everything you need to know is right here.</p>
             </header>
+
+            <div class="revision-mock-container">
+                <button class="big-btn revision-mock-btn" id="revision-mock-btn">
+                    <span class="big-btn-icon">📚</span>
+                    <span class="big-btn-text">Revision and Mock Test</span>
+                </button>
+                
+                <div class="revision-mock-content hidden" id="revision-mock-content">
+                    <div class="revision-options">
+                        <button class="revision-option-btn" id="short-notes-btn">
+                            <span class="option-icon">📝</span>
+                            <span class="option-text">Short Revision Notes</span>
+                        </button>
+                        
+                        <div class="mock-test-section">
+                            <button class="revision-option-btn mock-test-btn" id="mock-test-btn">
+                                <span class="option-icon">✍️</span>
+                                <span class="option-text">Mock Test</span>
+                                <span class="dropdown-arrow">▼</span>
+                            </button>
+                            
+                            <div class="mock-test-options hidden" id="mock-test-options">
+                                <button class="mock-test-choice" id="questions-answer-btn">
+                                    <span class="choice-icon">📄</span>
+                                    <span class="choice-text">Questions and Answer Key</span>
+                                </button>
+                                <button class="mock-test-choice" id="mcq-test-btn">
+                                    <span class="choice-icon">☑️</span>
+                                    <span class="choice-text">MCQ Test</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             <main class="quiz-card" id="basics-content">
 <div class="tutorial-container">
@@ -614,7 +696,6 @@
     <hr class="section-divider">
 
     <!-- PART 4: PREFIX & SUFFIX OF FUNCTIONAL GROUPS -->
-<!-- PART 4: PREFIX & SUFFIX OF FUNCTIONAL GROUPS -->
     <h1 class="main-title" id="sec-prefix-suffix">PREFIX & SUFFIX OF FUNCTIONAL GROUPS</h1>
     
     <section class="tutorial-section">
@@ -1190,8 +1271,6 @@
 
 </div>
 
-</div>
-
 </main>
         </div>
 
@@ -1236,10 +1315,99 @@
                 </div>
             </main>
         </div>
+
+        <!-- Questions and Answers View -->
+        <div id="qa-view" class="view hidden">
+            <header>
+                <div class="header-top">
+                    <button id="home-btn-qa" class="btn secondary-btn small-btn">🏠 Home</button>
+                    <button id="back-to-basics-qa" class="btn secondary-btn small-btn">← Back</button>
+                </div>
+                <h1>IUPAC Mock Test - Questions & Answers</h1>
+                <p>Read the questions and check your answers below.</p>
+            </header>
+            <main class="quiz-card">
+                <div class="qa-container" id="qa-container"></div>
+            </main>
+        </div>
+
+        <!-- Mock Test View -->
+        <div id="mock-test-view" class="view hidden">
+            <header>
+                <div class="header-top">
+                    <button id="home-btn-mock" class="btn secondary-btn small-btn">🏠 Home</button>
+                    <button id="back-to-basics-mock" class="btn secondary-btn small-btn">← Back</button>
+                </div>
+                <h1>IUPAC Mock Test (Plus One)</h1>
+                <div class="score-board">Score: <span id="mock-score">0</span> / <span id="mock-total">0</span></div>
+            </header>
+            <main class="quiz-card">
+                <div class="mock-test-progress" id="mock-progress"></div>
+                <div class="structure-container">
+                    <canvas id="mock-structure-canvas" width="400" height="300"></canvas>
+                </div>
+                <p class="mock-question-text" id="mock-question-text"></p>
+                <div class="options-grid" id="mock-options-container"></div>
+                <div class="action-container">
+                    <button id="mock-action-btn" class="btn primary-btn" disabled>Submit</button>
+                    <button id="mock-next-btn" class="btn secondary-btn hidden">Next Question</button>
+                </div>
+                <div id="mock-feedback" class="feedback hidden"></div>
+            </main>
+        </div>
+
+        <!-- Mock Test Results View -->
+        <div id="mock-results-view" class="view hidden">
+            <header>
+                <div class="header-top">
+                    <button id="home-btn-results" class="btn secondary-btn small-btn">🏠 Home</button>
+                </div>
+                <h1>Mock Test Results</h1>
+            </header>
+            <main class="quiz-card">
+                <div class="results-container" id="results-container"></div>
+                <button id="retry-mock-btn" class="btn primary-btn">Retry Mock Test</button>
+            </main>
+        </div>
+
+        <!-- Revision Notes View -->
+        <div id="revision-notes-view" class="view hidden">
+            <header>
+                <div class="header-top">
+                    <button id="home-btn-revision" class="btn secondary-btn small-btn">🏠 Home</button>
+                    <button id="back-to-basics-revision" class="btn secondary-btn small-btn">← Back</button>
+                </div>
+                <h1>IUPAC Naming – Quick Revision Chart</h1>
+            </header>
+            <main class="quiz-card">
+                <div class="revision-notes-container" id="revision-notes-container"></div>
+            </main>
+        </div>
     </div>
 
     <!-- SmilesDrawer Library -->
     <script src="https://unpkg.com/smiles-drawer@2.0.1/dist/smiles-drawer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        if (document.getElementById('fog-bg')) {
+          VANTA.FOG({
+            el: "#fog-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            highlightColor: 0x1edc8f,
+            midtoneColor:   0xb7a93a,
+            lowlightColor:  0x2f7fb3,
+            baseColor:      0x071a14,
+            blurFactor: 0.75,
+            speed: 1.2,
+            zoom: 2.4
+          });
+        }
+      });
+    </script>
     <script src="script.js"></script>
 
 <button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#x2191;</button>
