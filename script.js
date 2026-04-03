@@ -182,7 +182,7 @@ const questions = [
     },
     {
         type: 'smiles',
-        data: 'c1ccccc1C(=O)H',
+        data: 'O=CC1=CC=CC=C1',
         correct: 'Benzaldehyde',
         options: ['Phenylmethanal', 'Benzaldehyde', 'Phenol', 'Benzoic acid'],
         explanation: 'Aromatic Aldehydes: The IUPAC name for an aldehyde attached directly to a benzene ring is benzaldehyde.'
@@ -228,6 +228,48 @@ questions.forEach(q => {
     q.options.sort(() => Math.random() - 0.5);
 });
 
+// Mock Test Questions (Plus One)
+const mockTestQuestions = [
+    // Section A – Basic Naming (1 mark each)
+    { section: 'A', marks: 1, data: 'CH₃–CH₂–CH₃', correct: 'Propane', options: ['Propane', 'Ethane', 'Butane', 'Methane'] },
+    { section: 'A', marks: 1, data: 'CH₃–CH(CH₃)–CH₃', correct: '2-Methylpropane', options: ['2-Methylpropane', 'Methylpropane', 'Propane', 'Butane'] },
+    { section: 'A', marks: 1, data: 'CH₂=CH–CH₃', correct: 'Propene', options: ['Propene', 'Prop-1-ene', 'Prop-2-ene', 'Propylene'] },
+    { section: 'A', marks: 1, data: 'CH₃–CH₂–OH', correct: 'Ethanol', options: ['Ethanol', 'Methanol', 'Propanol', 'Ethane'] },
+    { section: 'A', marks: 1, data: 'CH₃–CHO', correct: 'Ethanal', options: ['Ethanal', 'Acetaldehyde', 'Formaldehyde', 'Propenal'] },
+    // Section B – Intermediate (2 marks each)
+    { section: 'B', marks: 2, data: 'CH₃–CH₂–CH₂–CH₃', correct: 'Butane', options: ['Butane', 'Propane', 'Pentane', 'Hexane'] },
+    { section: 'B', marks: 2, data: 'CH₃–CH(CH₃)–CH₂–CH₃', correct: '2-Methylbutane', options: ['2-Methylbutane', '3-Methylbutane', 'Methylbutane', 'Pentane'] },
+    { section: 'B', marks: 2, data: 'CH₃–CH₂–CO–CH₃', correct: 'Butan-2-one', options: ['Butan-2-one', 'Butanone', 'Methyl ethyl ketone', 'Propanone'] },
+    { section: 'B', marks: 2, data: 'CH₃–CH₂–CH₂–CHO', correct: 'Butanal', options: ['Butanal', 'Propanal', 'Butanaldehyde', 'Pentanal'] },
+    { section: 'B', marks: 2, data: 'CH₃–CH₂–CH₂–COOH', correct: 'Butanoic acid', options: ['Butanoic acid', 'Propanoic acid', 'Pentanoic acid', 'Butyric acid'] },
+    // Section C – Functional Groups & Priority (3 marks each)
+    { section: 'C', marks: 3, data: 'HO–CH₂–CH₂–CHO', correct: '2-Hydroxyethanal', options: ['2-Hydroxyethanal', '3-Hydroxypropanal', 'Hydroxyacetaldehyde', 'Ethane-1-ol-2-al'] },
+    { section: 'C', marks: 3, data: 'CH₃–CO–CH₂–CH₂–OH', correct: '4-Hydroxybutan-2-one', options: ['4-Hydroxybutan-2-one', '3-Hydroxybutan-2-one', 'Hydroxybutanone', '4-Butanol-2-one'] },
+    { section: 'C', marks: 3, data: 'CH₃–CH(Cl)–CH₂–OH', correct: '2-Chloropropan-1-ol', options: ['2-Chloropropan-1-ol', '3-Chloropropan-1-ol', 'Chloropropanol', '1-Chloropropan-2-ol'], alternatives: ['3-Chloropropan-1-ol', '1-Chloropropan-2-ol'] },
+    { section: 'C', marks: 3, data: 'HO–CH₂–CH(NH₂)–COOH', correct: '2-Amino-3-hydroxypropanoic acid', options: ['2-Amino-3-hydroxypropanoic acid', 'Aminohydroxypropanoic acid', 'Serine', '3-Amino-2-hydroxypropanoic acid'], alternatives: ['Serine'] },
+    // Section D – Multiple Bonds & Substituents (3 marks each)
+    { section: 'D', marks: 3, data: 'CH₂=CH–CH=CH₂', correct: 'Buta-1,3-diene', options: ['Buta-1,3-diene', 'Butadiene', '1,3-Butadiene', 'But-1,3-diene'], alternatives: ['Butadiene', '1,3-Butadiene', 'But-1,3-diene'] },
+    { section: 'D', marks: 3, data: 'CH₂=CH–CH(CH₃)–CH=CH₂', correct: '3-Methylpenta-1,4-diene', options: ['3-Methylpenta-1,4-diene', '4-Methylpenta-1,3-diene', 'Methylbutadiene', 'Penta-1,4-diene'] },
+    { section: 'D', marks: 3, data: 'CH≡C–CH₂–CH₃', correct: 'But-1-yne', options: ['But-1-yne', 'Butyne', '1-Butyne', 'Ethylacetylene'], alternatives: ['Butyne', '1-Butyne'] },
+    { section: 'D', marks: 3, data: 'CH₂=CH–C≡CH', correct: 'But-1-en-3-yne', options: ['But-1-en-3-yne', 'Butenyne', 'Vinylacetylene', '1-Buten-3-yne'], alternatives: ['Butenyne', '1-Buten-3-yne'] },
+    // Section E – Cyclic & Aromatic (4 marks each)
+    { section: 'E', marks: 4, data: 'Cyclohexane with one methyl group', correct: 'Methylcyclohexane', options: ['Methylcyclohexane', 'Cyclohexylmethane', '1-Methylcyclohexane', 'Hexylmethane'], alternatives: ['1-Methylcyclohexane'] },
+    { section: 'E', marks: 4, data: 'Benzene with two methyl groups at 1,3 position', correct: 'm-Xylene', options: ['m-Xylene', 'p-Xylene', 'o-Xylene', '1,3-Dimethylbenzene'], alternatives: ['1,3-Dimethylbenzene'] },
+    { section: 'E', marks: 4, data: 'Benzene with –OH and –CH₃ at 1,2 position', correct: '2-Methylphenol', options: ['2-Methylphenol', 'o-Cresol', 'Methylphenol', '1-Hydroxy-2-methylbenzene'], alternatives: ['o-Cresol'] },
+    { section: 'E', marks: 4, data: 'C₆H₅–CH₂–Cl', correct: 'Benzyl chloride', options: ['Benzyl chloride', 'Phenyl chloride', 'Chlorobenzene', 'Chloromethylbenzene'] },
+    // Section F – Tricky / Special Cases (5 marks each)
+    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH(CH₃)–CH₃', correct: '2,3-Dimethylbutane', options: ['2,3-Dimethylbutane', '2-Methyl-3-methylbutane', 'Dimethylbutane', 'Tetramethylethane'] },
+    { section: 'F', marks: 5, data: 'CH₃–CH₂–CH(CH₃)–CH₂–CH₃', correct: '3-Methylpentane', options: ['3-Methylpentane', '2-Methylpentane', 'Methylpentane', 'Isohexane'] },
+    { section: 'F', marks: 5, data: 'CH₃–CO–CH₂–CHO', correct: '3-Oxobutanal', options: ['3-Oxobutanal', '2-Oxobutanal', 'Acetoacetaldehyde', 'Ketoacetaldehyde'] },
+    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH₂–CH₂–OH', correct: '3-Methylbutan-1-ol', options: ['3-Methylbutan-1-ol', '4-Methylbutan-1-ol', 'Isobutanol', '2-Methylpropan-1-ol'], alternatives: ['4-Methylbutan-1-ol', 'Isobutanol'] }
+];
+
+let mockCurrentIndex = 0;
+let mockScore = 0;
+let mockAnswered = false;
+let mockSelectedOption = null;
+let mockTestResults = [];
+
 let currentMode = 'home'; // 'home', 'mcq', 'manual'
 let currentQuestionIndex = 0;
 let score = 0;
@@ -259,6 +301,30 @@ const scoreDisplay = document.getElementById('score');
 const explanationBox = document.getElementById('explanation-box');
 const explanationText = document.getElementById('explanation-text');
 
+// Mock Test DOM Elements
+const qaView = document.getElementById('qa-view');
+const mockTestView = document.getElementById('mock-test-view');
+const mockResultsView = document.getElementById('mock-results-view');
+const homeBtnQa = document.getElementById('home-btn-qa');
+const backToBasicsQa = document.getElementById('back-to-basics-qa');
+const homeBtnMock = document.getElementById('home-btn-mock');
+const backToBasicsMock = document.getElementById('back-to-basics-mock');
+const homeBtnResults = document.getElementById('home-btn-results');
+const mockScoreDisplay = document.getElementById('mock-score');
+const mockTotalDisplay = document.getElementById('mock-total');
+const mockProgress = document.getElementById('mock-progress');
+const mockStructureCanvas = document.getElementById('mock-structure-canvas');
+const mockQuestionText = document.getElementById('mock-question-text');
+const mockOptionsContainer = document.getElementById('mock-options-container');
+const mockActionBtn = document.getElementById('mock-action-btn');
+const mockNextBtn = document.getElementById('mock-next-btn');
+const mockFeedback = document.getElementById('mock-feedback');
+const resultsContainer = document.getElementById('results-container');
+const retryMockBtn = document.getElementById('retry-mock-btn');
+const revisionNotesView = document.getElementById('revision-notes-view');
+const homeBtnRevision = document.getElementById('home-btn-revision');
+const backToBasicsRevision = document.getElementById('back-to-basics-revision');
+
 // SmilesDrawer initialization
 let smilesDrawer;
 
@@ -269,6 +335,13 @@ function init() {
         height: 300,
         bondThickness: 2,
         atomVisualization: 'default'
+    });
+
+    // Cursor glow functionality
+    const cursorGlow = document.getElementById('cursor-glow');
+    document.addEventListener('mousemove', (e) => {
+        cursorGlow.style.left = e.clientX + 'px';
+        cursorGlow.style.top = e.clientY + 'px';
     });
 
     // Event Listeners for Views
@@ -307,6 +380,50 @@ function init() {
 
     // Set initial home theme
     document.body.classList.add('theme-home');
+
+    // Revision and Mock Test button listeners
+    const revisionMockBtn = document.getElementById('revision-mock-btn');
+    const revisionMockContent = document.getElementById('revision-mock-content');
+    const shortNotesBtn = document.getElementById('short-notes-btn');
+    const mockTestBtn = document.getElementById('mock-test-btn');
+    const mockTestOptions = document.getElementById('mock-test-options');
+    const questionsAnswerBtn = document.getElementById('questions-answer-btn');
+    const mcqTestBtn = document.getElementById('mcq-test-btn');
+
+    revisionMockBtn.addEventListener('click', () => {
+        revisionMockContent.classList.toggle('hidden');
+    });
+
+    shortNotesBtn.addEventListener('click', () => {
+        openRevisionNotes();
+    });
+
+    mockTestBtn.addEventListener('click', () => {
+        mockTestBtn.classList.toggle('active');
+        mockTestOptions.classList.toggle('hidden');
+    });
+
+    questionsAnswerBtn.addEventListener('click', () => {
+        openQAView();
+    });
+
+    homeBtnRevision.addEventListener('click', goHome);
+    backToBasicsRevision.addEventListener('click', openBasics);
+
+    mcqTestBtn.addEventListener('click', () => {
+        startMockTest();
+    });
+
+    // Mock Test navigation buttons
+    homeBtnQa.addEventListener('click', goHome);
+    backToBasicsQa.addEventListener('click', openBasics);
+    homeBtnMock.addEventListener('click', goHome);
+    backToBasicsMock.addEventListener('click', openBasics);
+    homeBtnResults.addEventListener('click', goHome);
+    retryMockBtn.addEventListener('click', startMockTest);
+    
+    mockActionBtn.addEventListener('click', handleMockAnswer);
+    mockNextBtn.addEventListener('click', nextMockQuestion);
 }
 
 function openBasics() {
@@ -349,7 +466,528 @@ function goHome() {
     homeView.classList.remove('hidden');
     quizView.classList.add('hidden');
     basicsView.classList.add('hidden');
+    qaView.classList.add('hidden');
+    mockTestView.classList.add('hidden');
+    mockResultsView.classList.add('hidden');
+    revisionNotesView.classList.add('hidden');
     currentMode = 'home';
+}
+
+function openQAView() {
+    window.scrollTo(0, 0);
+    document.body.classList.remove('theme-home');
+    homeView.classList.add('hidden');
+    basicsView.classList.add('hidden');
+    quizView.classList.add('hidden');
+    qaView.classList.remove('hidden');
+    mockTestView.classList.add('hidden');
+    mockResultsView.classList.add('hidden');
+    revisionNotesView.classList.add('hidden');
+
+    renderQA();
+}
+
+function openRevisionNotes() {
+    window.scrollTo(0, 0);
+    document.body.classList.remove('theme-home');
+    homeView.classList.add('hidden');
+    basicsView.classList.add('hidden');
+    quizView.classList.add('hidden');
+    qaView.classList.add('hidden');
+    mockTestView.classList.add('hidden');
+    mockResultsView.classList.add('hidden');
+    revisionNotesView.classList.remove('hidden');
+
+    renderRevisionNotes();
+}
+
+function renderRevisionNotes() {
+    const container = document.getElementById('revision-notes-container');
+    container.innerHTML = `
+        <div class="revision-section">
+            <h3>🔹 1. BASIC STRUCTURE</h3>
+            <p>👉 Prefix + Root + Primary Suffix + Secondary Suffix</p>
+            <div class="revision-example">Example: 3-Methylbutan-1-ol</div>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 2. ROOT WORD (No. of Carbons)</h3>
+            <table class="revision-table">
+                <tr><th>C</th><th>Root</th></tr>
+                <tr><td>1</td><td>meth</td></tr>
+                <tr><td>2</td><td>eth</td></tr>
+                <tr><td>3</td><td>prop</td></tr>
+                <tr><td>4</td><td>but</td></tr>
+                <tr><td>5</td><td>pent</td></tr>
+                <tr><td>6</td><td>hex</td></tr>
+            </table>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 3. PRIMARY SUFFIX (Bonds)</h3>
+            <table class="revision-table">
+                <tr><th>Bond</th><th>Suffix</th></tr>
+                <tr><td>Single</td><td>-ane</td></tr>
+                <tr><td>Double</td><td>-ene</td></tr>
+                <tr><td>Triple</td><td>-yne</td></tr>
+            </table>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 4. SECONDARY SUFFIX (Functional Group)</h3>
+            <table class="revision-table">
+                <tr><th>Group</th><th>Suffix</th></tr>
+                <tr><td>–COOH</td><td>-oic acid</td></tr>
+                <tr><td>–CHO</td><td>-al</td></tr>
+                <tr><td>>C=O</td><td>-one</td></tr>
+                <tr><td>–OH</td><td>-ol</td></tr>
+                <tr><td>–NH₂</td><td>-amine</td></tr>
+            </table>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 5. PREFIXES (Important)</h3>
+            <table class="revision-table">
+                <tr><th>Group</th><th>Prefix</th></tr>
+                <tr><td>–OH</td><td>hydroxy</td></tr>
+                <tr><td>>C=O</td><td>oxo</td></tr>
+                <tr><td>–CHO</td><td>formyl</td></tr>
+                <tr><td>–NH₂</td><td>amino</td></tr>
+                <tr><td>–Cl</td><td>chloro</td></tr>
+                <tr><td>–NO₂</td><td>nitro</td></tr>
+                <tr><td>–OR</td><td>alkoxy</td></tr>
+            </table>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 6. PRIORITY ORDER (🔥 MUST MEMORIZE)</h3>
+            <div class="revision-highlight">
+                👉 COOH > CHO > CO > OH > NH₂ > C=C > X
+            </div>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 7. CORE STEPS</h3>
+            <ol>
+                <li>Longest chain</li>
+                <li>Include functional group</li>
+                <li>Number chain (lowest locant)</li>
+                <li>Identify substituents</li>
+                <li>Arrange alphabetically</li>
+                <li>Add suffix</li>
+            </ol>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 8. LOWEST LOCANT RULE</h3>
+            <p>👉 Compare full set:</p>
+            <ul>
+                <li>✔ 2,3,4 < 3,4,5</li>
+                <li>✔ 2,4 < 3,5</li>
+            </ul>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 9. MULTIPLE BONDS</h3>
+            <table class="revision-table">
+                <tr><th>Bonds</th><th>Name</th></tr>
+                <tr><td>2 double</td><td>diene</td></tr>
+                <tr><td>3 double</td><td>triene</td></tr>
+                <tr><td>2 triple</td><td>diyne</td></tr>
+            </table>
+            <div class="revision-example">Example: CH₂=CH–CH=CH₂ → Buta-1,3-diene</div>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 10. PREFIX ORDER</h3>
+            <p>👉 Alphabetical (ignore di-, tri-)</p>
+            <ul>
+                <li>✔ ethyl before methyl</li>
+                <li>✔ chloro before methyl</li>
+            </ul>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 11. SPECIAL CASES</h3>
+            <ul>
+                <li>✔ Functional group priority → decides suffix + numbering</li>
+                <li>✔ Double vs triple → double bond gets lower number</li>
+                <li>✔ Same substituents → di-, tri-</li>
+                <li>✔ Complex substituent → use brackets</li>
+            </ul>
+            <div class="revision-example">Example: 2-(Propan-2-yl)propane</div>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 12. CYCLIC COMPOUNDS</h3>
+            <p>👉 Add cyclo-</p>
+            <ul>
+                <li>✔ Methylcyclohexane</li>
+                <li>✔ 1,2-dimethylcyclohexane</li>
+            </ul>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 13. BENZENE RULES</h3>
+            <ul>
+                <li><strong>Basic:</strong> Benzene</li>
+                <li><strong>One substituent:</strong> Methylbenzene</li>
+                <li><strong>Two substituents:</strong></li>
+            </ul>
+            <table class="revision-table">
+                <tr><th>Position</th><th>Name</th></tr>
+                <tr><td>1,2</td><td>ortho (o-)</td></tr>
+                <tr><td>1,3</td><td>meta (m-)</td></tr>
+                <tr><td>1,4</td><td>para (p-)</td></tr>
+            </table>
+            <ul>
+                <li><strong>3+ substituents:</strong> Use numbers only</li>
+                <li>✔ 1,3,5-trimethylbenzene</li>
+            </ul>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 14. PHENYL vs BENZYL</h3>
+            <table class="revision-table">
+                <tr><th>Group</th><th>Name</th></tr>
+                <tr><td>C₆H₅–</td><td>phenyl</td></tr>
+                <tr><td>C₆H₅–CH₂–</td><td>benzyl</td></tr>
+            </table>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 15. ETHER NAMING</h3>
+            <p>👉 Smaller group = alkoxy</p>
+            <div class="revision-example">✔ CH₃–O–C₂H₅ → Methoxyethane</div>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 16. COMMON → IUPAC</h3>
+            <table class="revision-table">
+                <tr><th>Common</th><th>IUPAC</th></tr>
+                <tr><td>Isobutane</td><td>2-Methylpropane</td></tr>
+                <tr><td>Acetone</td><td>Propanone</td></tr>
+                <tr><td>Acetic acid</td><td>Ethanoic acid</td></tr>
+            </table>
+        </div>
+
+        <div class="revision-section">
+            <h3>🔹 17. FORMAT RULES</h3>
+            <ul>
+                <li>✔ Comma → between numbers</li>
+                <li>✔ Hyphen → number & word</li>
+                <li>✔ 2,3-dimethylbutane</li>
+                <li>❌ 2 3 dimethyl butane</li>
+            </ul>
+        </div>
+
+        <div class="revision-section">
+            <h3>⚡ FINAL 5-SECOND CHECK</h3>
+            <div class="revision-check">
+                <p>Before writing answer:</p>
+                <ul>
+                    <li>✔ Correct chain?</li>
+                    <li>✔ Correct numbering?</li>
+                    <li>✔ Priority followed?</li>
+                    <li>✔ Alphabetical order?</li>
+                    <li>✔ Format correct?</li>
+                </ul>
+            </div>
+        </div>
+    `;
+}
+
+function renderQA() {
+    const container = document.getElementById('qa-container');
+    container.innerHTML = '';
+
+    // Questions section
+    const questionsDiv = document.createElement('div');
+    questionsDiv.className = 'qa-questions-only';
+    questionsDiv.innerHTML = '<h2>📝 Questions</h2>';
+
+    const sections = {
+        'A': { title: 'Section A – Basic Naming (1 mark each)', questions: [] },
+        'B': { title: 'Section B – Intermediate (2 marks each)', questions: [] },
+        'C': { title: 'Section C – Functional Groups & Priority (3 marks each)', questions: [] },
+        'D': { title: 'Section D – Multiple Bonds & Substituents (3 marks each)', questions: [] },
+        'E': { title: 'Section E – Cyclic & Aromatic (4 marks each)', questions: [] },
+        'F': { title: 'Section F – Tricky / Special Cases (5 marks each)', questions: [] }
+    };
+
+    mockTestQuestions.forEach(q => {
+        sections[q.section].questions.push(q);
+    });
+
+    let qNum = 1;
+    for (const [section, data] of Object.entries(sections)) {
+        const sectionDiv = document.createElement('div');
+        sectionDiv.className = 'qa-question-section';
+        sectionDiv.innerHTML = `<h3>${data.title}</h3>`;
+
+        data.questions.forEach(q => {
+            const qDiv = document.createElement('div');
+            qDiv.className = 'qa-question-row';
+            qDiv.innerHTML = `<span class="qa-num">${qNum}.</span><span class="qa-text">${q.data}</span>`;
+            sectionDiv.appendChild(qDiv);
+            qNum++;
+        });
+
+        questionsDiv.appendChild(sectionDiv);
+    }
+
+    container.appendChild(questionsDiv);
+
+    // Answers section
+    const answersDiv = document.createElement('div');
+    answersDiv.className = 'qa-answers-section';
+    answersDiv.innerHTML = '<h2>✅ Answer Key</h2>';
+
+    for (const [section, data] of Object.entries(sections)) {
+        const sectionDiv = document.createElement('div');
+        sectionDiv.className = 'qa-section';
+        sectionDiv.innerHTML = `<h3>${data.title.replace('–', '– Answers:')}</h3>`;
+
+        data.questions.forEach(q => {
+            const qDiv = document.createElement('div');
+            qDiv.className = 'qa-answer-row';
+            let displayAnswer = q.correct;
+            if (q.alternatives) {
+                displayAnswer = q.correct + ' / ' + q.alternatives.join(' / ');
+            }
+            qDiv.innerHTML = `<span class="qa-question-text">${q.data}</span><span class="qa-answer">${displayAnswer}</span>`;
+            sectionDiv.appendChild(qDiv);
+        });
+
+        answersDiv.appendChild(sectionDiv);
+    }
+
+    container.appendChild(answersDiv);
+}
+
+function startMockTest() {
+    window.scrollTo(0, 0);
+    document.body.classList.remove('theme-home');
+    homeView.classList.add('hidden');
+    basicsView.classList.add('hidden');
+    quizView.classList.add('hidden');
+    qaView.classList.add('hidden');
+    mockTestView.classList.remove('hidden');
+    mockResultsView.classList.add('hidden');
+
+    mockCurrentIndex = 0;
+    mockScore = 0;
+    mockAnswered = false;
+    mockSelectedOption = null;
+    mockTestResults = [];
+
+    // Shuffle questions within each section
+    const sections = ['A', 'B', 'C', 'D', 'E', 'F'];
+    const shuffledBySection = {};
+    sections.forEach(sec => {
+        const sectionQuestions = mockTestQuestions.filter(q => q.section === sec);
+        sectionQuestions.sort(() => Math.random() - 0.5);
+        shuffledBySection[sec] = sectionQuestions;
+    });
+
+    // Rebuild mockTestQuestions in shuffled order
+    mockTestQuestions.length = 0;
+    sections.forEach(sec => {
+        shuffledBySection[sec].forEach(q => mockTestQuestions.push(q));
+    });
+
+    mockTestQuestions.forEach(q => {
+        q.options.sort(() => Math.random() - 0.5);
+    });
+
+    renderMockQuestion();
+}
+
+function renderMockQuestion() {
+    const q = mockTestQuestions[mockCurrentIndex];
+    
+    mockScoreDisplay.textContent = mockScore;
+    mockTotalDisplay.textContent = mockCurrentIndex + 1;
+
+    // Render progress dots
+    mockProgress.innerHTML = '';
+    for (let i = 0; i < mockTestQuestions.length; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'progress-dot';
+        if (i === mockCurrentIndex) dot.classList.add('current');
+        if (mockTestResults[i] === true) dot.classList.add('correct');
+        if (mockTestResults[i] === false) dot.classList.add('wrong');
+        mockProgress.appendChild(dot);
+    }
+
+    // Render question text
+    mockQuestionText.textContent = q.data;
+
+    // Draw structure if not text-based
+    if (!q.data.includes('with') && !q.data.includes('Cyclo') && !q.data.includes('Benzene') && !q.data.includes('C₆')) {
+        const smiles = convertToSmiles(q.data);
+        if (smiles) {
+            mockStructureCanvas.width = 400;
+            mockStructureCanvas.height = 300;
+            let mockDrawer = new SmilesDrawer.Drawer({
+                width: 400,
+                height: 300,
+                bondThickness: 2,
+                atomVisualization: 'default'
+            });
+            SmilesDrawer.parse(smiles, function(tree) {
+                mockDrawer.draw(tree, mockStructureCanvas, 'light', false);
+            }, function(err) {
+                console.error('Error parsing SMILES:', err);
+            });
+        }
+    }
+
+    // Render options
+    mockOptionsContainer.innerHTML = '';
+    q.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = opt;
+        btn.addEventListener('click', () => selectMockOption(opt, btn));
+        mockOptionsContainer.appendChild(btn);
+    });
+
+    mockActionBtn.disabled = true;
+    mockNextBtn.classList.add('hidden');
+    mockFeedback.classList.add('hidden');
+    mockAnswered = false;
+    mockSelectedOption = null;
+}
+
+function convertToSmiles(data) {
+    const map = {
+        'CH₃–CH₂–CH₃': 'CCC',
+        'CH₃–CH(CH₃)–CH₃': 'CC(C)C',
+        'CH₂=CH–CH₃': 'C=CC',
+        'CH₃–CH₂–OH': 'CCO',
+        'CH₃–CHO': 'CC=O',
+        'CH₃–CH₂–CH₂–CH₃': 'CCCC',
+        'CH₃–CH(CH₃)–CH₂–CH₃': 'CCC(C)C',
+        'CH₃–CH₂–CO–CH₃': 'CCC(=O)C',
+        'CH₃–CH₂–CH₂–CHO': 'CCCC=O',
+        'CH₃–CH₂–CH₂–COOH': 'CCCC(=O)O',
+        'HO–CH₂–CH₂–CHO': 'OCC=O',
+        'CH₃–CO–CH₂–CH₂–OH': 'CC(=O)CCO',
+        'CH₃–CH(Cl)–CH₂–OH': 'CC(Cl)CO',
+        'HO–CH₂–CH(NH₂)–COOH': 'NCC(O)CO',
+        'CH₂=CH–CH=CH₂': 'C=CC=C',
+        'CH₂=CH–CH(CH₃)–CH=CH₂': 'C=CC(C)C=C',
+        'CH≡C–CH₂–CH₃': 'C#CCCC',
+        'CH₂=CH–C≡CH': 'C=CC#C',
+        'CH₃–CH(CH₃)–CH(CH₃)–CH₃': 'CC(C)C(C)C',
+        'CH₃–CH₂–CH(CH₃)–CH₂–CH₃': 'CCC(C)CC',
+        'CH₃–CO–CH₂–CHO': 'CC(=O)CC=O',
+        'CH₃–CH(CH₃)–CH₂–CH₂–OH': 'CC(C)CCO'
+    };
+    return map[data] || null;
+}
+
+function selectMockOption(option, btn) {
+    if (mockAnswered) return;
+    mockSelectedOption = option;
+    mockActionBtn.disabled = false;
+    
+    document.querySelectorAll('#mock-options-container .option-btn').forEach(b => {
+        b.style.background = '';
+        b.style.borderColor = '';
+    });
+    btn.style.background = '#e0e7ff';
+    btn.style.borderColor = '#667eea';
+}
+
+function handleMockAnswer() {
+    if (!mockSelectedOption || mockAnswered) return;
+    
+    const q = mockTestQuestions[mockCurrentIndex];
+    const isCorrect = mockSelectedOption === q.correct || 
+        (q.alternatives && q.alternatives.includes(mockSelectedOption));
+    mockAnswered = true;
+
+    if (isCorrect) {
+        mockScore += q.marks;
+        mockScoreDisplay.textContent = mockScore;
+        mockTestResults[mockCurrentIndex] = true;
+        mockFeedback.className = 'feedback correct';
+        mockFeedback.innerHTML = '<span>✓ Correct! (+' + q.marks + ' marks)</span>';
+    } else {
+        mockTestResults[mockCurrentIndex] = false;
+        mockFeedback.className = 'feedback wrong';
+        mockFeedback.innerHTML = '<span>✗ Incorrect. The correct answer is: ' + q.correct + '</span>';
+    }
+    mockFeedback.classList.remove('hidden');
+
+    document.querySelectorAll('#mock-options-container .option-btn').forEach(btn => {
+        btn.disabled = true;
+        const isCorrectOption = btn.textContent === q.correct || (q.alternatives && q.alternatives.includes(btn.textContent));
+        if (isCorrectOption) {
+            btn.style.background = '#d1fae5';
+            btn.style.borderColor = '#10B981';
+        }
+        if (btn.textContent === mockSelectedOption && !isCorrect) {
+            btn.style.background = '#fee2e2';
+            btn.style.borderColor = '#ef4444';
+        }
+    });
+
+    mockActionBtn.classList.add('hidden');
+    mockNextBtn.classList.remove('hidden');
+}
+
+function nextMockQuestion() {
+    mockCurrentIndex++;
+    if (mockCurrentIndex >= mockTestQuestions.length) {
+        showMockResults();
+    } else {
+        mockActionBtn.classList.remove('hidden');
+        renderMockQuestion();
+    }
+}
+
+function showMockResults() {
+    mockTestView.classList.add('hidden');
+    mockResultsView.classList.remove('hidden');
+
+    const totalMarks = mockTestQuestions.reduce((sum, q) => sum + q.marks, 0);
+    const percentage = (mockScore / totalMarks) * 100;
+
+    let message, messageClass;
+    if (percentage >= 90) {
+        message = '🔥 Excellent (full concept clarity)';
+        messageClass = 'excellent';
+    } else if (percentage >= 65) {
+        message = '👍 Good (revise special cases)';
+        messageClass = 'good';
+    } else if (percentage >= 45) {
+        message = '⚠️ Need more practice';
+        messageClass = 'needs-practice';
+    } else {
+        message = '❗ Relearn basics';
+        messageClass = 'relearn';
+    }
+
+    resultsContainer.innerHTML = `
+        <div class="results-score">${mockScore} / ${totalMarks}</div>
+        <div class="results-message ${messageClass}">${message}</div>
+        <div class="results-breakdown">
+            ${mockTestQuestions.map((q, i) => {
+                let correctDisplay = q.correct;
+                if (q.alternatives) {
+                    correctDisplay = q.correct + ' / ' + q.alternatives.join(' / ');
+                }
+                return `
+                <div class="results-breakdown-item">
+                    <span>${q.data}</span>
+                    <span>${mockTestResults[i] ? '✓' : '✗'} ${correctDisplay}</span>
+                </div>
+            `}).join('')}
+        </div>
+    `;
 }
 
 function startQuiz(mode) {
@@ -405,7 +1043,7 @@ function loadQuestion() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         SmilesDrawer.parse(currentQuestion.data, function (tree) {
-            smilesDrawer.draw(tree, 'structure-canvas', 'light', false);
+            smilesDrawer.draw(tree, canvas, 'light', false);
         }, function (err) {
             console.error(err);
         });
