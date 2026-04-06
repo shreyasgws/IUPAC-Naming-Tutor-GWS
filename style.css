@@ -794,8 +794,8 @@ body.theme-home footer {
     }
     .tutorial-index {
         padding: 0.75rem;
-        margin-left: 0;
-        margin-right: 0;
+        margin-left: -1rem;
+        margin-right: -1rem;
         border-radius: 12px;
         text-align: center;
     }
