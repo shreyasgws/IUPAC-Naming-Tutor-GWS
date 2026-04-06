@@ -1817,6 +1817,7 @@
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         if (document.getElementById('fog-bg')) {
+          const isMobile = window.innerWidth <= 600 || 'ontouchstart' in window;
           VANTA.FOG({
             el: "#fog-bg",
             mouseControls: true,
@@ -1827,7 +1828,7 @@
             lowlightColor:  0x2f7fb3,
             baseColor:      0x071a14,
             blurFactor: 0.75,
-            speed: 3.5,
+            speed: isMobile ? 5 : 3.5,
             zoom: 2.4
           });
         }
