@@ -305,11 +305,8 @@ const explanationText = document.getElementById('explanation-text');
 const qaView = document.getElementById('qa-view');
 const mockTestView = document.getElementById('mock-test-view');
 const mockResultsView = document.getElementById('mock-results-view');
-const homeBtnQa = document.getElementById('home-btn-qa');
 const backToBasicsQa = document.getElementById('back-to-basics-qa');
-const homeBtnMock = document.getElementById('home-btn-mock');
 const backToBasicsMock = document.getElementById('back-to-basics-mock');
-const homeBtnResults = document.getElementById('home-btn-results');
 const mockScoreDisplay = document.getElementById('mock-score');
 const mockTotalDisplay = document.getElementById('mock-total');
 const mockProgress = document.getElementById('mock-progress');
@@ -322,7 +319,6 @@ const mockFeedback = document.getElementById('mock-feedback');
 const resultsContainer = document.getElementById('results-container');
 const retryMockBtn = document.getElementById('retry-mock-btn');
 const revisionNotesView = document.getElementById('revision-notes-view');
-const homeBtnRevision = document.getElementById('home-btn-revision');
 const backToBasicsRevision = document.getElementById('back-to-basics-revision');
 
 // SmilesDrawer initialization
@@ -342,6 +338,10 @@ function init() {
     document.addEventListener('mousemove', (e) => {
         cursorGlow.style.left = e.clientX + 'px';
         cursorGlow.style.top = e.clientY + 'px';
+        cursorGlow.style.opacity = '1';
+    });
+    document.addEventListener('mouseleave', () => {
+        cursorGlow.style.opacity = '0';
     });
 
     // Event Listeners for Views
@@ -407,7 +407,6 @@ function init() {
         openQAView();
     });
 
-    homeBtnRevision.addEventListener('click', goHome);
     backToBasicsRevision.addEventListener('click', openBasics);
 
     mcqTestBtn.addEventListener('click', () => {
@@ -415,11 +414,8 @@ function init() {
     });
 
     // Mock Test navigation buttons
-    homeBtnQa.addEventListener('click', goHome);
     backToBasicsQa.addEventListener('click', openBasics);
-    homeBtnMock.addEventListener('click', goHome);
     backToBasicsMock.addEventListener('click', openBasics);
-    homeBtnResults.addEventListener('click', goHome);
     retryMockBtn.addEventListener('click', startMockTest);
     
     mockActionBtn.addEventListener('click', handleMockAnswer);
