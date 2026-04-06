@@ -431,29 +431,32 @@ function openBasics() {
     currentMode = 'basics';
 
     setTimeout(() => {
-        const canvases = document.querySelectorAll('.tutorial-smiles');
-        canvases.forEach(canvas => {
-            const smiles = canvas.getAttribute('data-smiles');
-            if (smiles && !canvas.hasAttribute('data-rendered')) {
-                canvas.width = 300;
-                canvas.height = 150;
-                
-                let localDrawer = new SmilesDrawer.Drawer({
-                    width: 300,
-                    height: 150,
-                    bondThickness: 2,
-                    atomVisualization: 'default'
-                });
-                
-                SmilesDrawer.parse(smiles, function(tree) {
-                    localDrawer.draw(tree, canvas, 'light', false);
-                }, function(err) {
-                    console.error('Error parsing tutorial smiles:', err);
-                });
-                canvas.setAttribute('data-rendered', 'true');
-            }
-        });
-    }, 100);
+        renderTutorialCanvases();
+    }, 150);
+}
+
+function renderTutorialCanvases() {
+    const canvases = document.querySelectorAll('.tutorial-smiles');
+    canvases.forEach(canvas => {
+        const smiles = canvas.getAttribute('data-smiles');
+        if (smiles) {
+            canvas.width = 280;
+            canvas.height = 100;
+            
+            let localDrawer = new SmilesDrawer.Drawer({
+                width: 280,
+                height: 100,
+                bondThickness: 2,
+                atomVisualization: 'default'
+            });
+            
+            SmilesDrawer.parse(smiles, function(tree) {
+                localDrawer.draw(tree, canvas, 'light', false);
+            }, function(err) {
+                console.error('Error parsing tutorial smiles:', err);
+            });
+        }
+    });
 }
 
 function goHome() {
