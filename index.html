@@ -69,11 +69,19 @@
                 <div class="mode-card" id="mode-mcq" tabindex="0">
                     <h2>MCQ Mode</h2>
                     <p>Identify the correct IUPAC name from four given options.</p>
+                    <div class="mode-stats">
+                        <span>Answered: <strong id="mcq-answered">0</strong></span>
+                        <span>Accuracy: <strong id="mcq-accuracy">0%</strong></span>
+                    </div>
                     <button class="btn primary-btn">Start MCQ</button>
                 </div>
                 <div class="mode-card" id="mode-manual" tabindex="0">
                     <h2>Manual Entry Mode</h2>
                     <p>Type the exact IUPAC name based on the structure provided.</p>
+                    <div class="mode-stats">
+                        <span>Answered: <strong id="manual-answered">0</strong></span>
+                        <span>Accuracy: <strong id="manual-accuracy">0%</strong></span>
+                    </div>
                     <button class="btn primary-btn">Start Manual</button>
                 </div>
                 <div class="mode-card" id="mode-basics" tabindex="0">
@@ -119,10 +127,21 @@
                                     <span class="choice-icon">📄</span>
                                     <span class="choice-text">Questions and Answer Key</span>
                                 </button>
-                                <button class="mock-test-choice" id="mcq-test-btn">
-                                    <span class="choice-icon">☑️</span>
-                                    <span class="choice-text">MCQ Test</span>
-                                </button>
+                                <div class="mock-test-mcq-section">
+                                    <button class="mock-test-choice" id="mcq-test-btn">
+                                        <span class="choice-icon">☑️</span>
+                                        <span class="choice-text">MCQ Test</span>
+                                    </button>
+                                    <div class="difficulty-filter" id="mock-difficulty-filter">
+                                        <label>Difficulty:</label>
+                                        <div class="difficulty-buttons">
+                                            <button class="diff-btn active" data-difficulty="all">All</button>
+                                            <button class="diff-btn easy" data-difficulty="Easy">Easy</button>
+                                            <button class="diff-btn medium" data-difficulty="Medium">Medium</button>
+                                            <button class="diff-btn hard" data-difficulty="Hard">Hard</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1714,6 +1733,7 @@
                 <h1>IUPAC Practice</h1>
                 <p id="quiz-description">Identify the correct IUPAC name for the given structure.</p>
                 <div class="score-board">Score: <span id="score">0</span></div>
+                <div class="accuracy-meter">Accuracy: <span id="quiz-accuracy">0%</span></div>
             </header>
             
             <main class="quiz-card">
@@ -1769,6 +1789,7 @@
                 </div>
                 <h1>IUPAC Mock Test (Plus One)</h1>
                 <div class="score-board">Score: <span id="mock-score">0</span> / <span id="mock-total">0</span></div>
+                <div class="accuracy-meter">Accuracy: <span id="mock-accuracy">0%</span></div>
             </header>
             <main class="quiz-card">
                 <div class="mock-test-progress" id="mock-progress"></div>
@@ -1788,11 +1809,16 @@
         <!-- Mock Test Results View -->
         <div id="mock-results-view" class="view hidden">
             <header>
+                <div class="header-top">
+                    <button id="back-to-basics-from-results" class="nav-btn">← Back</button>
+                </div>
                 <h1>Mock Test Results</h1>
             </header>
             <main class="quiz-card">
                 <div class="results-container" id="results-container"></div>
-                <button id="retry-mock-btn" class="btn primary-btn">Retry Mock Test</button>
+                <div class="results-actions">
+                    <button id="retry-mock-btn" class="btn primary-btn">Retry Mock Test</button>
+                </div>
             </main>
         </div>
 

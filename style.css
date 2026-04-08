@@ -294,10 +294,207 @@ body.theme-home footer {
     font-size: 1.8rem;
 }
 
+/* --- Difficulty Filter --- */
+.difficulty-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.difficulty-filter label {
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    font-size: 1rem;
+}
+
+.difficulty-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.diff-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.diff-btn:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.5);
+}
+
+.diff-btn.active {
+    background: rgba(255,255,255,0.25);
+    border-color: rgba(255,255,255,0.8);
+    color: #fff;
+}
+
+.diff-btn.easy.active {
+    background: #10B981;
+    border-color: #10B981;
+}
+
+.diff-btn.medium.active {
+    background: #F59E0B;
+    border-color: #F59E0B;
+}
+
+.diff-btn.hard.active {
+    background: #EF4444;
+    border-color: #EF4444;
+}
+
+/* Difficulty filter inside mock test options */
+#mock-difficulty-filter {
+    padding: 0.25rem;
+    margin-top: 0;
+    background: rgba(255,255,255,0.5);
+    border-radius: 8px;
+}
+
+#mock-difficulty-filter .difficulty-filter {
+    margin: 0;
+    gap: 0.25rem;
+}
+
+#mock-difficulty-filter .difficulty-filter label {
+    font-size: 0.85rem;
+    color: #B91C1C !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#mock-difficulty-filter .diff-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #fff;
+    border-color: #9CA3AF;
+    color: #374151;
+}
+
+#mock-difficulty-filter .difficulty-buttons {
+    gap: 0.15rem;
+}
+
+#mock-difficulty-filter .diff-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    background: rgba(255,255,255,0.8);
+    border-color: #D1D5DB;
+    color: #374151;
+}
+
+#mock-difficulty-filter .diff-btn:hover {
+    background: #EEF2FF;
+    border-color: #4F46E5;
+}
+
+#mock-difficulty-filter .diff-btn.active {
+    background: #4F46E5;
+    border-color: #4F46E5;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.3);
+}
+
+#mock-difficulty-filter .diff-btn.easy.active {
+    background: #10B981;
+    border-color: #10B981;
+}
+
+#mock-difficulty-filter .diff-btn.medium.active {
+    background: #F59E0B;
+    border-color: #F59E0B;
+}
+
+#mock-difficulty-filter .diff-btn.hard.active {
+    background: #EF4444;
+    border-color: #EF4444;
+}
+
+.mock-test-mcq-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+#mock-difficulty-filter {
+    margin-top: 0;
+    padding: 0.25rem;
+    background: rgba(255,255,255,0.5);
+    border-radius: 8px;
+}
+
+.mock-test-mcq-section .diff-btn {
+    flex: 1;
+}
+
+/* --- Stats Display --- */
+.stats-display {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 .mode-card p {
     color: var(--text-muted);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-size: 1.05rem;
+}
+
+.mode-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #4B5563;
+}
+
+.mode-stats span {
+    background: rgba(79, 70, 229, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+}
+
+.mode-stats strong {
+    color: #4F46E5;
 }
 
 /* --- Quiz View UI --- */
@@ -355,6 +552,23 @@ body.theme-home footer {
     padding: 0.5rem 1rem;
     border-radius: 9999px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.accuracy-meter {
+    margin-top: 0.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #059669;
+    background: rgba(255, 255, 255, 0.9);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+#quiz-view .accuracy-meter {
+    color: #7C3AED;
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .quiz-card {
@@ -1147,7 +1361,7 @@ body.theme-home footer {
     padding-left: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.1rem;
     animation: slideDown 0.3s ease;
 }
 
@@ -1155,7 +1369,7 @@ body.theme-home footer {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.875rem 1.25rem;
+    padding: 0.75rem 1.25rem;
     font-size: 1rem;
     border: 2px solid #e8e8e8;
     border-radius: 8px;
@@ -1342,6 +1556,17 @@ body.theme-home footer {
     margin-top: 1.5rem;
     padding: 1rem 2rem;
     font-size: 1.1rem;
+}
+
+.results-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.results-actions .btn {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
 }
 
 /* --- Revision Notes View --- */
