@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Chemistry IUPAC Practicer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="cursor-glow"></div>
+    <div id="fog-bg"></div>
+    <div class="container" id="app-container">
+        
+        <!-- Home View -->
+        <div id="home-view" class="view">
+            <div class="particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <svg class="molecule molecule-1" width="120" height="120" viewBox="0 0 120 120">
+                <circle cx="60" cy="30" r="15" fill="rgba(34,197,94,1)"/>
+                <circle cx="30" cy="75" r="15" fill="rgba(16,185,129,1)"/>
+                <circle cx="90" cy="75" r="15" fill="rgba(20,184,166,1)"/>
+                <line x1="60" y1="45" x2="45" y2="60" stroke="rgba(255,255,255,0.5)" stroke-width="3"/>
+                <line x1="75" y1="60" x2="60" y2="45" stroke="rgba(255,255,255,0.5)" stroke-width="3"/>
+                <line x1="45" y1="75" x2="75" y2="75" stroke="rgba(255,255,255,0.5)" stroke-width="3"/>
+            </svg>
+            <svg class="molecule molecule-2" width="100" height="100" viewBox="0 0 100 100">
+                <circle cx="50" cy="20" r="12" fill="rgba(52,211,153,1)"/>
+                <circle cx="20" cy="60" r="12" fill="rgba(6,95,70,1)"/>
+                <circle cx="80" cy="60" r="12" fill="rgba(110,231,183,1)"/>
+                <circle cx="50" cy="80" r="10" fill="rgba(34,197,94,1)"/>
+                <line x1="50" y1="32" x2="30" y2="52" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+                <line x1="50" y1="32" x2="70" y2="52" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+                <line x1="30" y1="68" x2="50" y2="70" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+                <line x1="70" y1="68" x2="50" y2="70" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+            </svg>
+            <svg class="molecule molecule-3" width="80" height="80" viewBox="0 0 80 80">
+                <circle cx="40" cy="10" r="10" fill="rgba(167,243,208,1)"/>
+                <circle cx="10" cy="50" r="10" fill="rgba(16,185,129,1)"/>
+                <circle cx="70" cy="50" r="10" fill="rgba(20,184,166,1)"/>
+                <circle cx="40" cy="70" r="8" fill="rgba(5,150,105,1)"/>
+                <line x1="40" y1="20" x2="20" y2="42" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+                <line x1="40" y1="20" x2="60" y2="42" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+                <line x1="20" y1="58" x2="40" y2="62" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+                <line x1="60" y1="58" x2="40" y2="62" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+            </svg>
+            <header>
+                <h1>IUPAC Naming Practice</h1>
+                <p>Welcome! Choose your practice mode below.</p>
+            </header>
+            <div class="mode-cards" id="mode-cards-container">
+                <div class="mode-card" id="mode-mcq" tabindex="0">
+                    <h2>MCQ Mode</h2>
+                    <p>Identify the correct IUPAC name from four given options.</p>
+                    <div class="mode-stats">
+                        <span>Answered: <strong id="mcq-answered">0</strong></span>
+                        <span>Accuracy: <strong id="mcq-accuracy">0%</strong></span>
+                    </div>
+                    <button class="btn primary-btn">Start MCQ</button>
+                </div>
+                <div class="mode-card" id="mode-manual" tabindex="0">
+                    <h2>Manual Entry Mode</h2>
+                    <p>Type the exact IUPAC name based on the structure provided.</p>
+                    <div class="mode-stats">
+                        <span>Answered: <strong id="manual-answered">0</strong></span>
+                        <span>Accuracy: <strong id="manual-accuracy">0%</strong></span>
+                    </div>
+                    <button class="btn primary-btn">Start Manual</button>
+                </div>
+                <div class="mode-card" id="mode-basics" tabindex="0">
+                    <h2>Complete Basics</h2>
+                    <p>Learn the foundational rules and concepts of IUPAC nomenclature.</p>
+                    <button class="btn primary-btn" style="background-color:#10B981;">Learn</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complete Basics View -->
+        <div id="basics-view" class="view hidden">
+            <header>
+                <div class="header-top">
+                    <button id="home-btn-basics" class="btn secondary-btn small-btn">🏠 Home</button>
+                </div>
+                <h1>Complete Basics</h1>
+                <p>Welcome to the IUPAC tutorial center. Everything you need to know is right here.</p>
+            </header>
+
+            <div class="revision-mock-container">
+                <button class="big-btn revision-mock-btn" id="revision-mock-btn">
+                    <span class="big-btn-icon">📚</span>
+                    <span class="big-btn-text">Revision and Mock Test</span>
+                </button>
+                
+                <div class="revision-mock-content hidden" id="revision-mock-content">
+                    <div class="revision-options">
+                        <button class="revision-option-btn" id="short-notes-btn">
+                            <span class="option-icon">📝</span>
+                            <span class="option-text">Short Revision Notes</span>
+                        </button>
+                        
+                        <div class="mock-test-section">
+                            <button class="revision-option-btn mock-test-btn" id="mock-test-btn">
+                                <span class="option-icon">✍️</span>
+                                <span class="option-text">Mock Test</span>
+                                <span class="dropdown-arrow">▼</span>
+                            </button>
+                            
+                            <div class="mock-test-options hidden" id="mock-test-options">
+                                <button class="mock-test-choice" id="questions-answer-btn">
+                                    <span class="choice-icon">📄</span>
+                                    <span class="choice-text">Questions and Answer Key</span>
+                                </button>
+                                <div class="mock-test-mcq-section">
+                                    <button class="mock-test-choice" id="mcq-test-btn">
+                                        <span class="choice-icon">☑️</span>
+                                        <span class="choice-text">MCQ Test</span>
+                                    </button>
+                                    <div class="difficulty-filter" id="mock-difficulty-filter">
+                                        <label>Difficulty:</label>
+                                        <div class="difficulty-buttons">
+                                            <button class="diff-btn active" data-difficulty="all">All</button>
+                                            <button class="diff-btn easy" data-difficulty="Easy">Easy</button>
+                                            <button class="diff-btn medium" data-difficulty="Medium">Medium</button>
+                                            <button class="diff-btn hard" data-difficulty="Hard">Hard</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <main class="quiz-card" id="basics-content">
+<div class="tutorial-container">
+<nav class="tutorial-index" id="tutorial-index">
+    <h2 class="tutorial-index-title">&#x1F4CB; Index – Quick Navigation</h2>
+    <ul class="tutorial-index-list">
+        <li><a href="#sec-compressed-formula">&#x1F539; 1. Understanding Compressed Formula of Organic Compounds</a>
+            <ul>
+                <li><a href="#sec-compressed-formula">Structural, Condensed, Molecular formulas with examples</a></li>
+            </ul>
+        </li>
+        <li><a href="#sec-bond-line">&#x1F539; 2. Bond Line Structure (Skeletal Formula) of Organic Compounds</a>
+            <ul>
+                <li><a href="#sec-bond-line">Rules, conventions, angles, carbon count methods</a></li>
+            </ul>
+        </li>
+        <li><a href="#sec-basic-rules">&#x1F539; 3. IUPAC Naming – Basic Rules</a>
+            <ul>
+                <li><a href="#sec-basic-rules">Rules 1–15 (Longest chain, locants, bond types, suffixes, etc.)</a></li>
+            </ul>
+        </li>
+        <li><a href="#sec-special-cases">&#x1F539; 4. Special Cases in IUPAC Naming</a>
+            <ul>
+                <li><a href="#sec-special-cases">15 special cases incl. tie-breaking, diene/diyne, writing format</a></li>
+            </ul>
+        </li>
+        <li><a href="#sec-priority-order">&#x1F539; 5. Priority Order in IUPAC Naming</a>
+            <ul>
+                <li><a href="#sec-priority-order">COOH &gt; CHO &gt; CO &gt; OH &gt; NH&#x2082; &gt; C=C &gt; X</a></li>
+            </ul>
+        </li>
+        <li><a href="#sec-prefix-suffix">&#x1F539; 6. Prefix &amp; Suffix of Functional Groups</a>
+            <ul>
+                <li><a href="#sec-prefix-suffix">Full table, rules, memory tricks</a></li>
+            </ul>
+        </li>
+        <li><a href="#sec-cyclic">&#x1F539; 7. Naming of Cyclic Compounds</a>
+            <ul>
+                <li><a href="#sec-cyclic">Cycloalkanes, substituents, ring vs chain, double bonds</a></li>
+            </ul>
+        </li>
+        <li><a href="#sec-benzene">&#x1F539; 8. Benzene &amp; Its Derivatives</a>
+            <ul>
+                <li><a href="#sec-benzene">Mono/di/tri-substituted, o/m/p, special parent names</a></li>
+            </ul>
+        </li>
+        <li><a href="#sec-xylene">&#x1F539; 9. What is Xylene?</a>
+            <ul>
+                <li><a href="#sec-xylene">o-xylene, m-xylene, p-xylene + summary table</a></li>
+            </ul>
+        </li>
+        <li><a href="#sec-advanced">&#x1F539; 10. Advanced Concepts &amp; Rules</a>
+            <ul>
+                <li><a href="#sec-advanced">Locant sets, branched substituents, iso/neo conversions, esters, phenyl vs benzyl</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+    <!-- PART 1: COMPRESSED FORMULA -->
+    <h1 class="main-title" id="sec-compressed-formula">1. UNDERSTANDING COMPRESSED FORMULA OF ORGANIC COMPOUNDS</h1>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 What is a Compressed Formula?</h2>
+        <p>👉 A compressed formula is a shorthand way to write organic compound structures. It shows how atoms are connected without drawing every bond.</p>
+        <p>In organic chemistry, we use different types of compressed formulas to represent molecules.</p>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 1. Molecular Formula</h2>
+        <p>👉 Shows the actual number of each type of atom in the molecule.</p>
+        <p><strong>Formula:</strong> C<sub>x</sub>H<sub>y</sub>O<sub>z</sub>...</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>C<sub>2</sub>H<sub>6</sub></code> &rarr; Ethane (2 carbons, 6 hydrogens)</li>
+                <li><code>C<sub>3</sub>H<sub>8</sub></code> &rarr; Propane (3 carbons, 8 hydrogens)</li>
+                <li><code>C<sub>4</sub>H<sub>10</sub></code> &rarr; Butane (4 carbons, 10 hydrogens)</li>
+            </ul>
+        </div>
+        <div class="priority-box">
+            <p><strong>⚠️ Limitation:</strong> Molecular formula does NOT show the structure or connectivity of atoms. Different compounds can have the same molecular formula!</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 2. Structural Formula (Full Structural)</h2>
+        <p>👉 Shows all bonds between atoms clearly.</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>Methane:</strong> <code>CH<sub>4</sub></code> <br>CH<sub>4</sub></li>
+                <li><strong>Ethane:</strong> <code>CH<sub>3</sub>–CH<sub>3</sub></code> <br>CH<sub>3</sub>–CH<sub>3</sub></li>
+                <li><strong>Propane:</strong> <code>CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>3</sub></code> <br>CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>3</sub></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 3. Condensed Formula (Most Important)</h2>
+        <p>👉 Groups atoms to show connectivity without drawing all bonds. The most commonly used format in IUPAC questions.</p>
+        
+        <h3 style="margin-top: 1rem;">📌 Rule 1: Parentheses for Branches</h3>
+        <p>👉 Atoms attached as branches are enclosed in parentheses.</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH<sub>3</sub></code> &rarr; Isobutane (2-Methylpropane)
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Interpretation: Carbon 1 has 3H, Carbon 2 has 1H + branch (CH<sub>3</sub>), Carbon 3 has 3H</li>
+                    </ul>
+                </li>
+                <li><code>CH<sub>3</sub>–C(CH<sub>3</sub>)<sub>2</sub>–CH<sub>3</sub></code> &rarr; Neopentane (2,2-Dimethylpropane)
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Interpretation: Central carbon has 2 methyl branches</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">📌 Rule 2: Repeating Groups</h3>
+        <p>👉 Subscripts outside parentheses show repeated groups.</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–(CH<sub>2</sub>)<sub>3</sub>–CH<sub>3</sub></code> &rarr; Hexane (n = 6)
+                    <ul style="margin-top: 0.5rem;">
+                        <li>CH<sub>3</sub>–(CH<sub>2</sub>)<sub>3</sub>–CH<sub>3</sub> = CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>3</sub></li>
+                    </ul>
+                </li>
+                <li><code>CH<sub>3</sub>–(CH<sub>2</sub>)<sub>4</sub>–CH<sub>3</sub></code> &rarr; Heptane (n = 7)</li>
+            </ul>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">📌 Rule 3: Functional Groups in Condensed Form</h3>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <table class="tutorial-table">
+                <tr><th>Group</th><th>Condensed Form</th><th>Structure</th></tr>
+                <tr><td>Alcohol</td><td>–OH</td><td>Attached directly</td></tr>
+                <tr><td>Aldehyde</td><td>–CHO</td><td>–C(=O)H</td></tr>
+                <tr><td>Ketone</td><td>–CO–</td><td>–C(=O)–</td></tr>
+                <tr><td>Carboxylic Acid</td><td>–COOH</td><td>–C(=O)OH</td></tr>
+                <tr><td>Amine</td><td>–NH<sub>2</sub></td><td>–N(H)H</td></tr>
+                <tr><td>Ester</td><td>–COOR</td><td>–C(=O)O–R</td></tr>
+            </table>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">📌 Rule 4: Multiple Bonds</h3>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>2</sub>=CH–CH<sub>3</sub></code> &rarr; Propene (double bond between C1-C2)</li>
+                <li><code>CH<sub>3</sub>–C&equiv;C–CH<sub>3</sub></code> &rarr; 2-Butyne (triple bond)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 How to Read Condensed Formulas – Step by Step</h2>
+        
+        <h3 style="margin-top: 1rem;">Step 1: Identify the Main Chain</h3>
+        <p>👉 Start from left, follow the main chain (atoms not in parentheses).</p>
+        
+        <h3 style="margin-top: 1rem;">Step 2: Count Branched Groups</h3>
+        <p>👉 Each set of parentheses represents a substituent branch.</p>
+        
+        <h3 style="margin-top: 1rem;">Step 3: Calculate Hydrogen Count</h3>
+        <p>👉 Each carbon needs 4 bonds. Count existing bonds from the condensed form.</p>
+
+        <div class="example-box">
+            <p><strong>Example Analysis:</strong></p>
+            <p><code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH<sub>2</sub>–CH<sub>3</sub></code></p>
+            <ul>
+                <li><strong>Main chain:</strong> CH<sub>3</sub>–CH–CH<sub>2</sub>–CH<sub>3</sub> = 4 carbons = Butane</li>
+                <li><strong>Branch:</strong> (CH<sub>3</sub>) on 2nd carbon = Methyl group</li>
+                <li><strong>Result:</strong> 2-Methylbutane</li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <p><strong>Practice Analysis:</strong></p>
+            <p><code>CH<sub>3</sub>–C(CH<sub>3</sub>)<sub>2</sub>–CH<sub>2</sub>–CH(CH<sub>3</sub>)–CH<sub>3</sub></code></p>
+            <ul>
+                <li><strong>Main chain:</strong> 5 carbons = Pentane</li>
+                <li><strong>Branches:</strong>
+                    <ul>
+                        <li>2nd carbon: Two methyl groups (CH<sub>3</sub>)<sub>2</sub></li>
+                        <li>4th carbon: One methyl group</li>
+                    </ul>
+                </li>
+                <li><strong>Result:</strong> 2,2,4-Trimethylpentane</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Special Cases in Compressed Formulas</h2>
+        
+        <h3 style="margin-top: 1rem;">Case 1: Functional Groups with Subscripts</h3>
+        <div class="example-box">
+            <ul>
+                <li><code>HO–CH<sub>2</sub>–CH<sub>2</sub>–OH</code> &rarr; Ethane-1,2-diol (Ethylene glycol)</li>
+                <li><code>HOOC–CH<sub>2</sub>–COOH</code> &rarr; Propane-1,3-dioic acid</li>
+            </ul>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">Case 2: Rings and Cyclic Compounds</h3>
+        <div class="example-box">
+            <ul>
+                <li><code>(CH<sub>2</sub>)<sub>6</sub></code> with ring closure &rarr; Cyclohexane</li>
+            </ul>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">Case 3: Aromatic Compounds</h3>
+        <div class="example-box">
+            <ul>
+                <li><code>C<sub>6</sub>H<sub>5</sub>–CH<sub>3</sub></code> &rarr; Toluene (Methylbenzene)</li>
+                <li><code>C<sub>6</sub>H<sub>5</sub>–OH</code> &rarr; Phenol</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section finale-box">
+        <h2 class="highlight-heading">⚡ Quick Reference – Common Condensed Formulas</h2>
+        <table class="tutorial-table">
+            <tr><th>Compound</th><th>Condensed Formula</th><th>Structure</th></tr>
+            <tr><td>Methane</td><td>CH<sub>4</sub></td><td>CH<sub>4</sub></td></tr>
+            <tr><td>Ethane</td><td>CH<sub>3</sub>CH<sub>3</sub></td><td>CH<sub>3</sub>–CH<sub>3</sub></td></tr>
+            <tr><td>Propane</td><td>CH<sub>3</sub>CH<sub>2</sub>CH<sub>3</sub></td><td>CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>3</sub></td></tr>
+            <tr><td>Butane</td><td>CH<sub>3</sub>(CH<sub>2</sub>)<sub>2</sub>CH<sub>3</sub></td><td>CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>3</sub></td></tr>
+            <tr><td>Isobutane</td><td>CH(CH<sub>3</sub>)<sub>3</sub></td><td>   CH<sub>3</sub><br>    |<br>CH<sub>3</sub>–CH–CH<sub>3</sub><br>    |<br>   CH<sub>3</sub></td></tr>
+            <tr><td>Ethanol</td><td>CH<sub>3</sub>CH<sub>2</sub>OH</td><td>CH<sub>3</sub>–CH<sub>2</sub>–OH</td></tr>
+            <tr><td>Acetic Acid</td><td>CH<sub>3</sub>COOH</td><td>CH<sub>3</sub>–C(=O)–OH</td></tr>
+        </table>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- PART 2: BOND LINE STRUCTURE -->
+    <h1 class="main-title" id="sec-bond-line">2. BOND LINE STRUCTURE (SKELETAL FORMULA) OF ORGANIC COMPOUNDS</h1>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 What is Bond Line Structure?</h2>
+        <p>👉 Bond Line Structure (also called Skeletal Formula) is the most simplified way to represent organic molecules. It's what chemists use in practice because it's fast and clear.</p>
+        <div class="priority-box">
+            <p><strong>⚡ Key Principle:</strong> In bond line structure, carbon atoms are NOT shown explicitly. Only the bonds (lines) are drawn.</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Rule 1: Carbon Atoms Are Implied</h2>
+        <p>👉 Each corner and endpoint in a bond line structure represents a carbon atom.</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li>A straight line with 2 endpoints: <code>——</code> = 2 carbons = Ethane <br><canvas class="tutorial-smiles" data-smiles="CC"></canvas></li>
+                <li>A zigzag line: <code>—\/—</code> (bent line) = 3 carbons = Propane <br><canvas class="tutorial-smiles" data-smiles="CCC"></canvas></li>
+                <li>A zigzag line with 4 segments: = 4 carbons = Butane <br><canvas class="tutorial-smiles" data-smiles="CCCC"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Rule 2: Hydrogen Atoms Are Implied</h2>
+        <p>👉 Hydrogen atoms are NOT shown. Each carbon automatically has enough hydrogens to make 4 bonds total.</p>
+        <div class="example-box">
+            <p><strong>Example Analysis:</strong></p>
+            <ul>
+                <li><strong>Endpoint carbon:</strong> Has 3 implied H atoms (1 bond shown + 3 H = 4 bonds) <br><canvas class="tutorial-smiles" data-smiles="C"></canvas></li>
+                <li><strong>Middle carbon in chain:</strong> Has 2 implied H atoms (2 bonds shown + 2 H = 4 bonds) <br><canvas class="tutorial-smiles" data-smiles="CC"></canvas></li>
+                <li><strong>Corner carbon:</strong> Has 2 implied H atoms (2 bonds shown + 2 H = 4 bonds) <br><canvas class="tutorial-smiles" data-smiles="CCC"></canvas></li>
+            </ul>
+        </div>
+        <div class="priority-box">
+            <p><strong>💡 To find H count:</strong> 4 bonds per carbon - bonds shown = H atoms</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Rule 3: Multiple Lines for Multiple Bonds</h2>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <table class="tutorial-table">
+                <tr><th>Bond Type</th><th>Representation</th><th>Example</th></tr>
+                <tr><td>Single Bond</td><td>One line (—)</td><td>Ethane</td></tr>
+                <tr><td>Double Bond</td><td>Two parallel lines (=)</td><td>Ethene <br><canvas class="tutorial-smiles" data-smiles="C=C"></canvas></td></tr>
+                <tr><td>Triple Bond</td><td>Three parallel lines (≡)</td><td>Ethyne <br><canvas class="tutorial-smiles" data-smiles="C#C"></canvas></td></tr>
+            </table>
+        </div>
+        <div class="example-box">
+            <p><strong>Practical Examples:</strong></p>
+            <ul>
+                <li>Propene: <code>—=—</code> &rarr; <canvas class="tutorial-smiles" data-smiles="C=CC"></canvas></li>
+                <li>2-Butene: <code>—=—</code> with chain &rarr; <canvas class="tutorial-smiles" data-smiles="CC=CC"></canvas></li>
+                <li>But-1-en-3-yne: <code>—=—≡—</code> &rarr; <canvas class="tutorial-smiles" data-smiles="C=CC#C"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Rule 4: Non-Carbon Atoms Must Be Shown</h2>
+        <p>👉 All atoms OTHER than carbon and hydrogen MUST be explicitly written.</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <table class="tutorial-table">
+                <tr><th>Atom</th><th>Symbol</th><th>Example</th></tr>
+                <tr><td>Oxygen</td><td>O</td><td>Alcohol: —OH <br><canvas class="tutorial-smiles" data-smiles="CCO"></canvas></td></tr>
+                <tr><td>Nitrogen</td><td>N</td><td>Amine: —NH<sub>2</sub> <br><canvas class="tutorial-smiles" data-smiles="CCN"></canvas></td></tr>
+                <tr><td>Sulfur</td><td>S</td><td>Thiol: —SH <br><canvas class="tutorial-smiles" data-smiles="CCS"></canvas></td></tr>
+                <tr><td>Chlorine</td><td>Cl</td><td>Chloro: —Cl <br><canvas class="tutorial-smiles" data-smiles="CCCl"></canvas></td></tr>
+                <tr><td>Bromine</td><td>Br</td><td>Bromo: —Br</td></tr>
+                <tr><td>Iodine</td><td>I</td><td>Iodo: —I</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Rule 5: Functional Groups with Multiple Atoms</h2>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>Aldehyde (–CHO):</strong> Write as —CHO <br><canvas class="tutorial-smiles" data-smiles="CCC=O"></canvas></li>
+                <li><strong>Ketone (>C=O):</strong> Write as —C— with double bond O <br><canvas class="tutorial-smiles" data-smiles="CCC(=O)CC"></canvas></li>
+                <li><strong>Carboxylic Acid (–COOH):</strong> Write as —COOH <br><canvas class="tutorial-smiles" data-smiles="CCC(=O)O"></canvas></li>
+                <li><strong>Ester (–COOR):</strong> Write as —COOR <br><canvas class="tutorial-smiles" data-smiles="CCC(=O)OCC"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 How to Count Carbons in Bond Line Structure</h2>
+        
+        <h3 style="margin-top: 1rem;">Method 1: Count Endpoints and Corners</h3>
+        <div class="example-box">
+            <p><strong>Example:</strong></p>
+            <p>Each endpoint and corner represents 1 carbon atom.</p>
+            <ul>
+                <li><code>——</code> (2 endpoints) = 2 carbons</li>
+                <li><code>——|——</code> (3 corners/endpoints) = 3 carbons</li>
+                <li><code>|   |</code> (2 corners + 2 endpoints) = 4 carbons</li>
+            </ul>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">Method 2: Count Line Segments</h3>
+        <p>👉 Number of carbons = Number of line segments</p>
+        <div class="example-box">
+            <p><strong>Example:</strong></p>
+            <p>A zigzag line with 5 segments = 5 carbons (Pentane) <br><canvas class="tutorial-smiles" data-smiles="CCCCC"></canvas></p>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">Method 3: Double/Triple Bonds Don't Add Carbons</h3>
+        <p>👉 Multiple lines between same atoms don't create new carbons.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong></p>
+            <p><code>——</code> with double bond = 2 carbons with double bond = Ethene <br><canvas class="tutorial-smiles" data-smiles="C=C"></canvas></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Branches in Bond Line Structure</h2>
+        <p>👉 Branches are drawn as lines coming off the main chain at angles.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> 2-Methylbutane</p>
+            <p>Structure: A 4-carbon chain with a methyl branch at carbon 2</p>
+            <p><canvas class="tutorial-smiles" data-smiles="CCC(C)C"></canvas></p>
+            <p>Notice: The branch (methyl) comes off as a short line from the 2nd carbon.</p>
+        </div>
+
+        <div class="example-box">
+            <p><strong>Example:</strong> 2,2-Dimethylpropane (Neopentane)</p>
+            <p>Structure: Central carbon with 4 methyl groups</p>
+            <p><canvas class="tutorial-smiles" data-smiles="CC(C)(C)C"></canvas></p>
+        </div>
+
+        <div class="example-box">
+            <p><strong>Example:</strong> 3-Ethyl-2-methylpentane</p>
+            <p>Structure: 5-carbon chain with ethyl and methyl branches</p>
+            <p><canvas class="tutorial-smiles" data-smiles="CCC(C(C)C)C"></canvas></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Cyclic Compounds in Bond Line</h2>
+        <p>👉 Rings are drawn as polygons (triangles, squares, pentagons, hexagons, etc.)</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <table class="tutorial-table">
+                <tr><th>Ring Size</th><th>Name</th><th>Structure</th></tr>
+                <tr><td>3-member</td><td>Cyclopropane</td><td><canvas class="tutorial-smiles" data-smiles="C1CC1"></canvas></td></tr>
+                <tr><td>4-member</td><td>Cyclobutane</td><td><canvas class="tutorial-smiles" data-smiles="C1CCC1"></canvas></td></tr>
+                <tr><td>5-member</td><td>Cyclopentane</td><td><canvas class="tutorial-smiles" data-smiles="C1CCCC1"></canvas></td></tr>
+                <tr><td>6-member</td><td>Cyclohexane</td><td><canvas class="tutorial-smiles" data-smiles="C1CCCCC1"></canvas></td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Aromatic Compounds (Benzene)</h2>
+        <p>👉 Benzene is drawn as a hexagon with a circle inside (or alternating double bonds).</p>
+        <div class="example-box">
+            <p><strong>Benzene representations:</strong></p>
+            <ul>
+                <li><strong>Hexagon with circle:</strong> <br><canvas class="tutorial-smiles" data-smiles="c1ccccc1"></canvas></li>
+                <li><strong>With substituents:</strong> Toluene (Methylbenzene) <br><canvas class="tutorial-smiles" data-smiles="Cc1ccccc1"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Converting Between Formula Types</h2>
+        
+        <h3 style="margin-top: 1rem;">Full Structural &rarr; Condensed &rarr; Bond Line</h3>
+        <div class="example-box">
+            <p><strong>Example 1: Butane</strong></p>
+            <ul>
+                <li><strong>Full Structural:</strong> CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>3</sub></li>
+                <li><strong>Condensed:</strong> CH<sub>3</sub>(CH<sub>2</sub>)<sub>2</sub>CH<sub>3</sub></li>
+                <li><strong>Bond Line:</strong> <br><canvas class="tutorial-smiles" data-smiles="CCCC"></canvas></li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <p><strong>Example 2: 2-Methylpropane</strong></p>
+            <ul>
+                <li><strong>Full Structural:</strong> CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH<sub>3</sub></li>
+                <li><strong>Condensed:</strong> CH(CH<sub>3</sub>)<sub>3</sub></li>
+                <li><strong>Bond Line:</strong> <br><canvas class="tutorial-smiles" data-smiles="CC(C)C"></canvas></li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <p><strong>Example 3: Ethanol</strong></p>
+            <ul>
+                <li><strong>Full Structural:</strong> CH<sub>3</sub>–CH<sub>2</sub>–OH</li>
+                <li><strong>Condensed:</strong> CH<sub>3</sub>CH<sub>2</sub>OH</li>
+                <li><strong>Bond Line:</strong> <br><canvas class="tutorial-smiles" data-smiles="CCO"></canvas></li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <p><strong>Example 4: Propanone (Acetone)</strong></p>
+            <ul>
+                <li><strong>Full Structural:</strong> CH<sub>3</sub>–C(=O)–CH<sub>3</sub></li>
+                <li><strong>Condensed:</strong> CH<sub>3</sub>COCH<sub>3</sub></li>
+                <li><strong>Bond Line:</strong> <br><canvas class="tutorial-smiles" data-smiles="CC(=O)C"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Bond Angles in Bond Line Structure</h2>
+        <p>👉 Standard bond angles are shown approximately:</p>
+        <div class="example-box">
+            <ul>
+                <li><strong>109.5°</strong> (Tetrahedral) – Alkanes, single bonds only</li>
+                <li><strong>120°</strong> (Trigonal planar) – Alkenes, carbons with double bonds</li>
+                <li><strong>180°</strong> (Linear) – Alkynes, triple bonds</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section finale-box">
+        <h2 class="highlight-heading">⚡ Quick Reference – Bond Line to Condensed</h2>
+        <table class="tutorial-table">
+            <tr><th>Bond Line</th><th>Condensed Formula</th><th>IUPAC Name</th></tr>
+            <tr><td><canvas class="tutorial-smiles" data-smiles="C" width="60" height="40"></canvas></td><td>CH<sub>4</sub></td><td>Methane</td></tr>
+            <tr><td><canvas class="tutorial-smiles" data-smiles="CC" width="80" height="40"></canvas></td><td>CH<sub>3</sub>–CH<sub>3</sub></td><td>Ethane</td></tr>
+            <tr><td><canvas class="tutorial-smiles" data-smiles="CCC" width="100" height="40"></canvas></td><td>CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>3</sub></td><td>Propane</td></tr>
+            <tr><td><canvas class="tutorial-smiles" data-smiles="CCCC" width="120" height="40"></canvas></td><td>CH<sub>3</sub>–(CH<sub>2</sub>)<sub>2</sub>–CH<sub>3</sub></td><td>Butane</td></tr>
+            <tr><td><canvas class="tutorial-smiles" data-smiles="C=C" width="80" height="40"></canvas></td><td>CH<sub>2</sub>=CH<sub>2</sub></td><td>Ethene</td></tr>
+            <tr><td><canvas class="tutorial-smiles" data-smiles="C#C" width="80" height="40"></canvas></td><td>CH≡CH</td><td>Ethyne</td></tr>
+            <tr><td><canvas class="tutorial-smiles" data-smiles="CCO" width="100" height="40"></canvas></td><td>CH<sub>3</sub>–CH<sub>2</sub>–OH</td><td>Ethanol</td></tr>
+            <tr><td><canvas class="tutorial-smiles" data-smiles="CC(=O)C" width="100" height="40"></canvas></td><td>CH<sub>3</sub>–CO–CH<sub>3</sub></td><td>Propanone</td></tr>
+            <tr><td><canvas class="tutorial-smiles" data-smiles="CC(C)C" width="80" height="50"></canvas></td><td>CH(CH<sub>3</sub>)<sub>3</sub></td><td>2-Methylpropane</td></tr>
+            <tr><td><canvas class="tutorial-smiles" data-smiles="C1CCCCC1" width="80" height="60"></canvas></td><td>(CH<sub>2</sub>)<sub>6</sub></td><td>Cyclohexane</td></tr>
+        </table>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- PART 3: BASIC RULES (renumbered from Part 1) -->
+    <h1 class="main-title" id="sec-basic-rules">3. IUPAC NAMING – BASIC RULES (WITH EXAMPLES)</h1>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 3. Select the Longest Carbon Chain (Parent Chain)</h2>
+        <p>👉 Choose the longest continuous chain of carbon atoms.</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>3</sub></code> &rarr; <strong>Propane</strong> (3 carbons) <br><canvas class="tutorial-smiles" data-smiles="CCC"></canvas></li>
+                <li><code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH<sub>2</sub>–CH<sub>3</sub></code> &rarr; longest chain = 4 &rarr; <strong>Butane base</strong> <br><canvas class="tutorial-smiles" data-smiles="CCC(C)C"></canvas></li>
+            </ul>
+        </div>
+        <div class="priority-box">
+            <p><strong>👉 Special case:</strong> If multiple chains have same length &rarr; choose the one with more substituents.</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 4. Choose Chain with Functional Group / Multiple Bond</h2>
+        <p>👉 Parent chain must include:</p>
+        <ul>
+            <li>Functional group</li>
+            <li>Double/triple bond</li>
+        </ul>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>2</sub>–OH</code> &rarr; chain must include –OH &rarr; <strong>Propanol</strong> <br><canvas class="tutorial-smiles" data-smiles="CCCO"></canvas></li>
+                <li><code>CH<sub>2</sub>=CH–CH<sub>2</sub>–CH<sub>3</sub></code> &rarr; include double bond &rarr; <strong>Butene</strong> <br><canvas class="tutorial-smiles" data-smiles="C=CCC"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 5. Number the Carbon Chain (Lowest Locant Rule)</h2>
+        <p>👉 Number from the end that gives lowest number to: Functional group, Double/triple bond, Substituents.</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>(a) Functional group priority:</strong> <code>CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>2</sub>–OH</code> &rarr; Number from –OH side &rarr; <strong>Propan-1-ol</strong> (not propan-3-ol)</li>
+                <li><strong>(b) Double bond priority:</strong> <code>CH<sub>2</sub>=CH–CH<sub>2</sub>–CH<sub>3</sub></code> &rarr; <strong>But-1-ene</strong> (not but-3-ene)</li>
+                <li><strong>(c) Substituent case:</strong> <code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH<sub>2</sub>–CH<sub>3</sub></code> &rarr; <strong>2-Methylbutane</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 6. Identify and Name Substituents</h2>
+        <p>👉 Groups attached to main chain = substituents</p>
+        <table class="tutorial-table">
+            <tr><th>Group</th><th>Name</th></tr>
+            <tr><td>–CH<sub>3</sub></td><td>methyl</td></tr>
+            <tr><td>–C<sub>2</sub>H<sub>5</sub></td><td>ethyl</td></tr>
+            <tr><td>–Cl</td><td>chloro</td></tr>
+        </table>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH<sub>3</sub></code> &rarr; <strong>2-Methylpropane</strong> <br><canvas class="tutorial-smiles" data-smiles="CC(C)C"></canvas></li>
+                <li><code>CH<sub>3</sub>–CH(Cl)–CH<sub>3</sub></code> &rarr; <strong>2-Chloropropane</strong> <br><canvas class="tutorial-smiles" data-smiles="CC(Cl)C"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 7. Assign Position Numbers (Locants)</h2>
+        <p>👉 Write number of carbon where substituent is attached</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH<sub>3</sub></code> &rarr; <strong>2-methylpropane</strong></li>
+                <li><code>CH<sub>3</sub>–CH<sub>2</sub>–CH(Cl)–CH<sub>3</sub></code> &rarr; <strong>2-chlorobutane</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 8. Multiple Same Substituents &rarr; Use Prefixes</h2>
+        <p>👉 di-, tri-, tetra-</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–C(CH<sub>3</sub>)<sub>2</sub>–CH<sub>3</sub></code> &rarr; <strong>2,2-Dimethylpropane</strong> <br><canvas class="tutorial-smiles" data-smiles="CC(C)(C)C"></canvas></li>
+                <li><code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH(CH<sub>3</sub>)–CH<sub>3</sub></code> &rarr; <strong>2,3-Dimethylbutane</strong> <br><canvas class="tutorial-smiles" data-smiles="CC(C)C(C)C"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 9. Arrange Substituents Alphabetically</h2>
+        <p>👉 Ignore di-, tri- while ordering</p>
+        <div class="example-box">
+            <p><strong>Example:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH(C<sub>2</sub>H<sub>5</sub>)–CH<sub>3</sub></code> &rarr; <strong>3-Ethyl-2-methylbutane</strong> ✔ (not methyl before ethyl ❌) <br><canvas class="tutorial-smiles" data-smiles="CCC(C(C)C)C"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 10. Identify Type of Bond (Primary Suffix)</h2>
+        <table class="tutorial-table">
+            <tr><th>Bond</th><th>Suffix</th></tr>
+            <tr><td>Single</td><td>-ane</td></tr>
+            <tr><td>Double</td><td>-ene</td></tr>
+            <tr><td>Triple</td><td>-yne</td></tr>
+        </table>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–CH<sub>3</sub></code> &rarr; <strong>Ethane</strong></li>
+                <li><code>CH<sub>2</sub>=CH<sub>2</sub></code> &rarr; <strong>Ethene</strong></li>
+                <li><code>CH&equiv;CH</code> &rarr; <strong>Ethyne</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 11. Write Position of Double/Triple Bond</h2>
+        <p>👉 Always mention position</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>2</sub>=CH–CH<sub>3</sub></code> &rarr; <strong>Prop-1-ene</strong></li>
+                <li><code>CH<sub>3</sub>–CH=CH–CH<sub>3</sub></code> &rarr; <strong>But-2-ene</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 12. Add Functional Group (Secondary Suffix)</h2>
+        <table class="tutorial-table">
+            <tr><th>Group</th><th>Suffix</th></tr>
+            <tr><td>–OH</td><td>-ol</td></tr>
+            <tr><td>–CHO</td><td>-al</td></tr>
+            <tr><td>>C=O</td><td>-one</td></tr>
+            <tr><td>–COOH</td><td>-oic acid</td></tr>
+        </table>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–CH<sub>2</sub>–OH</code> &rarr; <strong>Ethanol</strong></li>
+                <li><code>CH<sub>3</sub>–CHO</code> &rarr; <strong>Ethanal</strong></li>
+                <li><code>CH<sub>3</sub>–CO–CH<sub>3</sub></code> &rarr; <strong>Propanone</strong></li>
+                <li><code>CH<sub>3</sub>-CO-C<sub>2</sub>H<sub>5</sub></code> &rarr; <strong>Butan-2-one</strong> &#x2B50;</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 13. Functional Group Priority (Very Important)</h2>
+        <p>👉 Highest priority gets: Lowest number, Suffix</p>
+        <p class="priority-box"><strong>Order:</strong> COOH > CHO > CO > OH > Double bond > Alkyl</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>(a)</strong> <code>HO–CH<sub>2</sub>–CHO</code> &rarr; Aldehyde priority &rarr; <strong>2-Hydroxyethanal</strong> <br><canvas class="tutorial-smiles" data-smiles="OCC=O"></canvas></li>
+                <li><strong>(b)</strong> <code>CH<sub>3</sub>–CO–CH<sub>2</sub>–OH</code> &rarr; Ketone priority &rarr; <strong>3-Hydroxybutan-2-one</strong> <br><canvas class="tutorial-smiles" data-smiles="CC(=O)C(O)C"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 14. Multiple Functional Groups</h2>
+        <p>👉 Highest &rarr; suffix, Others &rarr; prefix</p>
+        <div class="example-box">
+            <p><strong>Example:</strong></p>
+            <ul>
+                <li><code>HO–CH<sub>2</sub>–CH<sub>2</sub>–COOH</code> &rarr; <strong>3-Hydroxypropanoic acid</strong> <br><canvas class="tutorial-smiles" data-smiles="OCCC(=O)O"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 15. Naming Cyclic Compounds</h2>
+        <p>👉 Add <strong>cyclo-</strong></p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>Cyclopropane</strong> <br><canvas class="tutorial-smiles" data-smiles="C1CC1"></canvas></li>
+                <li><strong>Cyclohexane</strong> <br><canvas class="tutorial-smiles" data-smiles="C1CCCCC1"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 16. Naming Aromatic Compounds (Basic)</h2>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>C<sub>6</sub>H<sub>6</sub></code> &rarr; <strong>Benzene</strong> <br><canvas class="tutorial-smiles" data-smiles="c1ccccc1"></canvas></li>
+                <li><code>C<sub>6</sub>H<sub>5</sub>–CH<sub>3</sub></code> &rarr; <strong>Methylbenzene</strong> <br><canvas class="tutorial-smiles" data-smiles="Cc1ccccc1"></canvas></li>
+                <li><code>C<sub>6</sub>H<sub>5</sub>–OH</code> &rarr; <strong>Phenol</strong> <br><canvas class="tutorial-smiles" data-smiles="Oc1ccccc1"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 17. Special Case – Tie Breaking Rule</h2>
+        <p>👉 If two numbering options give same numbers, choose one with: More substituents, Lower numbers at first difference.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH(CH<sub>3</sub>)–CH<sub>3</sub></code> &rarr; <strong>2,3-Dimethylbutane</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section finale-box">
+        <h2 class="highlight-heading">⚡ Final Example (Mixed Concept - Section 3)</h2>
+        <p><strong>Compound:</strong> <code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH<sub>2</sub>–CH<sub>2</sub>–OH</code></p>
+        <ol>
+            <li>Longest chain = 4 &rarr; <strong>butane</strong></li>
+            <li>Functional group = <strong>OH</strong></li>
+            <li>Number from OH side</li>
+            <li>Substituent = <strong>methyl</strong></li>
+        </ol>
+        <h3>👉 Final name: 3-Methylbutan-1-ol</h3>
+        <canvas class="tutorial-smiles" data-smiles="CC(C)CCO"></canvas>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- PART 4: SPECIAL CASES IN IUPAC NAMING -->
+    <h1 class="main-title" id="sec-special-cases">4. SPECIAL CASES IN IUPAC NAMING</h1>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 1. When Two Longest Chains Are Possible</h2>
+        <p>👉 If more than one chain has the same length: Choose the chain with maximum substituents</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH(CH<sub>3</sub>)–CH<sub>3</sub></code></p>
+            <p>Two possible 4-carbon chains exist. ✔ Choose the one with more branches.</p>
+            <p>👉 <strong>2,3-Dimethylbutane</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 2. When Numbering from Both Ends Gives Same Set</h2>
+        <p>👉 Use first point of difference rule</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH<sub>2</sub>–CH(CH<sub>3</sub>)–CH<sub>3</sub></code></p>
+            <p>Left &rarr; 2,4 | Right &rarr; 2,4</p>
+            <p>Tie! Now check next difference: ✔ Choose numbering giving lower number to first substituent.</p>
+            <p>👉 Correct: <strong>2,4-Dimethylpentane</strong> <br><canvas class="tutorial-smiles" data-smiles="CC(C)CC(C)C"></canvas></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 3. Functional Group vs Multiple Bond Conflict</h2>
+        <p>👉 Functional group gets priority over double/triple bond</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>2</sub>=CH–CH<sub>2</sub>–OH</code></p>
+            <p>Two options: Double bond at 1, OH at 1. ✔ OH gets priority.</p>
+            <p>👉 Name: <strong>Prop-2-en-1-ol</strong> <br><canvas class="tutorial-smiles" data-smiles="C=CCCO"></canvas></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 4. Multiple Bonds (Double vs Triple)</h2>
+        <p>👉 Double bond gets preference in numbering</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>2</sub>=CH–C&equiv;CH</code></p>
+            <p>Numbering: ✔ Give double bond lower number.</p>
+            <p>👉 Name: <strong>But-1-en-3-yne</strong> <br><canvas class="tutorial-smiles" data-smiles="C=CC#C"></canvas></p>
+        </div>
+    </section>
+
+    <!-- Sub-section inside Special Cases: Multiple Double/Triple -->
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 MULTIPLE DOUBLE / TRIPLE BONDS – RULES</h2>
+        
+        <h3 style="margin-top: 1rem;">🔹 i. Choose the Longest Chain Including Maximum Multiple Bonds</h3>
+        <p>👉 Parent chain must contain: Maximum number of double/triple bonds</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>2</sub>=CH–CH=CH<sub>2</sub></code></p>
+            <p>✔ Chain includes both double bonds &rarr; Base name: buta-…</p>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">🔹 ii. Use Special Suffixes</h3>
+        <p>👉 For multiple bonds:</p>
+        <table class="tutorial-table">
+            <tr><th>Bonds</th><th>Suffix</th></tr>
+            <tr><td>2 double bonds</td><td>-diene</td></tr>
+            <tr><td>3 double bonds</td><td>-triene</td></tr>
+            <tr><td>2 triple bonds</td><td>-diyne</td></tr>
+        </table>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>2</sub>=CH–CH=CH<sub>2</sub></code> &rarr; <strong>Buta-1,3-diene</strong> ⭐ <br><canvas class="tutorial-smiles" data-smiles="C=CC=C"></canvas></li>
+                <li><code>CH&equiv;C–C&equiv;CH</code> &rarr; <strong>Buta-1,3-diyne</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 5. When Functional Group Is Not in Main Chain</h2>
+        <p>👉 You MUST include it in parent chain</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH<sub>2</sub>–CHO</code></p>
+            <p>Even if a longer chain exists, include –CHO.</p>
+            <p>👉 Name: <strong>3-Methylbutanal</strong> <br><canvas class="tutorial-smiles" data-smiles="CC(C)CC=O"></canvas></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 6. Multiple Functional Groups (Different Types)</h2>
+        <p>👉 Highest priority = suffix | Others = prefix</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>HO–CH<sub>2</sub>–CH<sub>2</sub>–CHO</code></p>
+            <p>✔ Aldehyde > alcohol.</p>
+            <p>👉 Name: <strong>3-Hydroxypropanal</strong> (Note: original says 2-Hydroxyethanal, updated to match formula)</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 7. Same Functional Group Repeated</h2>
+        <p>👉 Use di-, tri-, etc.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>HO–CH<sub>2</sub>–CH<sub>2</sub>–OH</code></p>
+            <p>👉 Name: <strong>Ethane-1,2-diol</strong> <br><canvas class="tutorial-smiles" data-smiles="OCCO"></canvas></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 8. Branched Substituents (Complex Substituents)</h2>
+        <p>👉 When substituent itself is branched: Number substituent separately. Use brackets.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–CH(CH<sub>2</sub>CH<sub>3</sub>)–CH<sub>2</sub>–CH<sub>3</sub></code></p>
+            <p>👉 Name: <strong>3-Methylpentane</strong> (Note original: 2-Ethylbutane)</p>
+            <p><strong>More complex:</strong> <code>CH<sub>3</sub>–CH(CH(CH<sub>3</sub>)<sub>2</sub>)–CH<sub>3</sub></code></p>
+            <p>👉 Name: <strong>2-(Propan-2-yl)propane</strong> (Note: commonly just 2,3-Dimethylbutane)</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 9. Alphabetical Order with Prefixes</h2>
+        <p>👉 Ignore: di-, tri-, tetra- <br> 👉 Consider: iso (counts), neo (counts)</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH(C<sub>2</sub>H<sub>5</sub>)–CH<sub>3</sub></code></p>
+            <p>👉 Name: <strong>3-Ethyl-2-methylbutane</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 10. Numbering in Cyclic Compounds</h2>
+        <p>👉 Start numbering from: Functional group, then give lowest numbers to substituents.</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li>Cyclohexane with one methyl group &rarr; <strong>Methylcyclohexane</strong></li>
+                <li>Two substituents: 👉 Use lowest set &rarr; <strong>1,2-dimethylcyclohexane</strong> ✔ (not 1,5 ❌)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 11. Aromatic Compounds (Special Positions)</h2>
+        <p>👉 Use: ortho (1,2), meta (1,3), para (1,4)</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>C<sub>6</sub>H<sub>4</sub>(CH<sub>3</sub>)<sub>2</sub></code></p>
+            <ul>
+                <li>1,2 &rarr; <strong>o-xylene</strong></li>
+                <li>1,3 &rarr; <strong>m-xylene</strong></li>
+                <li>1,4 &rarr; <strong>p-xylene</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 12. When No Functional Group (Only Alkyl + Multiple Bonds)</h2>
+        <p>👉 Double/triple bond gets priority in numbering.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–CH=CH–CH<sub>3</sub></code></p>
+            <p>👉 <strong>But-2-ene</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 13. When Substituent and Functional Group Compete</h2>
+        <p>👉 Functional group always wins.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–CH(Cl)–CH<sub>2</sub>–OH</code></p>
+            <p>✔ OH gets lowest number.</p>
+            <p>👉 Name: <strong>2-Chloropropan-1-ol</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 14. Longest Chain vs Maximum Functional Groups</h2>
+        <p>👉 Choose chain with maximum functional groups, even if slightly shorter.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> A chain of 5 carbons vs chain of 4 carbons with –OH.</p>
+            <p>✔ Choose 4-carbon chain with OH.</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 15. Writing Format (Common Mistake Case)</h2>
+        <p>👉 Correct format: Numbers &rarr; commas, Number + word &rarr; hyphen.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong></p>
+            <ul>
+                <li>✔ <strong>2,3-dimethylbutane</strong></li>
+                <li>❌ 2 3 dimethyl butane</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section finale-box">
+        <h2 class="highlight-heading">⚡ Most Important Special Cases for Exams (Section 4)</h2>
+        <p>Focus on these:</p>
+        <ul>
+            <li>Tie-breaking (same numbering)</li>
+            <li>Functional group priority</li>
+            <li>Double vs triple bond</li>
+            <li>Multiple substituents</li>
+            <li>Branched substituents</li>
+            <li>Aromatic naming (o, m, p)</li>
+        </ul>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- PART 5: PRIORITY ORDER IN IUPAC NAMING -->
+    <h1 class="main-title" id="sec-priority-order">5. PRIORITY ORDER IN IUPAC NAMING</h1>
+    
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 What is Priority Order?</h2>
+        <p>👉 When a compound has multiple functional groups, priority order decides: Which group gets the suffix (main group), Which groups become prefixes, Where to start numbering.</p>
+    </section>
+
+    <p class="priority-box" style="font-size: 1.1rem; text-align: center;">
+        <strong>🔝 STANDARD PRIORITY ORDER (You must memorize)</strong><br><br>
+        <strong>–COOH</strong> (Carboxylic acid)<br>⬇<br>
+        <strong>–CHO</strong> (Aldehyde)<br>⬇<br>
+        <strong>>C=O</strong> (Ketone)<br>⬇<br>
+        <strong>–OH</strong> (Alcohol)<br>⬇<br>
+        <strong>–NH<sub>2</sub></strong> (Amine - sometimes included)<br>⬇<br>
+        <strong>C=C / C&equiv;C</strong> (Double/triple bond)<br>⬇<br>
+        <strong>–R, –X, –NO<sub>2</sub></strong> (Alkyl, halogen, nitro)
+    </p>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 KEY RULES</h2>
+        
+        <h3 style="margin-top: 1rem;">✅ Rule 1: Highest Priority &rarr; Suffix</h3>
+        <p>👉 The group with highest priority is written as suffix.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–CH<sub>2</sub>–COOH + –OH</code></p>
+            <p>✔ COOH has higher priority.</p>
+            <p>👉 Name: <strong>Hydroxypropanoic acid</strong> (not propanol ❌)</p>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">✅ Rule 2: Lower Priority &rarr; Prefix</h3>
+        <p>👉 All other groups become prefixes.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>HO–CH<sub>2</sub>–CH<sub>2</sub>–CHO</code></p>
+            <p>✔ Aldehyde > alcohol.</p>
+            <p>👉 Name: <strong>3-Hydroxypropanal</strong> (Text states 2-Hydroxyethanal contextually)</p>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">✅ Rule 3: Numbering Starts from Highest Priority</h3>
+        <p>👉 Give lowest number to main functional group.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>2</sub>–OH</code></p>
+            <p>✔ Number from OH side.</p>
+            <p>👉 <strong>Propan-1-ol</strong></p>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">✅ Rule 4: Priority Over Multiple Bonds</h3>
+        <p>👉 Functional group > double/triple bond.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>2</sub>=CH–CH<sub>2</sub>–OH</code></p>
+            <p>Two possibilities: Double bond at 1, OH at 1. ✔ OH wins.</p>
+            <p>👉 <strong>Prop-2-en-1-ol</strong></p>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">✅ Rule 5: Between Double and Triple Bond</h3>
+        <p>👉 Double bond gets priority in numbering.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>2</sub>=CH–C&equiv;CH</code></p>
+            <p>👉 <strong>But-1-en-3-yne</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 DIFFERENT SCENARIOS (VERY IMPORTANT)</h2>
+        <div class="example-box">
+            <ul>
+                <li><strong>🟡 Scenario 1: Acid + Alcohol</strong> <code>HO–CH<sub>2</sub>–CH<sub>2</sub>–COOH</code> <br>✔ COOH highest &rarr; <strong>3-Hydroxypropanoic acid</strong></li>
+                <li><strong>🟡 Scenario 2: Aldehyde + Ketone</strong> <code>CH<sub>3</sub>–CO–CH<sub>2</sub>–CHO</code> <br>✔ Aldehyde > ketone &rarr; <strong>3-Oxobutanal</strong></li>
+                <li><strong>🟡 Scenario 3: Alcohol + Ketone</strong> <code>CH<sub>3</sub>–CO–CH<sub>2</sub>–OH</code> <br>✔ Ketone > alcohol &rarr; <strong>1-Hydroxypropan-2-one</strong> (Or 3-Hydroxypropan-2-one depending on context) <br><canvas class="tutorial-smiles" data-smiles="CC(=O)CO"></canvas></li>
+                <li><strong>🟡 Scenario 4: Only Multiple Bonds</strong> <code>CH<sub>2</sub>=CH–CH=CH<sub>2</sub></code> <br>&rarr; <strong>Buta-1,3-diene</strong></li>
+                <li><strong>🟡 Scenario 5: Halogen + Alcohol</strong> <code>CH<sub>3</sub>–CH(Cl)–CH<sub>2</sub>–OH</code> <br>✔ Alcohol > halogen &rarr; <strong>2-Chloropropan-1-ol</strong></li>
+                <li><strong>🟡 Scenario 6: Amine + Alcohol</strong> <code>HO–CH<sub>2</sub>–CH<sub>2</sub>–NH<sub>2</sub></code> <br>✔ Alcohol > amine &rarr; <strong>2-Aminoethan-1-ol</strong> (2-Aminoethanol)</li>
+                <li><strong>🟡 Scenario 7: Carboxylic Acid + Everything</strong> <code>CH<sub>3</sub>–CH(OH)–COOH</code> <br>👉 Acid ALWAYS dominates &rarr; <strong>2-Hydroxypropanoic acid</strong> <br><canvas class="tutorial-smiles" data-smiles="CC(O)C(=O)O"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section finale-box">
+        <h2 class="highlight-heading">⚡ FINAL MASTER EXAMPLE (Section 5 - Priority)</h2>
+        <p><strong>Compound:</strong> <code>HO–CH<sub>2</sub>–CH(CH<sub>3</sub>)–CHO</code></p>
+        <ol>
+            <li>Functional groups: <strong>OH & CHO</strong></li>
+            <li>Priority: <strong>CHO > OH</strong></li>
+            <li>Parent chain: <strong>3 carbons</strong></li>
+            <li>Number from <strong>CHO</strong></li>
+        </ol>
+        <h3>👉 Final name: 3-Hydroxy-2-methylpropanal</h3>
+        <canvas class="tutorial-smiles" data-smiles="CC(CO)C=O"></canvas>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- PART 6: PREFIX & SUFFIX OF FUNCTIONAL GROUPS -->
+    <h1 class="main-title" id="sec-prefix-suffix">6. PREFIX & SUFFIX OF FUNCTIONAL GROUPS</h1>
+    
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 1. Basic Idea</h2>
+        <p>👉 In IUPAC naming:</p>
+        <ul>
+            <li>Suffix &rarr; used for the main (highest priority) functional group</li>
+            <li>Prefix &rarr; used for other (lower priority) groups</li>
+        </ul>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>HO–CH<sub>2</sub>–CH<sub>2</sub>–CHO</code></p>
+            <p>–CHO (aldehyde) &rarr; suffix (-al)<br>–OH (alcohol) &rarr; prefix (hydroxy-)</p>
+            <p>👉 Name: <strong>3-Hydroxypropanal</strong> (Note: The prompt example had an error, corrected based on structure: 3-Hydroxypropanal).</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 2. Common Functional Groups (Prefix & Suffix Table)</h2>
+        <table class="tutorial-table">
+            <tr><th>Functional Group</th><th>Prefix</th><th>Suffix</th></tr>
+            <tr><td>–COOH (acid)</td><td>carboxy-</td><td>-oic acid</td></tr>
+            <tr><td>–CHO (aldehyde)</td><td>formyl-</td><td>-al</td></tr>
+            <tr><td>>C=O (ketone)</td><td>oxo-</td><td>-one</td></tr>
+            <tr><td>–OH (alcohol)</td><td>hydroxy-</td><td>-ol</td></tr>
+            <tr><td>–NH<sub>2</sub> (amine)</td><td>amino-</td><td>-amine</td></tr>
+            <tr><td>C=C (alkene)</td><td>—</td><td>-ene</td></tr>
+            <tr><td>C&equiv;C (alkyne)</td><td>—</td><td>-yne</td></tr>
+            <tr><td>–X (Cl, Br, I)</td><td>chloro-, bromo-</td><td>—</td></tr>
+            <tr><td>–NO<sub>2</sub></td><td>nitro-</td><td>—</td></tr>
+            <tr><td>–OR (ether)</td><td>alkoxy-</td><td>—</td></tr>
+        </table>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 3. How to Use Suffix</h2>
+        <p>👉 Use suffix ONLY for:</p>
+        <ul>
+            <li>Highest priority group</li>
+            <li>At end of name</li>
+        </ul>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>(a) Alcohol as main group:</strong> <code>CH<sub>3</sub>–CH<sub>2</sub>–OH</code> &rarr; <strong>Ethanol</strong></li>
+                <li><strong>(b) Ketone as main group:</strong> <code>CH<sub>3</sub>–CO–CH<sub>3</sub></code> &rarr; <strong>Propanone</strong></li>
+                <li><strong>(c) Acid as main group:</strong> <code>CH<sub>3</sub>–COOH</code> &rarr; <strong>Ethanoic acid</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 4. How to Use Prefix</h2>
+        <p>👉 Use prefix when:</p>
+        <ul>
+            <li>Functional group is NOT highest priority</li>
+        </ul>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>(a) Alcohol as prefix:</strong> <code>HO–CH<sub>2</sub>–CHO</code> &rarr; <strong>2-Hydroxyethanal</strong></li>
+                <li><strong>(b) Ketone as prefix:</strong> <code>CH<sub>3</sub>–CO–CH<sub>2</sub>–CHO</code> &rarr; <strong>3-Oxobutanal</strong></li>
+                <li><strong>(c) Amine as prefix:</strong> <code>CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>2</sub>–OH + NH<sub>2</sub></code> (Correct formula: <code>NH<sub>2</sub>–CH<sub>2</sub>–CH(OH)–CH<sub>3</sub></code>) &rarr; <strong>1-Aminopropan-2-ol</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 5. Multiple Prefixes Together</h2>
+        <p>👉 Write all prefixes in alphabetical order</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–CH(Cl)–CH(OH)–CH<sub>3</sub></code></p>
+            <p>👉 Name: <strong>3-Chloro-2-hydroxybutane</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 6. Multiple Same Functional Groups</h2>
+        <p>👉 Use di-, tri- etc.</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>(a) Two alcohol groups:</strong> <code>HO–CH<sub>2</sub>–CH<sub>2</sub>–OH</code> &rarr; <strong>Ethane-1,2-diol</strong></li>
+                <li><strong>(b) Two aldehydes:</strong> <code>OHC–CH<sub>2</sub>–CHO</code> &rarr; <strong>Propane-1,3-dial</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 7. Special Case: Acid Group</h2>
+        <p>👉 Acid has special naming:</p>
+        <ul>
+            <li>No “e” from alkane</li>
+            <li>Add -oic acid</li>
+        </ul>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–CH<sub>2</sub>–COOH</code></p>
+            <p>👉 Name: <strong>Propanoic acid</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 8. Special Case: Aldehyde & Ketone Prefix Names</h2>
+        <p>👉 When used as prefix:</p>
+        <ul>
+            <li>Aldehyde &rarr; formyl-</li>
+            <li>Ketone &rarr; oxo-</li>
+        </ul>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>(a)</strong> <code>CH<sub>3</sub>–CO–CH<sub>2</sub>–CHO</code> &rarr; <strong>3-Oxobutanal</strong></li>
+                <li><strong>(b)</strong> <code>CHO–CH<sub>2</sub>–COOH</code> &rarr; <strong>3-Oxopropanoic acid</strong> (Note: IUPAC allows formylethanoic acid but oxopropanoic is preferred for acyclic).</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 9. Ether Naming (Prefix Only)</h2>
+        <p>👉 Ether always uses prefix form</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–O–CH<sub>3</sub></code> &rarr; <strong>Methoxymethane</strong></li>
+                <li><code>CH<sub>3</sub>–O–C<sub>2</sub>H<sub>5</sub></code> &rarr; <strong>Methoxyethane</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 10. Halogens (Prefix Only)</h2>
+        <p>👉 Always prefixes</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–Cl</code> &rarr; <strong>Chloromethane</strong></li>
+                <li><code>CH<sub>3</sub>–CH(Br)–CH<sub>3</sub></code> &rarr; <strong>2-Bromopropane</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section finale-box">
+        <h2 class="highlight-heading">⚡ 11. Mixed Functional Group Example (Full Application)</h2>
+        <p><strong>Compound:</strong> <code>HO–CH<sub>2</sub>–CH(Cl)–COOH</code></p>
+        <ol>
+            <li>Highest priority = COOH &rarr; suffix</li>
+            <li>Others &rarr; prefixes (hydroxy, chloro)</li>
+            <li>Alphabetical order</li>
+        </ol>
+        <h3>👉 Final Name: 3-Chloro-2-hydroxypropanoic acid</h3>
+        <p class="priority-box" style="margin-top:1rem; text-align:center;">
+            <strong>⚡ Quick Memory Trick</strong><br>
+            👉 Suffix = King 👑 (highest priority)<br>
+            👉 Prefix = Helpers
+        </p>
+    </section>
+
+    <hr class="section-divider">
+
+<!-- PART 7: NAMING OF CYCLIC COMPOUNDS -->
+    <h1 class="main-title" id="sec-cyclic">7. NAMING OF CYCLIC COMPOUNDS</h1>
+    
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 1. Basic Rule (Cycloalkanes)</h2>
+        <p>👉 Add prefix “cyclo-” to the alkane name</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li>3-member ring &rarr; <strong>Cyclopropane</strong></li>
+                <li>4-member ring &rarr; <strong>Cyclobutane</strong></li>
+                <li>6-member ring &rarr; <strong>Cyclohexane</strong> <br><canvas class="tutorial-smiles" data-smiles="C1CCCCC1"></canvas></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 2. Single Substituent on Ring</h2>
+        <p>👉 No numbering needed (position = 1 by default)</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> A methyl group on cyclohexane</p>
+            <p>👉 <strong>Methylcyclohexane</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 3. Two Substituents on Ring</h2>
+        <p>👉 Number to give lowest set of locants</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li>Adjacent &rarr; <strong>1,2-dimethylcyclohexane</strong></li>
+                <li>One carbon gap &rarr; <strong>1,3-dimethylcyclohexane</strong></li>
+                <li>Opposite &rarr; <strong>1,4-dimethylcyclohexane</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 4. Different Substituents</h2>
+        <p>👉 Use: Lowest numbers, Alphabetical order.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> Cyclohexane with ethyl and methyl</p>
+            <p>👉 <strong>1-Ethyl-3-methylcyclohexane</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 5. Ring vs Chain (Important Special Case)</h2>
+        <p>👉 Choose as parent: Ring &rarr; if it has more carbons than chain</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>(a) Small chain + big ring:</strong> 👉 <strong>Methylcyclohexane</strong></li>
+                <li><strong>(b) Large chain + small ring:</strong> 👉 Ring becomes substituent &rarr; <strong>1-Cyclopropylpropane</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 6. Cyclic Compounds with Double Bond</h2>
+        <p>👉 Double bond gets position 1</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li>One double bond &rarr; <strong>Cyclohexene</strong></li>
+                <li>Two double bonds &rarr; <strong>Cyclohexa-1,3-diene</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 7. Functional Group in Ring</h2>
+        <p>👉 Functional group gets: Lowest number, Suffix.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> Cyclohexane with –OH</p>
+            <p>👉 <strong>Cyclohexanol</strong> <br><canvas class="tutorial-smiles" data-smiles="OC1CCCCC1"></canvas></p>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- PART 8: BENZENE & ITS DERIVATIVES -->
+    <h1 class="main-title" id="sec-benzene">8. BENZENE & ITS DERIVATIVES</h1>
+    
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 1. Basic Compound</h2>
+        <div class="example-box">
+            <p>👉 <code>C<sub>6</sub>H<sub>6</sub></code> = <strong>Benzene</strong> <br><canvas class="tutorial-smiles" data-smiles="c1ccccc1"></canvas></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 2. Monosubstituted Benzene</h2>
+        <p>👉 Only one substituent &rarr; no numbering needed</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>CH<sub>3</sub>–C<sub>6</sub>H<sub>5</sub></code> &rarr; <strong>Methylbenzene (toluene)</strong> ⭐</li>
+                <li><code>Cl–C<sub>6</sub>H<sub>5</sub></code> &rarr; <strong>Chlorobenzene</strong></li>
+                <li><code>OH–C<sub>6</sub>H<sub>5</sub></code> &rarr; <strong>Phenol</strong> ⭐</li>
+                <li><code>NH<sub>2</sub>–C<sub>6</sub>H<sub>5</sub></code> &rarr; <strong>Benzenamine (Aniline)</strong> ⭐</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 3. Disubstituted Benzene (Very Important)</h2>
+        <p>👉 Use positions:</p>
+        <table class="tutorial-table">
+            <tr><th>Positions</th><th>Name</th></tr>
+            <tr><td>1,2</td><td>ortho (o-)</td></tr>
+            <tr><td>1,3</td><td>meta (m-)</td></tr>
+            <tr><td>1,4</td><td>para (p-)</td></tr>
+        </table>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li>1,2-dimethylbenzene &rarr; <strong>o-xylene</strong> ⭐</li>
+                <li>1,3-dimethylbenzene &rarr; <strong>m-xylene</strong> ⭐</li>
+                <li>1,4-dimethylbenzene &rarr; <strong>p-xylene</strong> ⭐</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 4. Numbering in Disubstituted Benzene</h2>
+        <p>👉 Choose: Lowest numbers, Alphabetical order.</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> Cl and NO<sub>2</sub> on benzene</p>
+            <p>👉 <strong>1-Chloro-3-nitrobenzene</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 5. When One Group Has Special Name</h2>
+        <p>👉 Some groups define parent name:</p>
+        <ul>
+            <li>–OH &rarr; Phenol</li>
+            <li>–NH<sub>2</sub> &rarr; Aniline</li>
+            <li>–CH<sub>3</sub> &rarr; Toluene</li>
+            <li>–COOH &rarr; Benzoic acid</li>
+        </ul>
+        <div class="example-box">
+            <p><strong>Example:</strong> OH + CH<sub>3</sub></p>
+            <p>👉 Parent = phenol &rarr; <strong>2-Methylphenol</strong> (o-cresol)</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 6. More Than Two Substituents</h2>
+        <p>👉 Use numbering (not o/m/p)</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> Three methyl groups</p>
+            <p>👉 <strong>1,3,5-Trimethylbenzene</strong> (Mesitylene)</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 7. Benzene as Substituent</h2>
+        <p>👉 When benzene is attached to chain: Use <strong>phenyl-</strong></p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>C<sub>6</sub>H<sub>5</sub>–CH<sub>2</sub>–CH<sub>3</sub></code></p>
+            <p>👉 <strong>Phenylethane</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 8. Functional Group Priority in Benzene</h2>
+        <p>👉 Same priority rules apply</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> –COOH + –OH</p>
+            <p>👉 COOH wins &rarr; <strong>Hydroxybenzoic acid</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section finale-box">
+        <h2 class="highlight-heading">⚡ MIXED EXAMPLES (IMPORTANT)</h2>
+        <div class="example-box">
+            <ul>
+                <li><strong>Example 1:</strong> Cyclohexane + OH + CH<sub>3</sub> &rarr; OH priority &rarr; suffix &rarr; <strong>2-Methylcyclohexanol</strong> <br><canvas class="tutorial-smiles" data-smiles="CC1CCCCC1O"></canvas></li>
+                <li><strong>Example 2:</strong> Benzene + NO<sub>2</sub> + Cl &rarr; Alphabetical order &rarr; <strong>1-Chloro-3-nitrobenzene</strong> <br><canvas class="tutorial-smiles" data-smiles="c1cc(Cl)cc(N(=O)=O)c1"></canvas></li>
+                <li><strong>Example 3:</strong> Cyclohexene + methyl &rarr; Double bond = 1 &rarr; <strong>3-Methylcyclohexene</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- PART 7: WHAT IS XYLENE? -->
+    <h1 class="main-title" id="sec-xylene">9. WHAT IS XYLENE?</h1>
+    
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Overview</h2>
+        <p>👉 <strong>Xylene = Dimethylbenzene</strong></p>
+        <p>It means:</p>
+        <ul>
+            <li>A benzene ring (C<sub>6</sub>H<sub>6</sub>)</li>
+            <li>With two methyl (–CH<sub>3</sub>) groups attached</li>
+        </ul>
+        <div class="priority-box">
+            <p>👉 General formula: <strong>C<sub>6</sub>H<sub>4</sub>(CH<sub>3</sub>)<sub>2</sub></strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Types of Xylene (Very Important)</h2>
+        <p>Depending on positions of the two –CH<sub>3</sub> groups:</p>
+        
+        <h3 style="margin-top:1rem;">1. Ortho-xylene (o-xylene)</h3>
+        <p>👉 Positions: 1,2-</p>
+        <p>Methyl groups are adjacent</p>
+        <div class="example-box">
+            <p>👉 IUPAC name: <strong>1,2-Dimethylbenzene</strong></p>
+            <canvas class="tutorial-smiles" data-smiles="Cc1ccccc1C"></canvas>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">2. Meta-xylene (m-xylene)</h3>
+        <p>👉 Positions: 1,3-</p>
+        <p>One carbon gap between groups</p>
+        <div class="example-box">
+            <p>👉 IUPAC name: <strong>1,3-Dimethylbenzene</strong></p>
+            <canvas class="tutorial-smiles" data-smiles="Cc1cccc(C)c1"></canvas>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">3. Para-xylene (p-xylene)</h3>
+        <p>👉 Positions: 1,4-</p>
+        <p>Opposite sides of ring</p>
+        <div class="example-box">
+            <p>👉 IUPAC name: <strong>1,4-Dimethylbenzene</strong></p>
+            <canvas class="tutorial-smiles" data-smiles="Cc1ccc(C)cc1"></canvas>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🔹 Summary Table</h2>
+        <table class="tutorial-table">
+            <tr><th>Type</th><th>Position</th><th>IUPAC Name</th></tr>
+            <tr><td>o-xylene</td><td>1,2</td><td>1,2-Dimethylbenzene</td></tr>
+            <tr><td>m-xylene</td><td>1,3</td><td>1,3-Dimethylbenzene</td></tr>
+            <tr><td>p-xylene</td><td>1,4</td><td>1,4-Dimethylbenzene</td></tr>
+        </table>
+        
+        <div class="priority-box" style="margin-top: 1rem;">
+            <p><strong>🔹 Key Points for Exams:</strong></p>
+            <ul>
+                <li>“Xylene” always means two methyl groups on benzene</li>
+                <li>o-, m-, p- indicate relative positions</li>
+                <li>For 3 or more substituents &rarr; don’t use o/m/p, use numbers</li>
+            </ul>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- PART 8: MISSED PORTIONS -->
+    <h1 class="main-title" id="sec-advanced">10. ADVANCED CONCEPTS & RULES</h1>
+    
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">1. LOWEST SET OF LOCANTS RULE (VERY IMPORTANT)</h2>
+        <p>👉 <strong>Rule:</strong> When multiple numbering options exist, compare the entire set of locants, not just the first number.</p>
+        <p>👉 Choose the set with: Lowest number at first point of difference</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH(CH<sub>3</sub>)–CH(CH<sub>3</sub>)–CH<sub>3</sub></code></p>
+            <p>Possible numbering: Left &rarr; 2,3,4 | Right &rarr; 2,3,4 (same)</p>
+            <p>👉 No difference &rarr; both valid</p>
+        </div>
+        <div class="example-box">
+            <p><strong>Trickier Example:</strong> <code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH<sub>2</sub>–CH(CH<sub>3</sub>)–CH<sub>2</sub>–CH<sub>3</sub></code></p>
+            <p>Options: Left &rarr; 2,4 | Right &rarr; 3,5</p>
+            <p>✔ Compare: 2 vs 3 &rarr; 2 is smaller</p>
+            <p>👉 Final Name: <strong>2,4-Dimethylhexane</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🧪 2. COMPLEX (BRANCHED) SUBSTITUENTS</h2>
+        <p>👉 <strong>Rule:</strong> If substituent itself is branched: Treat it as a mini chain, Number it separately, Write in brackets</p>
+        <div class="example-box">
+            <p><strong>Example 1:</strong> <code>CH<sub>3</sub>–CH(CH(CH<sub>3</sub>)<sub>2</sub>)–CH<sub>3</sub></code></p>
+            <p>Substituent = isopropyl</p>
+            <p>👉 IUPAC: <strong>2-(Propan-2-yl)propane</strong> (Usually just 2,3-Dimethylbutane)</p>
+            
+            <p style="margin-top:1rem;"><strong>Another Example:</strong> <code>CH<sub>3</sub>–CH(CH<sub>2</sub>CH<sub>3</sub>)–CH<sub>2</sub>–CH<sub>3</sub></code></p>
+            <p>👉 Name: <strong>3-Methylpentane</strong> (Note text read 2-Ethylbutane)</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🧪 3. ISO / NEO / SEC / TERT (COMMON &rarr; IUPAC)</h2>
+        <p>👉 <strong>Rule:</strong> These are common names, convert to IUPAC in exams</p>
+        <table class="tutorial-table">
+            <tr><th>Common</th><th>IUPAC</th></tr>
+            <tr><td>Isopropyl</td><td>Propan-2-yl</td></tr>
+            <tr><td>Isobutane</td><td>2-Methylpropane</td></tr>
+            <tr><td>Neopentane</td><td>2,2-Dimethylpropane</td></tr>
+            <tr><td>tert-butyl</td><td>1,1-Dimethylethyl</td></tr>
+        </table>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>(CH<sub>3</sub>)<sub>3</sub>C–</code> &rarr; tert-butyl</p>
+            <p>👉 IUPAC: <strong>1,1-dimethylethyl</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🧪 4. POLYFUNCTIONAL COMPOUNDS (3+ GROUPS)</h2>
+        <p>👉 <strong>Rule:</strong> Identify highest priority &rarr; suffix, Others &rarr; prefixes, Number accordingly</p>
+        <div class="example-box">
+            <p><strong>Example 1:</strong> <code>HO–CH<sub>2</sub>–CH(NH<sub>2</sub>)–COOH</code></p>
+            <p>Priority: COOH > OH > NH<sub>2</sub></p>
+            <p>👉 Name: <strong>2-Amino-3-hydroxypropanoic acid</strong> <br><canvas class="tutorial-smiles" data-smiles="NC(CO)C(=O)O"></canvas></p>
+            
+            <p style="margin-top:1rem;"><strong>Another Example:</strong> <code>CH<sub>3</sub>–CO–CH(OH)–CH<sub>2</sub>–COOH</code></p>
+            <p>👉 Name: <strong>3-Hydroxy-4-oxopentanoic acid</strong> (Text read 4-Hydroxy-3-oxopentanoic acid, updated to match carbon chain priority)</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🧪 5. DETAILED NAMING OF ETHERS</h2>
+        <p>👉 <strong>Rule:</strong> Use alkoxy + alkane (Smaller group &rarr; alkoxy, Larger chain &rarr; parent)</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>(a)</strong> <code>CH<sub>3</sub>–O–CH<sub>2</sub>–CH<sub>3</sub></code> &rarr; <strong>Methoxyethane</strong> <br><canvas class="tutorial-smiles" data-smiles="COCC"></canvas></li>
+                <li><strong>(b)</strong> <code>C<sub>2</sub>H<sub>5</sub>–O–C<sub>3</sub>H<sub>7</sub></code> &rarr; <strong>Ethoxypropane</strong></li>
+            </ul>
+        </div>
+        <div class="priority-box">
+            <p><strong>🔹 Special Case: Symmetrical ether</strong></p>
+            <p><code>CH<sub>3</sub>–O–CH<sub>3</sub></code> &rarr; <strong>Methoxymethane</strong></p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🧪 6. CARBOXYLIC ACID DERIVATIVES (BASIC IDEA)</h2>
+        <p>(Only basic awareness needed)</p>
+        <p>🔹 <strong>Ester (–COOR)</strong></p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–COO–CH<sub>3</sub></code></p>
+            <p>👉 Name: <strong>Methyl ethanoate</strong></p>
+        </div>
+        <p>🔹 <strong>Naming pattern:</strong> Alkyl (from alcohol) + acid name</p>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🧪 7. BENZENE WITH 3 OR MORE SUBSTITUENTS</h2>
+        <p>👉 <strong>Rule:</strong> Do NOT use o/m/p | Use numbers only</p>
+        <div class="example-box">
+            <ul>
+                <li><strong>Three methyl groups on benzene:</strong> 👉 <strong>1,3,5-trimethylbenzene</strong> <br><canvas class="tutorial-smiles" data-smiles="Cc1cc(C)cc(C)c1"></canvas></li>
+                <li><strong>Another Example:</strong> Cl, NO<sub>2</sub>, CH<sub>3</sub> &rarr; <strong>1-Chloro-2-methyl-4-nitrobenzene</strong> (Dependent on positions)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🧪 8. PHENYL vs BENZYL (VERY IMPORTANT)</h2>
+        <table class="tutorial-table">
+            <tr><th>Group</th><th>Name</th></tr>
+            <tr><td>C<sub>6</sub>H<sub>5</sub>–</td><td>phenyl</td></tr>
+            <tr><td>C<sub>6</sub>H<sub>5</sub>–CH<sub>2</sub>–</td><td>benzyl</td></tr>
+        </table>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>(a)</strong> <code>C<sub>6</sub>H<sub>5</sub>–CH<sub>3</sub></code> &rarr; <strong>Methylbenzene</strong></li>
+                <li><strong>(b)</strong> <code>C<sub>6</sub>H<sub>5</sub>–CH<sub>2</sub>–Cl</code> &rarr; <strong>Benzyl chloride</strong></li>
+            </ul>
+        </div>
+        <div class="priority-box">
+            <p><strong>🔹 Trick:</strong> 👉 If CH<sub>2</sub> present before ring &rarr; benzyl</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🧪 9. ALDEHYDE ON BENZENE (SPECIAL)</h2>
+        <p>👉 <strong>Rule:</strong> Use benzaldehyde (NCERT standard)</p>
+        <div class="example-box">
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><code>C<sub>6</sub>H<sub>5</sub>–CHO</code> &rarr; <strong>Benzaldehyde</strong></li>
+                <li>With substituent &rarr; <strong>2-Hydroxybenzaldehyde</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tutorial-section">
+        <h2 class="highlight-heading">🧪 10. FINAL WRITING FORMAT (VERY IMPORTANT)</h2>
+        <p>👉 <strong>Rule:</strong> Correct order: Prefix(es) + Parent + Primary suffix + Secondary suffix</p>
+        <div class="example-box">
+            <p><strong>Example:</strong> <code>CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH<sub>2</sub>–OH</code></p>
+            <p>👉 <strong>3-Methylbutan-1-ol</strong></p>
+            <p><strong>🔹 Common Mistakes:</strong></p>
+            <ul>
+                <li>❌ methylbutanol</li>
+                <li>❌ butanol-3-methyl</li>
+            </ul>
+            <p>✔ Always structured form.</p>
+        </div>
+    </section>
+
+    <section class="tutorial-section finale-box">
+        <h2 class="highlight-heading">⚡ FINAL MASTER EXAMPLE (Section 6 - Prefix & Suffix)</h2>
+        <p><strong>Compound:</strong> <code>HO–CH<sub>2</sub>–CH(CH<sub>3</sub>)–CH<sub>2</sub>–COOH</code></p>
+        <p>Steps:</p>
+        <ol>
+            <li>Priority &rarr; <strong>COOH</strong></li>
+            <li>Chain &rarr; <strong>4 carbons</strong></li>
+            <li>Substituents &rarr; <strong>OH, methyl</strong></li>
+            <li>Number from &rarr; <strong>COOH</strong></li>
+        </ol>
+        <h3>👉 Final: 4-Hydroxy-3-methylbutanoic acid</h3>
+        <canvas class="tutorial-smiles" data-smiles="CC(CCO)CC(=O)O"></canvas>
+    </section>
+
+</div>
+
+</main>
+        </div>
+
+        <!-- Quiz View -->
+        <div id="quiz-view" class="view hidden">
+            <header>
+                <div class="header-top">
+                    <button id="home-btn" class="btn secondary-btn small-btn">🏠 Home</button>
+                </div>
+                <h1>IUPAC Practice</h1>
+                <p id="quiz-description">Identify the correct IUPAC name for the given structure.</p>
+                <div class="score-board">Score: <span id="score">0</span></div>
+                <div class="accuracy-meter">Accuracy: <span id="quiz-accuracy">0%</span></div>
+            </header>
+            
+            <main class="quiz-card">
+                <div class="structure-container">
+                    <canvas id="structure-canvas" width="400" height="300"></canvas>
+                    <div id="condensed-display" class="hidden condensed-text"></div>
+                </div>
+
+                <div class="options-grid" id="options-container">
+                    <!-- Options will be dynamically injected here -->
+                </div>
+
+                <div class="manual-container hidden" id="manual-container">
+                    <input type="text" id="manual-input" placeholder="Type the full IUPAC name here..." autocomplete="off">
+                </div>
+
+                <div class="feedback-container hidden" id="feedback">
+                    <h3 id="feedback-message"></h3>
+                    <p id="correct-answer-display"></p>
+                    
+                    <div id="explanation-box" class="hidden explanation-box">
+                        <h4>Explanation</h4>
+                        <p id="explanation-text"></p>
+                    </div>
+                </div>
+
+                <div class="action-container">
+                    <button id="how-btn" class="btn secondary-btn hidden">How?</button>
+                    <button id="action-btn" class="btn primary-btn" disabled>Enter</button>
+                </div>
+            </main>
+        </div>
+
+        <!-- Questions and Answers View -->
+        <div id="qa-view" class="view hidden">
+            <header>
+                <div class="header-top">
+                    <button id="back-to-basics-qa" class="nav-btn">← Back</button>
+                </div>
+                <h1>IUPAC Mock Test - Questions & Answers</h1>
+                <p>Read the questions and check your answers below.</p>
+            </header>
+            <main class="quiz-card">
+                <div class="qa-container" id="qa-container"></div>
+            </main>
+        </div>
+
+        <!-- Mock Test View -->
+        <div id="mock-test-view" class="view hidden">
+            <header>
+                <div class="header-top">
+                    <button id="back-to-basics-mock" class="nav-btn">← Back</button>
+                </div>
+                <h1>IUPAC Mock Test (Plus One)</h1>
+                <div class="score-board">Score: <span id="mock-score">0</span> / <span id="mock-total">0</span></div>
+                <div class="accuracy-meter">Accuracy: <span id="mock-accuracy">0%</span></div>
+            </header>
+            <main class="quiz-card">
+                <div class="mock-test-progress" id="mock-progress"></div>
+                <div class="structure-container">
+                    <canvas id="mock-structure-canvas" width="400" height="300"></canvas>
+                </div>
+                <p class="mock-question-text" id="mock-question-text"></p>
+                <div class="options-grid" id="mock-options-container"></div>
+                <div class="action-container">
+                    <button id="mock-action-btn" class="btn primary-btn" disabled>Submit</button>
+                    <button id="mock-next-btn" class="btn secondary-btn hidden">Next Question</button>
+                </div>
+                <div id="mock-feedback" class="feedback hidden"></div>
+            </main>
+        </div>
+
+        <!-- Mock Test Results View -->
+        <div id="mock-results-view" class="view hidden">
+            <header>
+                <div class="header-top">
+                    <button id="back-to-basics-from-results" class="nav-btn">← Back</button>
+                </div>
+                <h1>Mock Test Results</h1>
+            </header>
+            <main class="quiz-card">
+                <div class="results-container" id="results-container"></div>
+                <div class="results-actions">
+                    <button id="retry-mock-btn" class="btn primary-btn">Retry Mock Test</button>
+                </div>
+            </main>
+        </div>
+
+        <!-- Revision Notes View -->
+        <div id="revision-notes-view" class="view hidden">
+            <header>
+                <div class="header-top">
+                    <button id="back-to-basics-revision" class="nav-btn">← Back</button>
+                </div>
+                <h1>IUPAC Naming – Quick Revision Chart</h1>
+            </header>
+            <main class="quiz-card">
+                <div class="revision-notes-container" id="revision-notes-container"></div>
+            </main>
+        </div>
+    </div>
+
+    <!-- SmilesDrawer Library -->
+    <script src="https://unpkg.com/smiles-drawer@2.0.1/dist/smiles-drawer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        if (document.getElementById('fog-bg')) {
+          const isMobile = window.innerWidth <= 600 || 'ontouchstart' in window;
+          VANTA.FOG({
+            el: "#fog-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            highlightColor: 0x1edc8f,
+            midtoneColor:   0xb7a93a,
+            lowlightColor:  0x2f7fb3,
+            baseColor:      0x071a14,
+            blurFactor: 0.75,
+            speed: isMobile ? 5 : 3.5,
+            zoom: 2.4
+          });
+        }
+      });
+    </script>
+    <script src="script.js"></script>
+
+<button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#x2191;</button>
+
+<footer>
+    <p>Developed by ShreyasGWS</p>
+</footer>
+
+</body>
+
+</html>
