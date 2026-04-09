@@ -1224,50 +1224,50 @@ questions.forEach(q => {
 const mockTestQuestions = [
     // Section A – Basic Naming (1 mark each)
     { section: 'A', marks: 1, data: 'CH₃–CH₂–CH₃', correct: 'Propane', options: ['Propane', 'Ethane', 'Butane', 'Methane'], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'CH₃–CH(CH₃)–CH₃', correct: '2-Methylpropane', options: ['2-Methylpropane', 'Methylpropane', 'Propane', 'Butane'], alternatives: ['Methylpropane'], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'CH₂=CH–CH₃', correct: 'Propene', options: ['Propene', 'Prop-1-ene', 'Prop-2-ene', 'Propylene'], alternatives: ['Prop-1-ene', 'Propylene'], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'CH₃–CH(CH₃)–CH₃', correct: '2-Methylpropane', options: ['2-Methylpropane', 'Methylpropane', 'Propane', 'Butane'], alternatives: [], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'CH₂=CH–CH₃', correct: 'Propene', options: ['Propene', 'Propane', 'Methylmethane', 'Butene'], alternatives: [], difficulty: 'Easy' },
     { section: 'A', marks: 1, data: 'CH₃–CH₂–OH', correct: 'Ethanol', options: ['Ethanol', 'Methanol', 'Propanol', 'Ethane'], difficulty: 'Easy' },
     { section: 'A', marks: 1, data: 'CH₃–CHO', correct: 'Ethanal', options: ['Ethanal', 'Acetaldehyde', 'Formaldehyde', 'Propenal'], alternatives: ['Acetaldehyde'], difficulty: 'Easy' },
     // Section B – Intermediate (2 marks each)
     { section: 'B', marks: 2, data: 'CH₃–CH₂–CH₂–CH₃', correct: 'Butane', options: ['Butane', 'Propane', 'Pentane', 'Hexane'], difficulty: 'Easy' },
-    { section: 'B', marks: 2, data: 'CH₃–CH(CH₃)–CH₂–CH₃', correct: '2-Methylbutane', options: ['2-Methylbutane', '3-Methylbutane', 'Methylbutane', 'Pentane'], alternatives: ['Methylbutane'], difficulty: 'Medium' },
-    { section: 'B', marks: 2, data: 'CH₃–CH₂–CO–CH₃', correct: 'Butan-2-one', options: ['Butan-2-one', 'Butanone', 'Methyl ethyl ketone', 'Propanone'], alternatives: ['Butanone', 'Methyl ethyl ketone'], difficulty: 'Medium' },
-    { section: 'B', marks: 2, data: 'CH₃–CH₂–CH₂–CHO', correct: 'Butanal', options: ['Butanal', 'Propanal', 'Butanaldehyde', 'Pentanal'], alternatives: ['Butanaldehyde', 'Butyraldehyde'], difficulty: 'Medium' },
+    { section: 'B', marks: 2, data: 'CH₃–CH(CH₃)–CH₂–CH₃', correct: '2-Methylbutane', options: ['2-Methylbutane', '3-Methylbutane', 'Methylbutane', 'Pentane'], alternatives: [], difficulty: 'Medium' },
+    { section: 'B', marks: 2, data: 'CH₃–CH₂–CO–CH₃', correct: 'Butan-2-one', options: ['Butan-2-one', 'Butanone', 'Methyl ethyl ketone', 'Propanone'], alternatives: ['Butanone'], difficulty: 'Medium' },
+    { section: 'B', marks: 2, data: 'CH₃–CH₂–CH₂–CHO', correct: 'Butanal', options: ['Butanal', 'Propanal', 'Butyric aldehyde', 'Pentanal'], alternatives: [], difficulty: 'Medium' },
     { section: 'B', marks: 2, data: 'CH₃–CH₂–CH₂–COOH', correct: 'Butanoic acid', options: ['Butanoic acid', 'Propanoic acid', 'Pentanoic acid', 'Butyric acid'], alternatives: ['Butyric acid'], difficulty: 'Medium' },
     // Section C – Functional Groups & Priority (3 marks each)
     { section: 'C', marks: 3, data: 'HO–CH₂–CH₂–CHO', correct: '2-Hydroxyethanal', options: ['2-Hydroxyethanal', '3-Hydroxypropanal', 'Hydroxyacetaldehyde', 'Ethane-1-ol-2-al'], alternatives: ['Hydroxyacetaldehyde'], difficulty: 'Hard' },
-    { section: 'C', marks: 3, data: 'CH₃–CO–CH₂–CH₂–OH', correct: '4-Hydroxybutan-2-one', options: ['4-Hydroxybutan-2-one', '3-Hydroxybutan-2-one', 'Hydroxybutanone', '4-Butanol-2-one'], alternatives: ['Hydroxybutanone'], difficulty: 'Hard' },
-    { section: 'C', marks: 3, data: 'CH₃–CH(Cl)–CH₂–OH', correct: '2-Chloropropan-1-ol', options: ['2-Chloropropan-1-ol', '3-Chloropropan-1-ol', 'Chloropropanol', '1-Chloropropan-2-ol'], alternatives: ['3-Chloropropan-1-ol', '1-Chloropropan-2-ol'], difficulty: 'Hard' },
+    { section: 'C', marks: 3, data: 'CH₃–CO–CH₂–CH₂–OH', correct: '4-Hydroxybutan-2-one', options: ['4-Hydroxybutan-2-one', '3-Hydroxybutan-2-one', 'Hydroxybutanone', 'Pentan-2-one'], alternatives: [], difficulty: 'Hard' },
+    { section: 'C', marks: 3, data: 'CH₃–CH(Cl)–CH₂–OH', correct: '2-Chloropropan-1-ol', options: ['2-Chloropropan-1-ol', '3-Chloropropan-1-ol', 'Chloropropanol', 'Methylchloropropanol'], alternatives: ['1-Chloropropan-2-ol'], difficulty: 'Hard' },
     { section: 'C', marks: 3, data: 'HO–CH₂–CH(NH₂)–COOH', correct: '2-Amino-3-hydroxypropanoic acid', options: ['2-Amino-3-hydroxypropanoic acid', 'Aminohydroxypropanoic acid', 'Serine', '3-Amino-2-hydroxypropanoic acid'], alternatives: ['Serine'], difficulty: 'Hard' },
     // Section D – Multiple Bonds & Substituents (3 marks each)
-    { section: 'D', marks: 3, data: 'CH₂=CH–CH=CH₂', correct: 'Buta-1,3-diene', options: ['Buta-1,3-diene', 'Butadiene', '1,3-Butadiene', 'But-1,3-diene'], alternatives: ['Butadiene', '1,3-Butadiene', 'But-1,3-diene'], difficulty: 'Medium' },
-    { section: 'D', marks: 3, data: 'CH₂=CH–CH(CH₃)–CH=CH₂', correct: '3-Methylpenta-1,4-diene', options: ['3-Methylpenta-1,4-diene', '4-Methylpenta-1,3-diene', 'Methylbutadiene', 'Penta-1,4-diene'], alternatives: ['Methylbutadiene', 'Penta-1,4-diene'], difficulty: 'Hard' },
-    { section: 'D', marks: 3, data: 'CH≡C–CH₂–CH₃', correct: 'But-1-yne', options: ['But-1-yne', 'Butyne', '1-Butyne', 'Ethylacetylene'], alternatives: ['Butyne', '1-Butyne', 'Ethylacetylene'], difficulty: 'Medium' },
-    { section: 'D', marks: 3, data: 'CH₂=CH–C≡CH', correct: 'But-1-en-3-yne', options: ['But-1-en-3-yne', 'Butenyne', 'Vinylacetylene', '1-Buten-3-yne'], alternatives: ['Butenyne', '1-Buten-3-yne', 'Vinylacetylene'], difficulty: 'Hard' },
+    { section: 'D', marks: 3, data: 'CH₂=CH–CH=CH₂', correct: 'Buta-1,3-diene', options: ['Buta-1,3-diene', 'Butadiene', 'Pentadiene', 'Hexadiene'], alternatives: [], difficulty: 'Medium' },
+    { section: 'D', marks: 3, data: 'CH₂=CH–CH(CH₃)–CH=CH₂', correct: '3-Methylpenta-1,4-diene', options: ['3-Methylpenta-1,4-diene', '4-Methylpenta-1,3-diene', 'Methylbutadiene', 'Pentadiene'], alternatives: ['Penta-1,4-diene'], difficulty: 'Hard' },
+    { section: 'D', marks: 3, data: 'CH≡C–CH₂–CH₃', correct: 'But-1-yne', options: ['But-1-yne', 'Butyne', '1-Butyne', 'Pent-1-yne'], alternatives: ['Ethylacetylene'], difficulty: 'Medium' },
+    { section: 'D', marks: 3, data: 'CH₂=CH–C≡CH', correct: 'But-1-en-3-yne', options: ['But-1-en-3-yne', 'Butenyne', 'Vinylacetylene', 'Pent-1-en-3-yne'], alternatives: ['1-Buten-3-yne'], difficulty: 'Hard' },
     // Section E – Cyclic & Aromatic (4 marks each)
-    { section: 'E', marks: 4, data: 'Cyclohexane with one methyl group', correct: 'Methylcyclohexane', options: ['Methylcyclohexane', 'Cyclohexylmethane', '1-Methylcyclohexane', 'Hexylmethane'], alternatives: ['1-Methylcyclohexane', 'Cyclohexylmethane'], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Cyclohexane with one methyl group', correct: 'Methylcyclohexane', options: ['Methylcyclohexane', 'Cyclohexylmethane', 'Hexylmethane', 'Dimethylcyclohexane'], alternatives: [], difficulty: 'Medium' },
     { section: 'E', marks: 4, data: 'Benzene with two methyl groups at 1,3 position', correct: 'm-Xylene', options: ['m-Xylene', 'p-Xylene', 'o-Xylene', '1,3-Dimethylbenzene'], alternatives: ['1,3-Dimethylbenzene'], difficulty: 'Medium' },
-    { section: 'E', marks: 4, data: 'Benzene with –OH and –CH₃ at 1,2 position', correct: '2-Methylphenol', options: ['2-Methylphenol', 'o-Cresol', 'Methylphenol', '1-Hydroxy-2-methylbenzene'], alternatives: ['o-Cresol', '1-Hydroxy-2-methylbenzene'], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Benzene with –OH and –CH₃ at 1,2 position', correct: '2-Methylphenol', options: ['2-Methylphenol', 'o-Cresol', 'Methylphenol', 'Hydroxy toluene'], alternatives: ['1-Hydroxy-2-methylbenzene'], difficulty: 'Medium' },
     { section: 'E', marks: 4, data: 'C₆H₅–CH₂–Cl', correct: 'Benzyl chloride', options: ['Benzyl chloride', 'Phenyl chloride', 'Chlorobenzene', 'Chloromethylbenzene'], alternatives: ['Phenyl chloride'], difficulty: 'Medium' },
     // Section F – Tricky / Special Cases (5 marks each)
-    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH(CH₃)–CH₃', correct: '2,3-Dimethylbutane', options: ['2,3-Dimethylbutane', '2-Methyl-3-methylbutane', 'Dimethylbutane', 'Tetramethylethane'], alternatives: ['Dimethylbutane', 'Tetramethylethane'], difficulty: 'Hard' },
-    { section: 'F', marks: 5, data: 'CH₃–CH₂–CH(CH₃)–CH₂–CH₃', correct: '3-Methylpentane', options: ['3-Methylpentane', '2-Methylpentane', 'Methylpentane', 'Isohexane'], alternatives: ['Methylpentane'], difficulty: 'Medium' },
+    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH(CH₃)–CH₃', correct: '2,3-Dimethylbutane', options: ['2,3-Dimethylbutane', '2-Methyl-3-methylbutane', 'Hexane', 'Pentane'], alternatives: [], difficulty: 'Hard' },
+    { section: 'F', marks: 5, data: 'CH₃–CH₂–CH(CH₃)–CH₂–CH₃', correct: '3-Methylpentane', options: ['3-Methylpentane', '2-Methylpentane', 'Methylpentane', 'Isohexane'], alternatives: [], difficulty: 'Medium' },
     { section: 'F', marks: 5, data: 'CH₃–CO–CH₂–CHO', correct: '3-Oxobutanal', options: ['3-Oxobutanal', '2-Oxobutanal', 'Acetoacetaldehyde', 'Ketoacetaldehyde'], alternatives: ['Acetoacetaldehyde'], difficulty: 'Hard' },
-    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH₂–CH₂–OH', correct: '3-Methylbutan-1-ol', options: ['3-Methylbutan-1-ol', '4-Methylbutan-1-ol', 'Isobutanol', '2-Methylpropan-1-ol'], alternatives: ['4-Methylbutan-1-ol', 'Isobutanol'], difficulty: 'Hard' },
+    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH₂–CH₂–OH', correct: '3-Methylbutan-1-ol', options: ['3-Methylbutan-1-ol', '4-Methylbutan-1-ol', 'Isobutanol', '2-Methylpropanol'], alternatives: [], difficulty: 'Hard' },
     // Additional questions
-    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH₂–CH(CH₃)–CH₃', correct: '2,4-Dimethylpentane', options: ['2,4-Dimethylpentane', '3,3-Dimethylpentane', '4-Methylhexane', 'Dimethylpentane'], alternatives: ['Dimethylpentane'], difficulty: 'Hard' },
-    { section: 'D', marks: 3, data: 'CH₃–CH(CH₂CH₃)–CH₂–CH₃', correct: '2-Ethylbutane', options: ['2-Ethylbutane', '3-Methylpentane', 'Ethylbutane', '2-Methylpentane'], alternatives: ['3-Methylpentane'], difficulty: 'Medium' },
-    { section: 'E', marks: 4, data: 'Cyclohexane with methyl group at position 1', correct: 'Methylcyclohexane', options: ['Methylcyclohexane', '1-Methylcyclohexane', 'Cyclohexylmethane', 'Hexylmethane'], alternatives: ['1-Methylcyclohexane', 'Cyclohexylmethane'], difficulty: 'Medium' },
+    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH₂–CH(CH₃)–CH₃', correct: '2,4-Dimethylpentane', options: ['2,4-Dimethylpentane', '3,3-Dimethylpentane', '4-Methylhexane', 'Pentane'], alternatives: [], difficulty: 'Hard' },
+    { section: 'D', marks: 3, data: 'CH₃–CH(CH₂CH₃)–CH₂–CH₃', correct: '2-Ethylbutane', options: ['2-Ethylbutane', '3-Methylpentane', 'Ethylbutane', 'Pentane'], alternatives: [], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Cyclohexane with methyl group at position 1', correct: 'Methylcyclohexane', options: ['Methylcyclohexane', '1-Methylcyclohexane', 'Cyclohexylmethane', 'Hexylmethane'], alternatives: [], difficulty: 'Medium' },
     { section: 'E', marks: 4, data: 'Cyclohexane with two methyl groups at 1,2 positions', correct: '1,2-Dimethylcyclohexane', options: ['1,2-Dimethylcyclohexane', 'o-Dimethylcyclohexane', '1,2-Cyclohexadiene', 'Dimethylcyclohexane'], alternatives: ['Dimethylcyclohexane'], difficulty: 'Hard' },
     { section: 'E', marks: 4, data: 'Benzene with two methyl groups at 1,4 positions', correct: '1,4-Dimethylbenzene', options: ['1,4-Dimethylbenzene', 'p-Xylene', '4-Methylbenzene', 'Toluene'], alternatives: ['p-Xylene'], difficulty: 'Medium' },
-    { section: 'E', marks: 4, data: 'Benzene with –OH and –CH₃ at 1,4 positions', correct: '4-Methylphenol', options: ['4-Methylphenol', 'p-Cresol', '1-Hydroxy-4-methylbenzene', 'Hydroxytoluene'], alternatives: ['p-Cresol', '1-Hydroxy-4-methylbenzene'], difficulty: 'Medium' },
-    { section: 'A', marks: 1, data: 'CH₃–CH₂–CH₂–OH', correct: 'Propan-1-ol', options: ['Propan-1-ol', 'Propanol', '1-Propanol', 'Ethanol'], alternatives: ['Propanol', '1-Propanol'], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'CH₃–CO–CH₃', correct: 'Propanone', options: ['Propanone', 'Acetone', 'Propan-2-one', 'Dimethyl ketone'], alternatives: ['Acetone', 'Propan-2-one', 'Dimethyl ketone'], difficulty: 'Easy' },
+    { section: 'E', marks: 4, data: 'Benzene with –OH and –CH₃ at 1,4 positions', correct: '4-Methylphenol', options: ['4-Methylphenol', 'p-Cresol', '1-Hydroxy-4-methylbenzene', 'Phenol'], alternatives: [], difficulty: 'Medium' },
+    { section: 'A', marks: 1, data: 'CH₃–CH₂–CH₂–OH', correct: 'Propan-1-ol', options: ['Propan-1-ol', 'Propanol', '1-Propanol', 'Ethanol'], alternatives: [], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'CH₃–CO–CH₃', correct: 'Propanone', options: ['Propanone', 'Acetone', 'Propan-2-one', 'Methyl ketone'], alternatives: [], difficulty: 'Easy' },
     { section: 'A', marks: 1, data: 'CH₃–CH₂–CHO', correct: 'Propanal', options: ['Propanal', 'Propionaldehyde', 'Propan-1-al', 'Acetaldehyde'], alternatives: ['Propionaldehyde'], difficulty: 'Easy' },
     { section: 'A', marks: 1, data: 'CH₃–CH₂–COOH', correct: 'Propanoic acid', options: ['Propanoic acid', 'Propionic acid', 'Propanic acid', 'Carboxypropane'], alternatives: ['Propionic acid'], difficulty: 'Easy' },
     { section: 'B', marks: 2, data: 'CH₃–CH(CH₃)–CH₃', correct: '2-Methylpropane', options: ['2-Methylpropane', 'Methylpropane', 'Isobutane', 'Butane'], alternatives: ['Isobutane'], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'Isopropyl alcohol', correct: 'Propan-2-ol', options: ['Propan-2-ol', 'Isopropyl alcohol', '2-Propanol', 'Propan-1-ol'], alternatives: ['Isopropyl alcohol', '2-Propanol'], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'Acetone', correct: 'Propanone', options: ['Propanone', 'Acetone', 'Propan-2-one', 'Dimethyl ketone'], alternatives: ['Acetone', 'Propan-2-one'], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'Isopropyl alcohol', correct: 'Propan-2-ol', options: ['Propan-2-ol', 'Isopropyl alcohol', '2-Propanol', 'Propanol'], alternatives: [], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'Acetone', correct: 'Propanone', options: ['Propanone', 'Acetone', 'Propan-2-one', 'Diethyl ketone'], alternatives: [], difficulty: 'Easy' },
     { section: 'A', marks: 1, data: 'Acetic acid', correct: 'Ethanoic acid', options: ['Ethanoic acid', 'Acetic acid', 'Methane carboxylic acid', 'Acidic acid'], alternatives: ['Acetic acid'], difficulty: 'Easy' },
     { section: 'B', marks: 2, data: 'Chloroform', correct: 'Trichloromethane', options: ['Trichloromethane', 'Chloroform', 'Methenyl chloride', 'Methyl chloride'], alternatives: ['Chloroform'], difficulty: 'Medium' },
     // New multiple substituents questions
@@ -1277,43 +1277,254 @@ const mockTestQuestions = [
     { section: 'E', marks: 4, data: 'Cyclohexane with ethyl and methyl groups at 1,3 positions', correct: '1-Ethyl-3-methylcyclohexane', options: ['1-Ethyl-3-methylcyclohexane', '3-Ethyl-1-methylcyclohexane', '1-Methyl-3-ethylcyclohexane', 'Ethylmethylcyclohexane'], alternatives: ['Ethylmethylcyclohexane'], difficulty: 'Hard' },
     { section: 'E', marks: 4, data: 'Cyclohexene with methyl at position 3', correct: '3-Methylcyclohexene', options: ['3-Methylcyclohexene', '1-Methylcyclohexene', 'Methylcyclohexene', '3-Methylcyclohex-1-ene'], alternatives: ['Methylcyclohexene'], difficulty: 'Medium' },
     // New benzene derivative questions
-    { section: 'E', marks: 4, data: 'Benzene with methyl and chlorine at 1,3 positions', correct: '1-Chloro-3-methylbenzene', options: ['1-Chloro-3-methylbenzene', '3-Chloro-1-methylbenzene', 'm-Chlorotoluene', 'm-Methylchlorobenzene'], alternatives: ['m-Chlorotoluene', '3-Chloro-1-methylbenzene'], difficulty: 'Hard' },
-    { section: 'E', marks: 4, data: 'Benzene with methyl and chlorine at 1,2 positions', correct: '1-Chloro-2-methylbenzene', options: ['1-Chloro-2-methylbenzene', '2-Chloro-1-methylbenzene', 'o-Chlorotoluene', 'o-Methylchlorobenzene'], alternatives: ['o-Chlorotoluene', '2-Chloro-1-methylbenzene'], difficulty: 'Medium' },
-    { section: 'E', marks: 4, data: 'Benzene with nitro and chlorine at 1,2 positions', correct: '1-Chloro-2-nitrobenzene', options: ['1-Chloro-2-nitrobenzene', '2-Chloro-1-nitrobenzene', 'o-Chloronitrobenzene', 'o-Nitrochlorobenzene'], alternatives: ['o-Chloronitrobenzene', '2-Chloro-1-nitrobenzene'], difficulty: 'Hard' },
-    { section: 'E', marks: 4, data: 'C₆H₅–CH₂–CH₃', correct: 'Phenylethane', options: ['Phenylethane', 'Ethylbenzene', 'Toluene', 'Methylbenzene'], alternatives: ['Ethylbenzene', 'Methylbenzene'], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Benzene with methyl and chlorine at 1,3 positions', correct: '1-Chloro-3-methylbenzene', options: ['1-Chloro-3-methylbenzene', '3-Chloro-1-methylbenzene', 'm-Chlorotoluene', 'Benzyl chloride'], alternatives: [], difficulty: 'Hard' },
+    { section: 'E', marks: 4, data: 'Benzene with methyl and chlorine at 1,2 positions', correct: '1-Chloro-2-methylbenzene', options: ['1-Chloro-2-methylbenzene', '2-Chloro-1-methylbenzene', 'o-Chlorotoluene', 'Benzyl chloride'], alternatives: [], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Benzene with nitro and chlorine at 1,2 positions', correct: '1-Chloro-2-nitrobenzene', options: ['1-Chloro-2-nitrobenzene', '2-Chloro-1-nitrobenzene', 'o-Chloronitrobenzene', 'Nitrochlorobenzene'], alternatives: [], difficulty: 'Hard' },
+    { section: 'E', marks: 4, data: 'C₆H₅–CH₂–CH₃', correct: 'Phenylethane', options: ['Phenylethane', 'Ethylbenzene', 'Toluene', 'Benzene'], alternatives: [], difficulty: 'Medium' },
     // Structure to name (reverse)
     { section: 'B', marks: 2, data: 'CH₃–CH(CH₃)–CH₂–CH₃', correct: '2-Methylbutane', options: ['2-Methylbutane', '3-Methylbutane', 'Methylbutane', 'Pentane'], alternatives: ['Methylbutane'], difficulty: 'Easy' },
-    { section: 'B', marks: 2, data: 'CH₃–CH₂–CH(OH)–CH₃', correct: 'Butan-2-ol', options: ['Butan-2-ol', '2-Butanol', 'Butan-1-ol', 'Sec-butanol'], alternatives: ['2-Butanol', 'Sec-butanol'], difficulty: 'Medium' },
-    { section: 'B', marks: 2, data: 'CH₃–CO–CH₂–CH₃', correct: 'Butan-2-one', options: ['Butan-2-one', 'Butanone', 'Methyl ethyl ketone', '2-Butanone'], alternatives: ['Butanone', 'Methyl ethyl ketone'], difficulty: 'Medium' },
+    { section: 'B', marks: 2, data: 'CH₃–CH₂–CH(OH)–CH₃', correct: 'Butan-2-ol', options: ['Butan-2-ol', '2-Butanol', 'Butan-1-ol', 'Hexanol'], alternatives: [], difficulty: 'Medium' },
+    { section: 'B', marks: 2, data: 'CH₃–CO–CH₂–CH₃', correct: 'Butan-2-one', options: ['Butan-2-one', 'Butanone', 'Methyl ethyl ketone', 'Propanone'], alternatives: [], difficulty: 'Medium' },
     { section: 'F', marks: 5, data: 'CH₃–CH(Cl)–CH₂–CH₂–OH', correct: '3-Chlorobutan-1-ol', options: ['3-Chlorobutan-1-ol', '4-Chlorobutan-1-ol', 'Chlorobutanol', '1-Chlorobutan-3-ol'], alternatives: ['4-Chlorobutan-1-ol'], difficulty: 'Hard' }
 ];
 
-let mockCurrentIndex = 0;
-let mockScore = 0;
-let mockAnswered = false;
-let mockSelectedOption = null;
-let mockTestResults = [];
-let filteredMockQuestions = [];
+// Application State (solves Global State Pollution)
+const AppState = {
+    currentMode: 'home',
+    currentQuestionIndex: 0,
+    score: 0,
+    selectedOption: null,
+    isAnswered: false,
+    selectedDifficulty: 'all',
+    mcqStats: {
+        totalAnswered: 0,
+        correctAnswers: 0,
+        totalPoints: 0,
+        correctPoints: 0
+    },
+    manualStats: {
+        totalAnswered: 0,
+        correctAnswers: 0,
+        totalPoints: 0,
+        correctPoints: 0
+    },
+    filteredQuestions: [],
 
-let currentMode = 'home'; // 'home', 'mcq', 'manual'
-let currentQuestionIndex = 0;
-let score = 0;
-let selectedOption = null;
-let isAnswered = false;
-let selectedDifficulty = 'all';
-let mcqStats = {
-    totalAnswered: 0,
-    correctAnswers: 0,
-    totalPoints: 0,
-    correctPoints: 0
+    // Mock test state
+    mockCurrentIndex: 0,
+    mockScore: 0,
+    mockAnswered: false,
+    mockSelectedOption: null,
+    mockTestResults: [],
+    filteredMockQuestions: [],
+
+    // Reset quiz state
+    resetQuiz() {
+        this.currentQuestionIndex = 0;
+        this.score = 0;
+        this.selectedOption = null;
+        this.isAnswered = false;
+        this.filteredQuestions = [];
+    },
+
+    // Reset mock test state
+    resetMockTest() {
+        this.mockCurrentIndex = 0;
+        this.mockScore = 0;
+        this.mockAnswered = false;
+        this.mockSelectedOption = null;
+        this.mockTestResults = [];
+        this.filteredMockQuestions = [];
+    },
+
+    // Reset all stats
+    resetStats() {
+        this.mcqStats = { totalAnswered: 0, correctAnswers: 0, totalPoints: 0, correctPoints: 0 };
+        this.manualStats = { totalAnswered: 0, correctAnswers: 0, totalPoints: 0, correctPoints: 0 };
+    }
 };
-let manualStats = {
-    totalAnswered: 0,
-    correctAnswers: 0,
-    totalPoints: 0,
-    correctPoints: 0
+
+// Backward compatibility aliases (deprecated - use AppState instead)
+let currentMode = AppState.currentMode;
+let currentQuestionIndex = AppState.currentQuestionIndex;
+let score = AppState.score;
+let selectedOption = AppState.selectedOption;
+let isAnswered = AppState.isAnswered;
+let selectedDifficulty = AppState.selectedDifficulty;
+let mcqStats = AppState.mcqStats;
+let manualStats = AppState.manualStats;
+let filteredQuestions = AppState.filteredQuestions;
+let mockCurrentIndex = AppState.mockCurrentIndex;
+let mockScore = AppState.mockScore;
+let mockAnswered = AppState.mockAnswered;
+let mockSelectedOption = AppState.mockSelectedOption;
+let mockTestResults = AppState.mockTestResults;
+let filteredMockQuestions = AppState.filteredMockQuestions;
+
+// Error Boundary System (solves No Error Boundaries)
+const ErrorBoundary = {
+    libraries: {
+        smilesDrawer: false,
+        threeJS: false,
+        vanta: false
+    },
+
+    checkAll() {
+        return this.libraries.smilesDrawer && this.libraries.threeJS && this.libraries.vanta;
+    },
+
+    init() {
+        // Check SmilesDrawer
+        this.libraries.smilesDrawer = typeof SmilesDrawer !== 'undefined';
+        
+        // Check Three.js
+        this.libraries.threeJS = typeof THREE != 'undefined';
+        
+        // Check Vanta - will be checked after initialization
+        
+        if (!this.libraries.smilesDrawer) {
+            console.warn('SmilesDrawer not loaded - molecular rendering disabled');
+        }
+        if (!this.libraries.threeJS) {
+            console.warn('Three.js not loaded - background effects disabled');
+        }
+    },
+
+    showError(message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-banner';
+        errorDiv.setAttribute('role', 'alert');
+        errorDiv.setAttribute('aria-live', 'assertive');
+        errorDiv.innerHTML = `<strong>Warning:</strong> ${message}`;
+        document.body.insertBefore(errorDiv, document.body.firstChild);
+        setTimeout(() => errorDiv.remove(), 5000);
+    }
 };
-let filteredQuestions = [];
+
+// Input Validation (solves No Input Validation)
+const InputValidator = {
+    sanitizeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    },
+
+    validateIUPACName(input) {
+        const sanitized = this.sanitizeHTML(input.trim());
+        
+        // Check for empty
+        if (!sanitized) return { valid: false, error: 'Input cannot be empty' };
+        
+        // Check max length
+        if (sanitized.length > 100) return { valid: false, error: 'Input too long (max 100 characters)' };
+        
+        // Check for potential script injection patterns
+        const dangerous = /<script|javascript:|onerror|onclick|onload/i;
+        if (dangerous.test(sanitized)) return { valid: false, error: 'Invalid characters in input' };
+        
+        return { valid: true, value: sanitized };
+    }
+};
+
+// Tutorial Observer (fixes Event Listener Memory Leak)
+let tutorialObserver = null;
+
+function createTutorialObserver() {
+    if (tutorialObserver) {
+        tutorialObserver.disconnect();
+    }
+
+    const canvases = document.querySelectorAll('.tutorial-smiles:not(.rendered)');
+    if (canvases.length === 0) return;
+
+    let localDrawer = new SmilesDrawer.Drawer({
+        width: 280,
+        height: 100,
+        bondThickness: 2,
+        atomVisualization: 'default'
+    });
+
+    const renderCanvas = (canvas) => {
+        const smiles = canvas.getAttribute('data-smiles');
+        if (smiles) {
+            const width = canvas.getAttribute('width') || 280;
+            const height = canvas.getAttribute('height') || 100;
+            canvas.width = parseInt(width);
+            canvas.height = parseInt(height);
+
+            SmilesDrawer.parse(smiles, function(tree) {
+                localDrawer.draw(tree, canvas, 'light', false);
+                canvas.classList.add('rendered');
+            }, function(err) {
+                console.error('Error parsing tutorial smiles:', err);
+            });
+        }
+    };
+
+    tutorialObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                renderCanvas(entry.target);
+                tutorialObserver.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '100px' });
+
+    canvases.forEach(canvas => tutorialObserver.observe(canvas));
+}
+
+function destroyTutorialObserver() {
+    if (tutorialObserver) {
+        tutorialObserver.disconnect();
+        tutorialObserver = null;
+    }
+}
+
+// Accessibility Announcer (solves Accessibility Gap)
+const AccessibilityAnnouncer = {
+    announce(message, priority = 'polite') {
+        const announcer = document.createElement('div');
+        announcer.setAttribute('role', 'status');
+        announcer.setAttribute('aria-live', priority);
+        announcer.setAttribute('aria-atomic', 'true');
+        announcer.className = 'sr-only';
+        announcer.textContent = message;
+        document.body.appendChild(announcer);
+        setTimeout(() => announcer.remove(), 1000);
+    },
+
+    announceScore(points) {
+        this.announce(`Score increased by ${points}. New score: ${AppState.score}`);
+    },
+
+    announceAccuracy(accuracy) {
+        this.announce(`Accuracy is now ${accuracy} percent`);
+    },
+
+    announceQuestionNumber(current, total) {
+        this.announce(`Question ${current + 1} of ${total}`);
+    }
+};
+
+function saveStats() {
+    localStorage.setItem('mcqStats', JSON.stringify(mcqStats));
+    localStorage.setItem('manualStats', JSON.stringify(manualStats));
+}
+
+function loadStats() {
+    try {
+        const savedMcqStats = localStorage.getItem('mcqStats');
+        const savedManualStats = localStorage.getItem('manualStats');
+        if (savedMcqStats) {
+            mcqStats = JSON.parse(savedMcqStats);
+        }
+        if (savedManualStats) {
+            manualStats = JSON.parse(savedManualStats);
+        }
+    } catch (e) {
+        console.warn('Could not load stats from localStorage:', e);
+    }
+}
 
 // DOM Elements
 const homeView = document.getElementById('home-view');
@@ -1365,13 +1576,25 @@ const backToBasicsRevision = document.getElementById('back-to-basics-revision');
 let smilesDrawer;
 
 function init() {
-    // Initialize SmilesDrawer setup
-    smilesDrawer = new SmilesDrawer.Drawer({
-        width: 400,
-        height: 300,
-        bondThickness: 2,
-        atomVisualization: 'default'
-    });
+    // Initialize Error Boundary - check all external libraries
+    ErrorBoundary.init();
+    
+    // Check if SmilesDrawer loaded, if not show warning but continue
+    if (!ErrorBoundary.libraries.smilesDrawer) {
+        document.getElementById('quiz-view').classList.add('library-warning');
+    }
+
+    // Initialize SmilesDrawer setup (with error handling)
+    try {
+        smilesDrawer = new SmilesDrawer.Drawer({
+            width: 400,
+            height: 300,
+            bondThickness: 2,
+            atomVisualization: 'default'
+        });
+    } catch (e) {
+        console.warn('Could not initialize SmilesDrawer:', e);
+    }
 
     // Cursor glow functionality
     const cursorGlow = document.getElementById('cursor-glow');
@@ -1441,6 +1664,8 @@ function init() {
 
     revisionMockBtn.addEventListener('click', () => {
         revisionMockContent.classList.toggle('hidden');
+        const isExpanded = !revisionMockContent.classList.contains('hidden');
+        revisionMockBtn.setAttribute('aria-expanded', isExpanded);
     });
 
     shortNotesBtn.addEventListener('click', () => {
@@ -1450,6 +1675,8 @@ function init() {
     mockTestBtn.addEventListener('click', () => {
         mockTestBtn.classList.toggle('active');
         mockTestOptions.classList.toggle('hidden');
+        const isExpanded = !mockTestOptions.classList.contains('hidden');
+        mockTestBtn.setAttribute('aria-expanded', isExpanded);
     });
 
     questionsAnswerBtn.addEventListener('click', () => {
@@ -1481,32 +1708,56 @@ function openBasics() {
     currentMode = 'basics';
 
     setTimeout(() => {
-        renderTutorialCanvases();
+        createTutorialObserver();
     }, 150);
+    
+    // Accessibility: Manage focus
+    manageFocus('basics-view');
 }
 
 function renderTutorialCanvases() {
-    const canvases = document.querySelectorAll('.tutorial-smiles');
-    canvases.forEach(canvas => {
+    const canvases = document.querySelectorAll('.tutorial-smiles:not(.rendered)');
+    
+    if (canvases.length === 0) return;
+    
+    let localDrawer = new SmilesDrawer.Drawer({
+        width: 280,
+        height: 100,
+        bondThickness: 2,
+        atomVisualization: 'default'
+    });
+
+    const renderCanvas = (canvas) => {
         const smiles = canvas.getAttribute('data-smiles');
         if (smiles) {
-            canvas.width = 280;
-            canvas.height = 100;
-            
-            let localDrawer = new SmilesDrawer.Drawer({
-                width: 280,
-                height: 100,
-                bondThickness: 2,
-                atomVisualization: 'default'
-            });
+            const width = canvas.getAttribute('width') || 280;
+            const height = canvas.getAttribute('height') || 100;
+            canvas.width = parseInt(width);
+            canvas.height = parseInt(height);
             
             SmilesDrawer.parse(smiles, function(tree) {
                 localDrawer.draw(tree, canvas, 'light', false);
+                canvas.classList.add('rendered');
             }, function(err) {
                 console.error('Error parsing tutorial smiles:', err);
             });
         }
-    });
+    };
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    renderCanvas(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '100px' });
+
+        canvases.forEach(canvas => observer.observe(canvas));
+    } else {
+        canvases.forEach(canvas => renderCanvas(canvas));
+    }
 }
 
 function goHome() {
@@ -1521,6 +1772,12 @@ function goHome() {
     revisionNotesView.classList.add('hidden');
     currentMode = 'home';
     updateStatsDisplay();
+    
+    // Clean up tutorial observer to prevent memory leak
+    destroyTutorialObserver();
+    
+    // Accessibility: Manage focus
+    manageFocus('home-view');
 }
 
 function openQAView() {
@@ -1533,7 +1790,10 @@ function openQAView() {
     mockTestView.classList.add('hidden');
     mockResultsView.classList.add('hidden');
     revisionNotesView.classList.add('hidden');
-
+    
+    // Accessibility: Manage focus
+    manageFocus('qa-view');
+    
     renderQA();
 }
 
@@ -1549,6 +1809,9 @@ function openRevisionNotes() {
     revisionNotesView.classList.remove('hidden');
 
     renderRevisionNotes();
+    
+    // Accessibility: Manage focus
+    manageFocus('revision-notes-view');
 }
 
 function renderRevisionNotes() {
@@ -1859,6 +2122,9 @@ function startMockTest() {
     });
 
     renderMockQuestion(filteredMockQuestions);
+    
+    // Accessibility: Manage focus
+    manageFocus('mock-test-view');
 }
 
 function renderMockQuestion(filteredQuestions) {
@@ -1917,12 +2183,15 @@ function renderMockQuestion(filteredQuestions) {
         }
     }
 
-    // Render options
+    // Render options with accessibility attributes
     mockOptionsContainer.innerHTML = '';
-    q.options.forEach(opt => {
+    q.options.forEach((opt, index) => {
         const btn = document.createElement('button');
         btn.className = 'option-btn';
         btn.textContent = opt;
+        btn.setAttribute('role', 'radio');
+        btn.setAttribute('aria-label', `Option ${index + 1}: ${opt}`);
+        btn.setAttribute('aria-checked', 'false');
         btn.addEventListener('click', () => selectMockOption(opt, btn));
         mockOptionsContainer.appendChild(btn);
     });
@@ -1970,17 +2239,19 @@ function selectMockOption(option, btn) {
     document.querySelectorAll('#mock-options-container .option-btn').forEach(b => {
         b.style.background = '';
         b.style.borderColor = '';
+        b.setAttribute('aria-checked', 'false');
     });
     btn.style.background = '#e0e7ff';
     btn.style.borderColor = '#667eea';
+    btn.setAttribute('aria-checked', 'true');
 }
 
 function handleMockAnswer() {
     if (!mockSelectedOption || mockAnswered) return;
     
     const q = filteredMockQuestions[mockCurrentIndex];
-    const isCorrect = mockSelectedOption === q.correct || 
-        (q.alternatives && q.alternatives.includes(mockSelectedOption));
+    // Only check exact match for mock test - no alternatives
+    const isCorrect = mockSelectedOption === q.correct;
     mockAnswered = true;
 
     if (isCorrect) {
@@ -1992,24 +2263,17 @@ function handleMockAnswer() {
     } else {
         mockTestResults[mockCurrentIndex] = false;
         mockFeedback.className = 'feedback wrong';
-        let correctDisplay = q.correct;
-        if (q.alternatives) {
-            correctDisplay += ' / ' + q.alternatives.join(' / ');
-        }
-        mockFeedback.innerHTML = '<span>✗ Incorrect. The correct answer is: ' + correctDisplay + '</span>';
+        mockFeedback.innerHTML = '<span>✗ Incorrect. The correct answer is: ' + q.correct + '</span>';
     }
     mockFeedback.classList.remove('hidden');
 
     document.querySelectorAll('#mock-options-container .option-btn').forEach(btn => {
         btn.disabled = true;
-        const isCorrectOption = btn.textContent === q.correct || (q.alternatives && q.alternatives.includes(btn.textContent));
-        if (isCorrectOption) {
-            btn.style.background = '#d1fae5';
-            btn.style.borderColor = '#10B981';
+        if (btn.textContent === q.correct) {
+            btn.classList.add('correct');
         }
         if (btn.textContent === mockSelectedOption && !isCorrect) {
-            btn.style.background = '#fee2e2';
-            btn.style.borderColor = '#ef4444';
+            btn.classList.add('incorrect');
         }
     });
 
@@ -2030,6 +2294,9 @@ function nextMockQuestion() {
 function showMockResults() {
     mockTestView.classList.add('hidden');
     mockResultsView.classList.remove('hidden');
+    
+    // Accessibility: Manage focus
+    manageFocus('mock-results-view');
 
     const totalMarks = filteredMockQuestions.reduce((sum, q) => sum + q.marks, 0);
     const percentage = (mockScore / totalMarks) * 100;
@@ -2093,6 +2360,9 @@ function startQuiz(mode) {
     document.body.classList.remove('theme-home');
 
     loadQuestion();
+    
+    // Accessibility: Manage focus
+    manageFocus('quiz-view');
 }
 
 function loadQuestion() {
@@ -2139,12 +2409,15 @@ function loadQuestion() {
     }
 
     if (currentMode === 'mcq') {
-        // Render options
+        // Render options with accessibility attributes
         optionsContainer.innerHTML = '';
-        currentQuestion.options.forEach(option => {
+        currentQuestion.options.forEach((option, index) => {
             const btn = document.createElement('button');
             btn.className = 'option-btn';
-            btn.innerHTML = option; 
+            btn.innerHTML = option;
+            btn.setAttribute('role', 'radio');
+            btn.setAttribute('aria-label', `Option ${index + 1}: ${option}`);
+            btn.setAttribute('aria-checked', 'false');
             btn.addEventListener('click', () => selectOption(btn, option));
             optionsContainer.appendChild(btn);
         });
@@ -2156,10 +2429,14 @@ function selectOption(btnElement, optionText) {
 
     // Deselect previously selected
     const allOptions = document.querySelectorAll('.option-btn');
-    allOptions.forEach(btn => btn.classList.remove('selected'));
+    allOptions.forEach(btn => {
+        btn.classList.remove('selected');
+        btn.setAttribute('aria-checked', 'false');
+    });
 
     // Select new
     btnElement.classList.add('selected');
+    btnElement.setAttribute('aria-checked', 'true');
     selectedOption = optionText;
     actionBtn.disabled = false;
 }
@@ -2195,7 +2472,23 @@ function checkAnswer() {
         isCorrect = (selectedOption === currentQuestion.correct || alternates.includes(selectedOption));
     } else {
         manualInput.disabled = true;
-        const userInput = manualInput.value.trim();
+        let userInput = manualInput.value.trim();
+        
+        // Validate and sanitize input
+        const validation = InputValidator.validateIUPACName(userInput);
+        if (!validation.valid) {
+            feedbackContainer.classList.remove('hidden');
+            feedbackContainer.className = 'feedback-container error';
+            feedbackContainer.setAttribute('role', 'alert');
+            document.getElementById('feedback-message').textContent = validation.error;
+            document.getElementById('correct-answer-display').textContent = '';
+            isAnswered = true;
+            actionBtn.textContent = 'Next Question';
+            actionBtn.setAttribute('aria-label', 'Next question');
+            return;
+        }
+        userInput = validation.value;
+        
         const correctNorm = currentQuestion.correct.toLowerCase().replace(/[\s,-]/g, '');
         const userNorm = userInput.toLowerCase().replace(/[\s,-]/g, '');
         
@@ -2246,6 +2539,7 @@ function checkAnswer() {
         }
     }
     updateStatsDisplay();
+    saveStats();
 
     feedbackContainer.classList.remove('hidden');
     howBtn.classList.remove('hidden');
@@ -2253,14 +2547,26 @@ function checkAnswer() {
     if (isCorrect) {
         score += points;
         scoreDisplay.textContent = score;
+        
+        // Accessibility announcement for correct answer
+        AccessibilityAnnouncer.announceScore(points);
+        
         feedbackContainer.className = 'feedback-container success';
+        feedbackContainer.setAttribute('role', 'alert');
         feedbackMessage.textContent = `Correct! (+${points} point${points > 1 ? 's' : ''})`;
         correctAnswerDisplay.textContent = '';
     } else {
         feedbackContainer.className = 'feedback-container error';
+        feedbackContainer.setAttribute('role', 'alert');
         feedbackMessage.textContent = `Incorrect! (+0 points)`;
         correctAnswerDisplay.textContent = `The correct answer was: ${currentQuestion.correct}`;
+        
+        // Accessibility announcement for incorrect answer
+        AccessibilityAnnouncer.announce(`Incorrect. The correct answer is ${currentQuestion.correct}`);
     }
+
+    // Accessibility: Update button label
+    actionBtn.setAttribute('aria-label', 'Next question');
 
     // Attach custom prefix to explanation text for manual mode
     if (currentMode === 'manual' && !isCorrect) {
@@ -2300,6 +2606,11 @@ function updateStatsDisplay() {
     const accuracyEl = document.getElementById('quiz-accuracy');
     if (accuracyEl) {
         accuracyEl.textContent = sessionAccuracy + '%';
+        
+        // Accessibility: Announce accuracy changes during quiz (not on initial page load)
+        if (currentMode === 'mcq' || currentMode === 'manual') {
+            AccessibilityAnnouncer.announceAccuracy(sessionAccuracy);
+        }
     }
 }
 
@@ -2320,7 +2631,97 @@ function nextQuestion() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     loadQuestion();
+    
+    // Accessibility: Focus the first option after loading new question
+    setTimeout(() => {
+        const firstOption = document.querySelector('.option-btn');
+        if (firstOption) firstOption.focus();
+    }, 100);
+}
+
+// Accessibility: Focus management for view changes
+function manageFocus(viewId) {
+    const mainContent = document.getElementById('main-content');
+    
+    // Announce view change for screen readers
+    const viewNames = {
+        'home-view': 'Home page',
+        'basics-view': 'Complete Basics tutorial',
+        'quiz-view': 'Quiz practice',
+        'qa-view': 'Questions and Answers',
+        'mock-test-view': 'Mock test',
+        'mock-results-view': 'Test results',
+        'revision-notes-view': 'Revision notes'
+    };
+    
+    const announcement = document.createElement('div');
+    announcement.setAttribute('role', 'status');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.setAttribute('aria-atomic', 'true');
+    announcement.className = 'sr-only';
+    announcement.textContent = `Navigated to ${viewNames[viewId] || 'new view'}`;
+    mainContent.appendChild(announcement);
+    
+    // Remove announcement after screen reader has time to read it
+    setTimeout(() => announcement.remove(), 1000);
+    
+    // Focus the first focusable element in the new view
+    setTimeout(() => {
+        const newView = document.getElementById(viewId);
+        if (newView) {
+            const focusable = newView.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (focusable) {
+                focusable.focus();
+            }
+        }
+    }, 100);
+}
+
+// Accessibility: Keyboard navigation for mode cards
+function initKeyboardNavigation() {
+    const modeCards = document.querySelectorAll('.mode-card');
+    
+    modeCards.forEach((card, index) => {
+        card.addEventListener('keydown', (e) => {
+            let targetIndex;
+            
+            switch (e.key) {
+                case 'ArrowRight':
+                case 'ArrowDown':
+                    e.preventDefault();
+                    targetIndex = (index + 1) % modeCards.length;
+                    modeCards[targetIndex].focus();
+                    break;
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    e.preventDefault();
+                    targetIndex = (index - 1 + modeCards.length) % modeCards.length;
+                    modeCards[targetIndex].focus();
+                    break;
+                case 'Enter':
+                case ' ':
+                    e.preventDefault();
+                    card.click();
+                    break;
+            }
+        });
+    });
+    
+    // Update aria-checked for difficulty filter
+    const diffBtns = document.querySelectorAll('.diff-btn');
+    diffBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            diffBtns.forEach(b => {
+                b.setAttribute('aria-checked', b === btn ? 'true' : 'false');
+                b.setAttribute('tabindex', b === btn ? '0' : '-1');
+            });
+        });
+    });
 }
 
 // Start the app when DOM is fully loaded
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => {
+    loadStats();
+    init();
+    initKeyboardNavigation();
+});

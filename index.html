@@ -10,13 +10,55 @@
 </head>
 
 <body>
-    <div id="cursor-glow"></div>
-    <div id="fog-bg"></div>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="cursor-glow" aria-hidden="true"></div>
+    <div id="fog-bg" aria-hidden="true"></div>
     <div class="container" id="app-container">
+    <main id="main-content" role="main" aria-live="polite" aria-atomic="true">
         
         <!-- Home View -->
         <div id="home-view" class="view">
             <div class="particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
                 <div class="particle"></div>
                 <div class="particle"></div>
                 <div class="particle"></div>
@@ -65,80 +107,83 @@
                 <h1>IUPAC Naming Practice</h1>
                 <p>Welcome! Choose your practice mode below.</p>
             </header>
-            <div class="mode-cards" id="mode-cards-container">
-                <div class="mode-card" id="mode-mcq" tabindex="0">
+            <div class="mode-cards" id="mode-cards-container" role="group" aria-label="Practice mode selection">
+                <div class="mode-card" id="mode-mcq" role="button" tabindex="0" aria-label="MCQ Mode: Identify the correct IUPAC name from four given options" aria-describedby="mcq-stats">
                     <h2>MCQ Mode</h2>
-                    <p>Identify the correct IUPAC name from four given options.</p>
-                    <div class="mode-stats">
-                        <span>Answered: <strong id="mcq-answered">0</strong></span>
-                        <span>Accuracy: <strong id="mcq-accuracy">0%</strong></span>
+                    <p id="mcq-desc">Identify the correct IUPAC name from four given options.</p>
+                    <div class="mode-stats" id="mcq-stats" aria-label="Your statistics">
+                        <span>Answered: <strong id="mcq-answered" aria-label="Questions answered">0</strong></span>
+                        <span>Accuracy: <strong id="mcq-accuracy" aria-label="Accuracy percentage">0%</strong></span>
                     </div>
-                    <button class="btn primary-btn">Start MCQ</button>
+                    <button class="btn primary-btn" aria-label="Start MCQ practice">Start MCQ</button>
                 </div>
-                <div class="mode-card" id="mode-manual" tabindex="0">
+                <div class="mode-card" id="mode-manual" role="button" tabindex="0" aria-label="Manual Entry Mode: Type the exact IUPAC name based on the structure" aria-describedby="manual-stats">
                     <h2>Manual Entry Mode</h2>
-                    <p>Type the exact IUPAC name based on the structure provided.</p>
-                    <div class="mode-stats">
-                        <span>Answered: <strong id="manual-answered">0</strong></span>
-                        <span>Accuracy: <strong id="manual-accuracy">0%</strong></span>
+                    <p id="manual-desc">Type the exact IUPAC name based on the structure provided.</p>
+                    <div class="mode-stats" id="manual-stats" aria-label="Your statistics">
+                        <span>Answered: <strong id="manual-answered" aria-label="Questions answered">0</strong></span>
+                        <span>Accuracy: <strong id="manual-accuracy" aria-label="Accuracy percentage">0%</strong></span>
                     </div>
-                    <button class="btn primary-btn">Start Manual</button>
+                    <button class="btn primary-btn" aria-label="Start manual entry practice">Start Manual</button>
                 </div>
-                <div class="mode-card" id="mode-basics" tabindex="0">
+                <div class="mode-card" id="mode-basics" role="button" tabindex="0" aria-label="Complete Basics: Learn foundational IUPAC nomenclature rules">
                     <h2>Complete Basics</h2>
                     <p>Learn the foundational rules and concepts of IUPAC nomenclature.</p>
-                    <button class="btn primary-btn" style="background-color:#10B981;">Learn</button>
+                    <button class="btn primary-btn" style="background-color:#10B981;" aria-label="Start learning basics">Learn</button>
                 </div>
             </div>
         </div>
 
         <!-- Complete Basics View -->
-        <div id="basics-view" class="view hidden">
+        <div id="basics-view" class="view hidden" role="region" aria-labelledby="basics-title">
             <header>
                 <div class="header-top">
-                    <button id="home-btn-basics" class="btn secondary-btn small-btn">🏠 Home</button>
+                    <button id="home-btn-basics" class="btn secondary-btn small-btn" aria-label="Return to home page">
+                        <span aria-hidden="true">🏠</span> Home
+                    </button>
                 </div>
-                <h1>Complete Basics</h1>
+                <h1 id="basics-title">Complete Basics</h1>
                 <p>Welcome to the IUPAC tutorial center. Everything you need to know is right here.</p>
             </header>
 
             <div class="revision-mock-container">
-                <button class="big-btn revision-mock-btn" id="revision-mock-btn">
-                    <span class="big-btn-icon">📚</span>
+                <button class="big-btn revision-mock-btn" id="revision-mock-btn" aria-expanded="false" aria-controls="revision-mock-content">
+                    <span class="big-btn-icon" aria-hidden="true">📚</span>
                     <span class="big-btn-text">Revision and Mock Test</span>
                 </button>
                 
-                <div class="revision-mock-content hidden" id="revision-mock-content">
+                <div class="revision-mock-content hidden" id="revision-mock-content" role="group" aria-label="Learning options">
                     <div class="revision-options">
-                        <button class="revision-option-btn" id="short-notes-btn">
-                            <span class="option-icon">📝</span>
+                        <button class="revision-option-btn" id="short-notes-btn" aria-label="View short revision notes">
+                            <span class="option-icon" aria-hidden="true">📝</span>
                             <span class="option-text">Short Revision Notes</span>
                         </button>
                         
                         <div class="mock-test-section">
-                            <button class="revision-option-btn mock-test-btn" id="mock-test-btn">
-                                <span class="option-icon">✍️</span>
+                            <button class="revision-option-btn mock-test-btn" id="mock-test-btn" aria-expanded="false" aria-controls="mock-test-options" aria-label="Open mock test options">
+                                <span class="option-icon" aria-hidden="true">✍️</span>
                                 <span class="option-text">Mock Test</span>
-                                <span class="dropdown-arrow">▼</span>
+                                <span class="dropdown-arrow" aria-hidden="true">▼</span>
                             </button>
                             
-                            <div class="mock-test-options hidden" id="mock-test-options">
-                                <button class="mock-test-choice" id="questions-answer-btn">
-                                    <span class="choice-icon">📄</span>
+                            <div class="mock-test-options hidden" id="mock-test-options" role="group" aria-label="Mock test type selection">
+                                <button class="mock-test-choice" id="questions-answer-btn" aria-label="View questions and answer key">
+                                    <span class="choice-icon" aria-hidden="true">📄</span>
                                     <span class="choice-text">Questions and Answer Key</span>
                                 </button>
                                 <div class="mock-test-mcq-section">
-                                    <button class="mock-test-choice" id="mcq-test-btn">
-                                        <span class="choice-icon">☑️</span>
+                                    <button class="mock-test-choice" id="mcq-test-btn" aria-label="Take an MCQ test">
+                                        <span class="choice-icon" aria-hidden="true">☑️</span>
                                         <span class="choice-text">MCQ Test</span>
                                     </button>
-                                    <div class="difficulty-filter" id="mock-difficulty-filter">
-                                        <label>Difficulty:</label>
+                                    <div class="difficulty-filter" id="mock-difficulty-filter" role="group" aria-label="Filter questions by difficulty">
+                                        <span id="difficulty-label" class="sr-only">Filter by difficulty:</span>
+                                        <label for="diff-all" class="sr-only">All difficulties</label>
                                         <div class="difficulty-buttons">
-                                            <button class="diff-btn active" data-difficulty="all">All</button>
-                                            <button class="diff-btn easy" data-difficulty="Easy">Easy</button>
-                                            <button class="diff-btn medium" data-difficulty="Medium">Medium</button>
-                                            <button class="diff-btn hard" data-difficulty="Hard">Hard</button>
+                                            <button class="diff-btn active" id="diff-all" data-difficulty="all" role="radio" aria-checked="true" tabindex="0">All</button>
+                                            <button class="diff-btn easy" data-difficulty="Easy" role="radio" aria-checked="false" tabindex="-1">Easy</button>
+                                            <button class="diff-btn medium" data-difficulty="Medium" role="radio" aria-checked="false" tabindex="-1">Medium</button>
+                                            <button class="diff-btn hard" data-difficulty="Hard" role="radio" aria-checked="false" tabindex="-1">Hard</button>
                                         </div>
                                     </div>
                                 </div>
@@ -150,56 +195,56 @@
             
             <main class="quiz-card" id="basics-content">
 <div class="tutorial-container">
-<nav class="tutorial-index" id="tutorial-index">
-    <h2 class="tutorial-index-title">&#x1F4CB; Index – Quick Navigation</h2>
-    <ul class="tutorial-index-list">
-        <li><a href="#sec-compressed-formula">&#x1F539; 1. Understanding Compressed Formula of Organic Compounds</a>
-            <ul>
+<nav class="tutorial-index" id="tutorial-index" aria-label="Tutorial sections">
+    <h2 class="tutorial-index-title"><span aria-hidden="true">&#x1F4CB;</span> Index – Quick Navigation</h2>
+    <ul class="tutorial-index-list" role="list">
+        <li><a href="#sec-compressed-formula"><span aria-hidden="true">&#x1F539;</span> 1. Understanding Compressed Formula of Organic Compounds</a>
+            <ul role="list">
                 <li><a href="#sec-compressed-formula">Structural, Condensed, Molecular formulas with examples</a></li>
             </ul>
         </li>
-        <li><a href="#sec-bond-line">&#x1F539; 2. Bond Line Structure (Skeletal Formula) of Organic Compounds</a>
-            <ul>
+        <li><a href="#sec-bond-line"><span aria-hidden="true">&#x1F539;</span> 2. Bond Line Structure (Skeletal Formula) of Organic Compounds</a>
+            <ul role="list">
                 <li><a href="#sec-bond-line">Rules, conventions, angles, carbon count methods</a></li>
             </ul>
         </li>
-        <li><a href="#sec-basic-rules">&#x1F539; 3. IUPAC Naming – Basic Rules</a>
-            <ul>
+        <li><a href="#sec-basic-rules"><span aria-hidden="true">&#x1F539;</span> 3. IUPAC Naming – Basic Rules</a>
+            <ul role="list">
                 <li><a href="#sec-basic-rules">Rules 1–15 (Longest chain, locants, bond types, suffixes, etc.)</a></li>
             </ul>
         </li>
-        <li><a href="#sec-special-cases">&#x1F539; 4. Special Cases in IUPAC Naming</a>
-            <ul>
+        <li><a href="#sec-special-cases"><span aria-hidden="true">&#x1F539;</span> 4. Special Cases in IUPAC Naming</a>
+            <ul role="list">
                 <li><a href="#sec-special-cases">15 special cases incl. tie-breaking, diene/diyne, writing format</a></li>
             </ul>
         </li>
-        <li><a href="#sec-priority-order">&#x1F539; 5. Priority Order in IUPAC Naming</a>
-            <ul>
-                <li><a href="#sec-priority-order">COOH &gt; CHO &gt; CO &gt; OH &gt; NH&#x2082; &gt; C=C &gt; X</a></li>
+        <li><a href="#sec-priority-order"><span aria-hidden="true">&#x1F539;</span> 5. Priority Order in IUPAC Naming</a>
+            <ul role="list">
+                <li><a href="#sec-priority-order">COOH > CHO > CO > OH > NH2 > C=C > X</a></li>
             </ul>
         </li>
-        <li><a href="#sec-prefix-suffix">&#x1F539; 6. Prefix &amp; Suffix of Functional Groups</a>
-            <ul>
+        <li><a href="#sec-prefix-suffix"><span aria-hidden="true">&#x1F539;</span> 6. Prefix &amp; Suffix of Functional Groups</a>
+            <ul role="list">
                 <li><a href="#sec-prefix-suffix">Full table, rules, memory tricks</a></li>
             </ul>
         </li>
-        <li><a href="#sec-cyclic">&#x1F539; 7. Naming of Cyclic Compounds</a>
-            <ul>
+        <li><a href="#sec-cyclic"><span aria-hidden="true">&#x1F539;</span> 7. Naming of Cyclic Compounds</a>
+            <ul role="list">
                 <li><a href="#sec-cyclic">Cycloalkanes, substituents, ring vs chain, double bonds</a></li>
             </ul>
         </li>
-        <li><a href="#sec-benzene">&#x1F539; 8. Benzene &amp; Its Derivatives</a>
-            <ul>
+        <li><a href="#sec-benzene"><span aria-hidden="true">&#x1F539;</span> 8. Benzene &amp; Its Derivatives</a>
+            <ul role="list">
                 <li><a href="#sec-benzene">Mono/di/tri-substituted, o/m/p, special parent names</a></li>
             </ul>
         </li>
-        <li><a href="#sec-xylene">&#x1F539; 9. What is Xylene?</a>
-            <ul>
+        <li><a href="#sec-xylene"><span aria-hidden="true">&#x1F539;</span> 9. What is Xylene?</a>
+            <ul role="list">
                 <li><a href="#sec-xylene">o-xylene, m-xylene, p-xylene + summary table</a></li>
             </ul>
         </li>
-        <li><a href="#sec-advanced">&#x1F539; 10. Advanced Concepts &amp; Rules</a>
-            <ul>
+        <li><a href="#sec-advanced"><span aria-hidden="true">&#x1F539;</span> 10. Advanced Concepts &amp; Rules</a>
+            <ul role="list">
                 <li><a href="#sec-advanced">Locant sets, branched substituents, iso/neo conversions, esters, phenyl vs benzyl</a></li>
             </ul>
         </li>
@@ -1725,32 +1770,35 @@
         </div>
 
         <!-- Quiz View -->
-        <div id="quiz-view" class="view hidden">
+        <div id="quiz-view" class="view hidden" role="region" aria-labelledby="quiz-title">
             <header>
                 <div class="header-top">
-                    <button id="home-btn" class="btn secondary-btn small-btn">🏠 Home</button>
+                    <button id="home-btn" class="btn secondary-btn small-btn" aria-label="Return to home page">
+                        <span aria-hidden="true">🏠</span> Home
+                    </button>
                 </div>
-                <h1>IUPAC Practice</h1>
+                <h1 id="quiz-title">IUPAC Practice</h1>
                 <p id="quiz-description">Identify the correct IUPAC name for the given structure.</p>
-                <div class="score-board">Score: <span id="score">0</span></div>
-                <div class="accuracy-meter">Accuracy: <span id="quiz-accuracy">0%</span></div>
+                <div class="score-board" aria-live="polite">Score: <span id="score">0</span></div>
+                <div class="accuracy-meter" aria-live="polite">Accuracy: <span id="quiz-accuracy">0%</span></div>
             </header>
             
             <main class="quiz-card">
-                <div class="structure-container">
-                    <canvas id="structure-canvas" width="400" height="300"></canvas>
-                    <div id="condensed-display" class="hidden condensed-text"></div>
+                <div class="structure-container" role="img" aria-label="Molecular structure display">
+                    <canvas id="structure-canvas" width="400" height="300" aria-hidden="true"></canvas>
+                    <div id="condensed-display" class="hidden condensed-text" aria-hidden="true"></div>
                 </div>
 
-                <div class="options-grid" id="options-container">
+                <div class="options-grid" id="options-container" role="radiogroup" aria-label="Answer options">
                     <!-- Options will be dynamically injected here -->
                 </div>
 
                 <div class="manual-container hidden" id="manual-container">
-                    <input type="text" id="manual-input" placeholder="Type the full IUPAC name here..." autocomplete="off">
+                    <label for="manual-input" class="sr-only">Type the full IUPAC name</label>
+                    <input type="text" id="manual-input" placeholder="Type the full IUPAC name here..." autocomplete="off" aria-describedby="quiz-description">
                 </div>
 
-                <div class="feedback-container hidden" id="feedback">
+                <div class="feedback-container hidden" id="feedback" role="alert" aria-live="assertive">
                     <h3 id="feedback-message"></h3>
                     <p id="correct-answer-display"></p>
                     
@@ -1761,19 +1809,19 @@
                 </div>
 
                 <div class="action-container">
-                    <button id="how-btn" class="btn secondary-btn hidden">How?</button>
-                    <button id="action-btn" class="btn primary-btn" disabled>Enter</button>
+                    <button id="how-btn" class="btn secondary-btn hidden" aria-label="Show explanation">How?</button>
+                    <button id="action-btn" class="btn primary-btn" disabled aria-label="Submit answer">Enter</button>
                 </div>
             </main>
         </div>
 
         <!-- Questions and Answers View -->
-        <div id="qa-view" class="view hidden">
+        <div id="qa-view" class="view hidden" role="region" aria-labelledby="qa-title">
             <header>
                 <div class="header-top">
-                    <button id="back-to-basics-qa" class="nav-btn">← Back</button>
+                    <button id="back-to-basics-qa" class="nav-btn" aria-label="Go back to basics">← Back</button>
                 </div>
-                <h1>IUPAC Mock Test - Questions & Answers</h1>
+                <h1 id="qa-title">IUPAC Mock Test - Questions & Answers</h1>
                 <p>Read the questions and check your answers below.</p>
             </header>
             <main class="quiz-card">
@@ -1782,59 +1830,59 @@
         </div>
 
         <!-- Mock Test View -->
-        <div id="mock-test-view" class="view hidden">
+        <div id="mock-test-view" class="view hidden" role="region" aria-labelledby="mock-test-title">
             <header>
                 <div class="header-top">
-                    <button id="back-to-basics-mock" class="nav-btn">← Back</button>
+                    <button id="back-to-basics-mock" class="nav-btn" aria-label="Go back to basics">← Back</button>
                 </div>
-                <h1>IUPAC Mock Test (Plus One)</h1>
-                <div class="score-board">Score: <span id="mock-score">0</span> / <span id="mock-total">0</span></div>
-                <div class="accuracy-meter">Accuracy: <span id="mock-accuracy">0%</span></div>
+                <h1 id="mock-test-title">IUPAC Mock Test (Plus One)</h1>
+                <div class="score-board" aria-live="polite">Score: <span id="mock-score">0</span> / <span id="mock-total">0</span></div>
+                <div class="accuracy-meter" aria-live="polite">Accuracy: <span id="mock-accuracy">0%</span></div>
             </header>
             <main class="quiz-card">
-                <div class="mock-test-progress" id="mock-progress"></div>
-                <div class="structure-container">
-                    <canvas id="mock-structure-canvas" width="400" height="300"></canvas>
+                <div class="mock-test-progress" id="mock-progress" role="progressbar" aria-label="Test progress"></div>
+                <div class="structure-container" role="img" aria-label="Molecular structure display">
+                    <canvas id="mock-structure-canvas" width="400" height="300" aria-hidden="true"></canvas>
                 </div>
                 <p class="mock-question-text" id="mock-question-text"></p>
-                <div class="options-grid" id="mock-options-container"></div>
+                <div class="options-grid" id="mock-options-container" role="radiogroup" aria-label="Answer options"></div>
                 <div class="action-container">
-                    <button id="mock-action-btn" class="btn primary-btn" disabled>Submit</button>
-                    <button id="mock-next-btn" class="btn secondary-btn hidden">Next Question</button>
+                    <button id="mock-action-btn" class="btn primary-btn" disabled aria-label="Submit answer">Submit</button>
+                    <button id="mock-next-btn" class="btn secondary-btn hidden" aria-label="Go to next question">Next Question</button>
                 </div>
                 <div id="mock-feedback" class="feedback hidden"></div>
             </main>
         </div>
 
         <!-- Mock Test Results View -->
-        <div id="mock-results-view" class="view hidden">
+        <div id="mock-results-view" class="view hidden" role="region" aria-labelledby="results-title">
             <header>
                 <div class="header-top">
-                    <button id="back-to-basics-from-results" class="nav-btn">← Back</button>
+                    <button id="back-to-basics-from-results" class="nav-btn" aria-label="Go back to basics">← Back</button>
                 </div>
-                <h1>Mock Test Results</h1>
+                <h1 id="results-title">Mock Test Results</h1>
             </header>
             <main class="quiz-card">
-                <div class="results-container" id="results-container"></div>
+                <div class="results-container" id="results-container" role="status" aria-live="polite"></div>
                 <div class="results-actions">
-                    <button id="retry-mock-btn" class="btn primary-btn">Retry Mock Test</button>
+                    <button id="retry-mock-btn" class="btn primary-btn" aria-label="Retry the mock test">Retry Mock Test</button>
                 </div>
             </main>
         </div>
 
         <!-- Revision Notes View -->
-        <div id="revision-notes-view" class="view hidden">
+        <div id="revision-notes-view" class="view hidden" role="region" aria-labelledby="revision-title">
             <header>
                 <div class="header-top">
-                    <button id="back-to-basics-revision" class="nav-btn">← Back</button>
+                    <button id="back-to-basics-revision" class="nav-btn" aria-label="Go back to basics">← Back</button>
                 </div>
-                <h1>IUPAC Naming – Quick Revision Chart</h1>
+                <h1 id="revision-title">IUPAC Naming – Quick Revision Chart</h1>
             </header>
             <main class="quiz-card">
                 <div class="revision-notes-container" id="revision-notes-container"></div>
             </main>
         </div>
-    </div>
+    </main>
 
     <!-- SmilesDrawer Library -->
     <script src="https://unpkg.com/smiles-drawer@2.0.1/dist/smiles-drawer.min.js"></script>
