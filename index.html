@@ -1626,6 +1626,8 @@ function showMainIndex() {
 
         <!-- Quiz View -->
         <div id="quiz-view" class="view hidden" role="region" aria-labelledby="quiz-title">
+            <div class="quiz-bg-particles" aria-hidden="true"></div>
+            <div class="quiz-bg-glow" aria-hidden="true"></div>
             <header>
                 <div class="header-top">
                     <button id="home-btn" class="btn secondary-btn small-btn" aria-label="Return to home page">
@@ -1686,6 +1688,8 @@ function showMainIndex() {
 
         <!-- Mock Test View -->
         <div id="mock-test-view" class="view hidden" role="region" aria-labelledby="mock-test-title">
+            <div class="quiz-bg-particles" aria-hidden="true"></div>
+            <div class="quiz-bg-glow" aria-hidden="true"></div>
             <header>
                 <div class="header-top">
                     <button id="back-to-basics-mock" class="nav-btn" aria-label="Go back to basics">← Back</button>
@@ -1711,6 +1715,8 @@ function showMainIndex() {
 
         <!-- Mock Test Results View -->
         <div id="mock-results-view" class="view hidden" role="region" aria-labelledby="results-title">
+            <div class="quiz-bg-particles" aria-hidden="true"></div>
+            <div class="quiz-bg-glow" aria-hidden="true"></div>
             <header>
                 <div class="header-top">
                     <button id="back-to-basics-from-results" class="nav-btn" aria-label="Go back to basics">← Back</button>
@@ -1768,7 +1774,10 @@ function showMainIndex() {
 <button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#x2191;</button>
 
 <footer>
-    <p>Developed by ShreyasGWS</p>
+    <div class="footer-inner">
+        <span class="footer-dev">developed by</span>
+        <span class="footer-name">ShreyasGWS</span>
+    </div>
 </footer>
 
 </body>
