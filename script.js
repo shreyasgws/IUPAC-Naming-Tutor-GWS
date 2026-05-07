@@ -37,6 +37,7 @@ const questions = [
         type: 'condensed',
         data: 'CH<sub>3</sub>C(CH<sub>3</sub>)<sub>2</sub>C(CH<sub>3</sub>)<sub>2</sub>CH<sub>3</sub>',
         correct: '2,2,3,3-Tetramethylbutane',
+        alternates: ['Hexamethylethane'],
         options: ['2,3-Dimethylhexane', '2,2,3,3-Tetramethylbutane', 'Octane', '2,2-Dimethyl-3,3-dimethylbutane'],
         explanation: 'Use of Hyphens and Commas: Numbers are separated by commas (2,2,3,3). Numbers and words are separated by hyphens (3-Tetramethyl...).',
         difficulty: 'Medium'
@@ -54,6 +55,7 @@ const questions = [
         type: 'condensed',
         data: 'CH<sub>3</sub>CH<sub>2</sub>CN',
         correct: 'Propanenitrile',
+        alternates: ['Ethyl cyanide', 'Propionitrile'],
         options: ['Ethyl cyanide', 'Propanenitrile', 'Ethanenitrile', 'Cyanoethane'],
         explanation: 'Naming Nitriles: The -CN carbon is included in the parent chain. Three carbons = propane + nitrile = propanenitrile.',
         difficulty: 'Medium'
@@ -80,7 +82,7 @@ const questions = [
         type: 'condensed',
         data: 'CH<sub>3</sub>CH(NH<sub>2</sub>)CH<sub>3</sub>',
         correct: 'Propan-2-amine',
-        alternates: ['2-Propanamine', '2-Aminopropane', 'Isopropylamine'],
+        alternates: ['2-Aminopropane', 'Isopropylamine'],
         options: ['Propan-1-amine', 'Propan-2-amine', 'Butan-2-amine', 'Propan-3-amine'],
         explanation: 'Naming Amines: The amino group (-NH2) gives the suffix "-amine". Located on carbon 2, giving propan-2-amine.',
         difficulty: 'Medium'
@@ -179,6 +181,7 @@ const questions = [
         type: 'condensed',
         data: 'Cyclohexane with two methyl groups at 1,2 positions',
         correct: '1,2-Dimethylcyclohexane',
+        alternates: ['o-Dimethylcyclohexane'],
         options: ['1,2-Dimethylcyclohexane', 'o-Dimethylcyclohexane', '1,2-Cyclohexadiene', '3,3-Dimethylcyclohexane'],
         explanation: 'Numbering Cycloalkanes: Number the ring to give lowest locants. With methyls at 1 and 2, it is 1,2-dimethylcyclohexane.',
         difficulty: 'Hard'
@@ -205,7 +208,7 @@ const questions = [
         type: 'smiles',
         data: 'Cc1ccccc1O',
         correct: '2-Methylphenol',
-        alternates: ['o-Cresol', '1-Hydroxy-2-methylbenzene'],
+        alternates: ['o-Cresol'],
         options: ['2-Methylphenol', '3-Methylphenol', '4-Methylphenol', 'Hydroxytoluene'],
         explanation: 'o-Cresol: Benzene with OH and CH3 at ortho (1,2) positions. Numbering from OH gives methyl at position 2.',
         difficulty: 'Medium'
@@ -214,7 +217,7 @@ const questions = [
         type: 'condensed',
         data: 'CH<sub>3</sub>CH(CH<sub>3</sub>)CH<sub>2</sub>CH<sub>2</sub>OH',
         correct: '3-Methylbutan-1-ol',
-        alternates: ['Isobutanol'],
+        alternates: ['Isopentyl alcohol', 'Isoamyl alcohol'],
         options: ['3-Methylbutan-1-ol', '2-Methylbutan-1-ol', '3-Methylbutan-2-ol', '2-Methylpropan-1-ol'],
         explanation: 'Numbering from the alcohol end gives methyl at position 3 and OH at position 1. Common name is Isobutanol.',
         difficulty: 'Medium'
@@ -223,7 +226,7 @@ const questions = [
         type: 'condensed',
         data: 'HOCH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CHO',
         correct: '4-Hydroxybutanal',
-        alternates: ['4-Hydroxy-1-oxobutane'],
+        alternates: [],
         options: ['4-Hydroxybutanal', '3-Hydroxybutanal', '4-Hydroxypropanal', 'Butanal-4-ol'],
         explanation: 'Aldehyde (CHO) is C1. Count: C1=CHO, C2=CH<sub>2</sub>, C3=CH<sub>2</sub>, C4=CH<sub>2</sub>OH. OH is on C4, so the name is 4-Hydroxybutanal.',
         difficulty: 'Hard'
@@ -241,7 +244,7 @@ const questions = [
         type: 'condensed',
         data: 'CH<sub>3</sub>CH(Cl)CH<sub>2</sub>CH<sub>2</sub>OH',
         correct: '3-Chlorobutan-1-ol',
-        alternates: [],
+        alternates: ['3-Chloro-1-butanol'],
         options: ['3-Chlorobutan-1-ol', '4-Chlorobutan-1-ol', 'Chlorobutanol', '1-Chlorobutan-3-ol'],
         explanation: 'Numbering from the alcohol end: OH at position 1, Cl at position 3.',
         difficulty: 'Hard'
@@ -313,7 +316,7 @@ const questions = [
         type: 'condensed',
         data: 'CH<sub>3</sub>–CH(CH<sub>3</sub>)–CH<sub>2</sub>–CH<sub>3</sub>',
         correct: '2-Methylbutane',
-        alternates: [],
+        alternates: ['Isopentane'],
         options: ['2-Methylbutane', '3-Methylbutane', '3,3-Methylbutane', 'Pentane'],
         explanation: 'The longest chain is 4 carbons (butane) with a methyl group at position 2.',
         difficulty: 'Easy'
@@ -340,7 +343,7 @@ const questions = [
         type: 'condensed',
         data: 'CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>2</sub>–OH',
         correct: 'Butan-1-ol',
-        alternates: ['1-Butanol', 'Butanol'],
+        alternates: ['1-Butanol', 'Butanol', 'n-Butanol'],
         options: ['Butan-1-ol', 'Butan-2-ol', 'Propan-1-ol', 'Pentan-1-ol'],
         explanation: 'The OH group is at carbon 1 of a 4-carbon chain. Alcohols use the suffix -ol.',
         difficulty: 'Easy'
@@ -358,7 +361,7 @@ const questions = [
         type: 'condensed',
         data: 'CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CHO',
         correct: 'Butanal',
-        alternates: ['Butyraldehyde', 'Butanaldehyde'],
+        alternates: ['Butyraldehyde'],
         options: ['Butanal', 'Propanal', 'Butanoic acid', 'Pentanal'],
         explanation: 'An aldehyde (CHO) at the end of a 4-carbon chain. Aldehydes use the suffix -al.',
         difficulty: 'Easy'
@@ -394,7 +397,7 @@ const questions = [
         type: 'condensed',
         data: 'CH≡C–CH<sub>2</sub>–CH<sub>3</sub>',
         correct: 'But-1-yne',
-        alternates: ['1-Butyne'],
+        alternates: ['1-Butyne', 'Ethylacetylene'],
         options: ['But-1-yne', 'But-1-ene', 'But-2-yne', 'Pent-1-yne'],
         explanation: 'A triple bond at position 1 in a 4-carbon chain. Alkynes use the suffix -yne.',
         difficulty: 'Easy'
@@ -403,7 +406,7 @@ const questions = [
         type: 'condensed',
         data: 'CH<sub>3</sub>–C≡C–CH<sub>3</sub>',
         correct: 'But-2-yne',
-        alternates: ['2-Butyne'],
+        alternates: ['2-Butyne', 'Dimethylacetylene'],
         options: ['But-2-yne', 'But-2-ene', 'But-1-yne', 'Pent-2-yne'],
         explanation: 'A triple bond at position 2 in a 4-carbon chain.',
         difficulty: 'Easy'
@@ -412,7 +415,7 @@ const questions = [
         type: 'condensed',
         data: 'CH<sub>2</sub>=CH–CH=CH–CH<sub>3</sub>',
         correct: 'Penta-1,3-diene',
-        alternates: ['1,3-Pentadiene'],
+        alternates: ['1,3-Pentadiene', 'Piperylene'],
         options: ['Penta-1,3-diene', 'Penta-1,4-diene', 'Penta-2,4-diene', 'Buta-1,3-diene'],
         explanation: 'Two double bonds at positions 1 and 3 in a 5-carbon chain. The suffix is -diene for two double bonds.',
         difficulty: 'Medium'
@@ -448,7 +451,7 @@ const questions = [
         type: 'condensed',
         data: 'CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CH(CH<sub>3</sub>)–CH<sub>3</sub>',
         correct: '2-Methylpentane',
-        alternates: [],
+        alternates: ['Isohexane'],
         options: ['2-Methylpentane', '3-Methylpentane', '4-Methylpentane', '3,3-Methylpentane'],
         explanation: 'The longest chain is 5 carbons (pentane) with a methyl group at position 2.',
         difficulty: 'Easy'
@@ -457,7 +460,7 @@ const questions = [
         type: 'condensed',
         data: 'CH<sub>3</sub>–C(CH<sub>3</sub>)<sub>2</sub>–CH<sub>2</sub>–CH<sub>3</sub>',
         correct: '2,2-Dimethylbutane',
-        alternates: [],
+        alternates: ['Neohexane'],
         options: ['2,2-Dimethylbutane', '3,3-Dimethylbutane', '2,3-Dimethylbutane', 'Neopentane'],
         explanation: 'The parent chain is 4 carbons (butane) with two methyl groups at position 2.',
         difficulty: 'Medium'
@@ -466,7 +469,7 @@ const questions = [
         type: 'condensed',
         data: 'CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>2</sub>–OH',
         correct: 'Pentan-1-ol',
-        alternates: ['1-Pentanol', 'Pentanol'],
+        alternates: ['1-Pentanol', 'Pentanol', 'Amyl alcohol', 'n-Pentanol'],
         options: ['Pentan-1-ol', 'Pentan-2-ol', 'Butan-1-ol', 'Hexan-1-ol'],
         explanation: 'The OH group is at carbon 1 of a 5-carbon chain. Alcohols use the suffix -ol.',
         difficulty: 'Easy'
@@ -547,7 +550,7 @@ const questions = [
         type: 'condensed',
         data: 'HO–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CHO',
         correct: '5-Hydroxypentanal',
-        alternates: ['5-Hydroxypentan-1-al'],
+        alternates: [],
         options: ['5-Hydroxypentanal', '4-Hydroxypentanal', '5-Hydroxypentanol', 'Pentanediol'],
         explanation: 'Aldehyde (CHO) is C1. Count: C1=CHO, C2, C3, C4, C5=CH<sub>2</sub>OH. OH is on C5, so the name is 5-Hydroxypentanal.',
         difficulty: 'Hard'
@@ -574,7 +577,7 @@ const questions = [
         type: 'condensed',
         data: 'Cyclohexane with methyl groups at positions 1 and 3',
         correct: '1,3-Dimethylcyclohexane',
-        alternates: [],
+        alternates: ['m-Dimethylcyclohexane'],
         options: ['1,3-Dimethylcyclohexane', '3,1-Dimethylcyclohexane', '1,3-Dimethylhexane', '3,3-Dimethylcyclohexane'],
         explanation: 'Number the ring to give lowest locants. Two methyl groups at positions 1 and 3.',
         difficulty: 'Medium'
