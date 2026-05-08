@@ -823,80 +823,81 @@ header p {
 }
 
 .mol-benzene {
-    top: 3%;
+    top: 4%;
     left: 2%;
     width: 85px;
-    animation: benzeneFloat 40s ease-in-out infinite;
+    animation: benzeneFloat 20s ease-in-out infinite;
 }
 
 .mol-alkane {
-    bottom: 3%;
-    right: 2%;
+    bottom: 4%;
+    left: 2%;
     width: 125px;
-    animation: alkaneFloat 35s ease-in-out infinite;
+    animation: alkaneFloat 18s ease-in-out infinite;
 }
 
 .mol-methane {
-    top: 3%;
+    top: 4%;
     right: 2%;
     width: 75px;
-    animation: methaneFloat 45s ease-in-out infinite;
+    animation: methaneFloat 22s ease-in-out infinite;
 }
 
 .mol-cyclo {
-    bottom: 3%;
-    left: 2%;
+    bottom: 4%;
+    right: 2%;
     width: 70px;
-    animation: cycloFloat 38s ease-in-out infinite;
+    animation: cycloFloat 16s ease-in-out infinite;
+}
+
+.mol-ethanol {
+    top: 50%;
+    left: 2%;
+    width: 80px;
+    animation: ethanolFloat 19s ease-in-out infinite;
+}
+
+.mol-ethene {
+    top: 50%;
+    right: 2%;
+    width: 90px;
+    animation: etheneFloat 17s ease-in-out infinite;
 }
 
 @keyframes benzeneFloat {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(6px, -4px) rotate(90deg); }
-    50% { transform: translate(-4px, 6px) rotate(180deg); }
-    75% { transform: translate(5px, 3px) rotate(270deg); }
+    25% { transform: translate(8px, -5px) rotate(90deg); }
+    50% { transform: translate(-5px, 8px) rotate(180deg); }
+    75% { transform: translate(6px, 4px) rotate(270deg); }
 }
 
 @keyframes alkaneFloat {
-    0%, 100% { transform: translate(0, 0); }
-    25% { transform: translate(-6px, 6px); }
-    50% { transform: translate(5px, -5px); }
-    75% { transform: translate(-4px, 4px); }
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-8px, 8px) rotate(45deg); }
+    50% { transform: translate(6px, -7px) rotate(90deg); }
+    75% { transform: translate(-5px, 5px) rotate(135deg); }
 }
 
 @keyframes methaneFloat {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(7px, 3px) scale(1.02); }
-    50% { transform: translate(3px, -6px) scale(0.98); }
-    75% { transform: translate(-6px, -2px) scale(1.01); }
-}
-
-.mol-ethanol {
-    bottom: 3%;
-    left: 50%;
-    width: 80px;
-    animation: ethanolFloat 42s ease-in-out infinite;
+    0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    25% { transform: translate(9px, 4px) scale(1.03) rotate(30deg); }
+    50% { transform: translate(4px, -8px) scale(0.97) rotate(60deg); }
+    75% { transform: translate(-8px, -3px) scale(1.02) rotate(90deg); }
 }
 
 @keyframes ethanolFloat {
-    0%, 100% { transform: translate(0, 0) rotate(-3deg); }
-    25% { transform: translate(5px, -3px) rotate(2deg); }
-    50% { transform: translate(-4px, -5px) rotate(-1deg); }
-    75% { transform: translate(3px, 2px) rotate(3deg); }
-}
-
-.mol-ethene {
-    top: 3%;
-    left: 50%;
-    width: 90px;
-    animation: etheneFloat 36s ease-in-out infinite;
+    0%, 100% { transform: translate(0, 0) rotate(-5deg); }
+    25% { transform: translate(7px, -4px) rotate(15deg); }
+    50% { transform: translate(-5px, 6px) rotate(-10deg); }
+    75% { transform: translate(4px, 3px) rotate(20deg); }
 }
 
 @keyframes etheneFloat {
-    0%, 100% { transform: translate(0, 0); }
-    25% { transform: translate(-5px, 4px); }
-    50% { transform: translate(4px, -4px); }
-    75% { transform: translate(-3px, -3px); }
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    20% { transform: translate(-6px, 5px) rotate(-25deg); }
+    40% { transform: translate(5px, -6px) rotate(25deg); }
+    60% { transform: translate(-4px, -4px) rotate(-15deg); }
+    80% { transform: translate(6px, 3px) rotate(20deg); }
 }
 
 @keyframes cycloFloat {
