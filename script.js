@@ -2522,6 +2522,8 @@ function isCondensedFormula(str) {
     if (/C<sub>\d+/.test(str)) return true;
     // Unicode condensed formulas
     if (/^[CHON][₃₂₁]?[-–=≡]/.test(str)) return true;
+    // Plain condensed formula like HCOOH, CH3OH, C2H5OH, CHCl3 (element symbols + digits, no spaces)
+    if (/^[A-Z][a-z]?\d*([A-Z][a-z]?\d*)+\d*$/.test(str) && !isChemicalName(str) && !str.includes(' ')) return true;
     return false;
 }
 
@@ -2629,7 +2631,15 @@ function renderQuestionStructure(q, canvas, condensedDisplay) {
         return;
     }
     
-    // Data is a chemical name or description - show safe placeholder
+    // Data is a descriptive sentence (multi-word English description) — show as readable text
+    if (dataStr.includes(' ') && /[a-z].*[a-z]/.test(dataStr) && (dataStr.includes('with') || dataStr.includes(' at ') || dataStr.includes(' and ') || dataStr.includes('group') || dataStr.includes('position'))) {
+        canvas.classList.add('hidden');
+        condensedDisplay.classList.remove('hidden');
+        condensedDisplay.innerHTML = `<span style="font-size:1.2rem;color:var(--text-chemical);">${dataStr}</span>`;
+        return;
+    }
+    
+    // Data is a chemical name or description — show safe placeholder
     canvas.classList.remove('hidden');
     condensedDisplay.classList.add('hidden');
     if (dataStr.toLowerCase().includes('benzene') || dataStr.toLowerCase().includes('phenyl') || dataStr.toLowerCase().includes('phenol') || dataStr.toLowerCase().includes('xylene') || dataStr.toLowerCase().includes('toluene')) {
