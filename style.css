@@ -552,17 +552,19 @@ header p {
     border-radius: 50%;
     background: rgba(57,255,20,0.20);
     box-shadow:
-        60px 80px 0 -0.5px rgba(57,255,20,0.12),
-        180px 200px 0 -0.5px rgba(57,255,20,0.10),
-        320px 120px 0 -0.5px rgba(57,255,20,0.14),
-        480px 300px 0 -0.5px rgba(57,255,20,0.08),
-        600px 60px 0 -0.5px rgba(57,255,20,0.12),
-        150px 400px 0 -0.5px rgba(57,255,20,0.10),
-        420px 450px 0 -0.5px rgba(57,255,20,0.08),
-        700px 380px 0 -0.5px rgba(57,255,20,0.10),
-        250px 550px 0 -0.5px rgba(57,255,20,0.06),
-        550px 520px 0 -0.5px rgba(57,255,20,0.10);
-    animation: particleDrift 18s ease-in-out infinite;
+        60px 80px 0 -0.5px rgba(57,255,20,0.14),
+        180px 200px 0 -0.5px rgba(57,255,20,0.12),
+        320px 120px 0 -0.5px rgba(57,255,20,0.16),
+        480px 300px 0 -0.5px rgba(57,255,20,0.10),
+        600px 60px 0 -0.5px rgba(57,255,20,0.14),
+        150px 400px 0 -0.5px rgba(57,255,20,0.12),
+        420px 450px 0 -0.5px rgba(57,255,20,0.10),
+        700px 380px 0 -0.5px rgba(57,255,20,0.12),
+        250px 550px 0 -0.5px rgba(57,255,20,0.08),
+        550px 520px 0 -0.5px rgba(57,255,20,0.12),
+        130px 180px 0 -0.5px rgba(57,255,20,0.10),
+        510px 340px 0 -0.5px rgba(57,255,20,0.08);
+    animation: particleDrift 7s ease-in-out infinite;
 }
 
 .quiz-bg-particles::after {
@@ -570,22 +572,216 @@ header p {
     height: 1px;
     background: rgba(46,127,179,0.15);
     box-shadow:
-        100px 140px 0 0px rgba(46,127,179,0.10),
-        280px 260px 0 0px rgba(46,127,179,0.08),
-        450px 180px 0 0px rgba(46,127,179,0.12),
-        580px 420px 0 0px rgba(46,127,179,0.06),
-        720px 280px 0 0px rgba(46,127,179,0.10),
-        90px 480px 0 0px rgba(46,127,179,0.08),
-        380px 580px 0 0px rgba(46,127,179,0.06),
-        640px 560px 0 0px rgba(46,127,179,0.08);
-    animation: particleDrift 22s ease-in-out infinite reverse;
+        100px 140px 0 0px rgba(46,127,179,0.12),
+        280px 260px 0 0px rgba(46,127,179,0.10),
+        450px 180px 0 0px rgba(46,127,179,0.14),
+        580px 420px 0 0px rgba(46,127,179,0.08),
+        720px 280px 0 0px rgba(46,127,179,0.12),
+        90px 480px 0 0px rgba(46,127,179,0.10),
+        380px 580px 0 0px rgba(46,127,179,0.08),
+        640px 560px 0 0px rgba(46,127,179,0.10),
+        200px 320px 0 0px rgba(46,127,179,0.08),
+        500px 120px 0 0px rgba(46,127,179,0.10);
+    animation: particleDrift 9s ease-in-out infinite reverse;
 }
 
 @keyframes particleDrift {
     0%, 100% { transform: translate(0, 0); opacity: 0.4; }
-    25% { transform: translate(15px, -10px); opacity: 0.8; }
-    50% { transform: translate(-10px, 15px); opacity: 0.5; }
-    75% { transform: translate(20px, 5px); opacity: 0.7; }
+    25% { transform: translate(25px, -18px); opacity: 0.8; }
+    50% { transform: translate(-18px, 25px); opacity: 0.5; }
+    75% { transform: translate(30px, 12px); opacity: 0.7; }
+}
+
+/* 2nd particle layer — faster, green-teal */
+.quiz-bg-particles-2 {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+.quiz-bg-particles-2::before,
+.quiz-bg-particles-2::after {
+    content: '';
+    position: absolute;
+    width: 1.5px;
+    height: 1.5px;
+    border-radius: 50%;
+    background: rgba(57,255,20,0.12);
+    box-shadow:
+        80px 300px 0 0px rgba(57,255,20,0.10),
+        240px 80px 0 0px rgba(57,255,20,0.08),
+        560px 200px 0 0px rgba(57,255,20,0.12),
+        680px 500px 0 0px rgba(57,255,20,0.06),
+        120px 600px 0 0px rgba(57,255,20,0.10),
+        400px 400px 0 0px rgba(57,255,20,0.08),
+        620px 100px 0 0px rgba(57,255,20,0.10),
+        300px 550px 0 0px rgba(57,255,20,0.06);
+    animation: particleDrift2 5s ease-in-out infinite;
+}
+
+.quiz-bg-particles-2::after {
+    width: 1px;
+    height: 1px;
+    background: rgba(180,220,140,0.08);
+    box-shadow:
+        160px 220px 0 0px rgba(180,220,140,0.08),
+        520px 140px 0 0px rgba(180,220,140,0.06),
+        360px 480px 0 0px rgba(180,220,140,0.10),
+        650px 340px 0 0px rgba(180,220,140,0.06),
+        220px 140px 0 0px rgba(180,220,140,0.08),
+        480px 520px 0 0px rgba(180,220,140,0.06);
+    animation: particleDrift2 7s ease-in-out infinite reverse;
+}
+
+@keyframes particleDrift2 {
+    0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+    33% { transform: translate(28px, 15px); opacity: 0.7; }
+    66% { transform: translate(-15px, -22px); opacity: 0.5; }
+}
+
+/* 3rd particle layer — medium speed, wider drift */
+.quiz-bg-particles-3 {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+.quiz-bg-particles-3::before,
+.quiz-bg-particles-3::after {
+    content: '';
+    position: absolute;
+    width: 1.5px;
+    height: 1.5px;
+    border-radius: 50%;
+    background: rgba(100,200,255,0.06);
+    box-shadow:
+        340px 60px 0 0px rgba(100,200,255,0.08),
+        100px 350px 0 0px rgba(100,200,255,0.06),
+        700px 180px 0 0px rgba(100,200,255,0.08),
+        440px 600px 0 0px rgba(100,200,255,0.05),
+        50px 500px 0 0px rgba(100,200,255,0.06),
+        600px 420px 0 0px rgba(100,200,255,0.08),
+        280px 200px 0 0px rgba(100,200,255,0.05),
+        500px 60px 0 0px rgba(100,200,255,0.06);
+    animation: particleDrift3 6s ease-in-out infinite;
+}
+
+.quiz-bg-particles-3::after {
+    width: 1px;
+    height: 1px;
+    background: rgba(180,160,200,0.05);
+    box-shadow:
+        200px 100px 0 0px rgba(180,160,200,0.06),
+        400px 350px 0 0px rgba(180,160,200,0.05),
+        150px 550px 0 0px rgba(180,160,200,0.06),
+        750px 280px 0 0px rgba(180,160,200,0.04),
+        320px 380px 0 0px rgba(180,160,200,0.06),
+        580px 200px 0 0px rgba(180,160,200,0.05);
+    animation: particleDrift3 8s ease-in-out infinite reverse;
+}
+
+@keyframes particleDrift3 {
+    0%, 100% { transform: translate(0, 0); opacity: 0.2; }
+    25% { transform: translate(-25px, 20px); opacity: 0.6; }
+    50% { transform: translate(20px, -15px); opacity: 0.4; }
+    75% { transform: translate(-10px, -30px); opacity: 0.5; }
+}
+
+/* 4th particle layer — fast, warm gold/orange */
+.quiz-bg-particles-4 {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+.quiz-bg-particles-4::before,
+.quiz-bg-particles-4::after {
+    content: '';
+    position: absolute;
+    width: 1.5px;
+    height: 1.5px;
+    border-radius: 50%;
+    background: rgba(255,200,100,0.07);
+    box-shadow:
+        140px 250px 0 0px rgba(255,200,100,0.08),
+        420px 100px 0 0px rgba(255,200,100,0.06),
+        600px 450px 0 0px rgba(255,200,100,0.07),
+        260px 500px 0 0px rgba(255,200,100,0.05),
+        720px 320px 0 0px rgba(255,200,100,0.08),
+        80px 80px 0 0px rgba(255,200,100,0.06),
+        500px 600px 0 0px rgba(255,200,100,0.05);
+    animation: particleDrift4 4s ease-in-out infinite;
+}
+.quiz-bg-particles-4::after {
+    width: 1px;
+    height: 1px;
+    background: rgba(255,160,60,0.06);
+    box-shadow:
+        320px 180px 0 0px rgba(255,160,60,0.07),
+        180px 420px 0 0px rgba(255,160,60,0.05),
+        660px 200px 0 0px rgba(255,160,60,0.06),
+        440px 550px 0 0px rgba(255,160,60,0.05),
+        100px 340px 0 0px rgba(255,160,60,0.07),
+        560px 80px 0 0px rgba(255,160,60,0.05);
+    animation: particleDrift4 6s ease-in-out infinite reverse;
+}
+
+@keyframes particleDrift4 {
+    0%, 100% { transform: translate(0, 0); opacity: 0.25; }
+    30% { transform: translate(30px, 18px); opacity: 0.7; }
+    60% { transform: translate(-20px, -25px); opacity: 0.4; }
+    85% { transform: translate(15px, -10px); opacity: 0.6; }
+}
+
+/* 5th particle layer — fastest, cool purple/pink */
+.quiz-bg-particles-5 {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+.quiz-bg-particles-5::before,
+.quiz-bg-particles-5::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    background: rgba(200,140,255,0.06);
+    box-shadow:
+        220px 120px 0 0px rgba(200,140,255,0.07),
+        480px 380px 0 0px rgba(200,140,255,0.05),
+        140px 480px 0 0px rgba(200,140,255,0.06),
+        680px 160px 0 0px rgba(200,140,255,0.05),
+        380px 600px 0 0px rgba(200,140,255,0.07),
+        80px 280px 0 0px rgba(200,140,255,0.05),
+        600px 520px 0 0px rgba(200,140,255,0.06);
+    animation: particleDrift5 3s ease-in-out infinite;
+}
+.quiz-bg-particles-5::after {
+    width: 1.5px;
+    height: 1.5px;
+    background: rgba(255,120,180,0.05);
+    box-shadow:
+        360px 60px 0 0px rgba(255,120,180,0.06),
+        120px 360px 0 0px rgba(255,120,180,0.05),
+        560px 280px 0 0px rgba(255,120,180,0.06),
+        240px 540px 0 0px rgba(255,120,180,0.04),
+        700px 420px 0 0px rgba(255,120,180,0.05),
+        460px 160px 0 0px rgba(255,120,180,0.06);
+    animation: particleDrift5 5s ease-in-out infinite reverse;
+}
+
+@keyframes particleDrift5 {
+    0%, 100% { transform: translate(0, 0); opacity: 0.2; }
+    20% { transform: translate(-22px, 28px); opacity: 0.65; }
+    40% { transform: translate(25px, -12px); opacity: 0.45; }
+    60% { transform: translate(-15px, 20px); opacity: 0.6; }
+    80% { transform: translate(18px, -18px); opacity: 0.35; }
 }
 
 .quiz-bg-glow {
@@ -602,6 +798,84 @@ header p {
 @keyframes ambientPulse {
     0%, 100% { opacity: 0.5; }
     50% { opacity: 1; }
+}
+
+/* ── Drifting Molecule Nodes ── */
+#bg-molecules {
+    display: none;
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bg-mol {
+    position: absolute;
+    pointer-events: none;
+    width: 95px;
+}
+
+.bg-mol svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+}
+
+.mol-benzene {
+    top: 7%;
+    left: 4%;
+    width: 85px;
+    animation: benzeneFloat 32s ease-in-out infinite;
+}
+
+.mol-alkane {
+    bottom: 10%;
+    right: 4%;
+    width: 125px;
+    animation: alkaneFloat 24s ease-in-out infinite;
+}
+
+.mol-methane {
+    top: 52%;
+    left: 90%;
+    width: 75px;
+    animation: methaneFloat 38s ease-in-out infinite;
+}
+
+.mol-cyclo {
+    top: 50%;
+    left: 2%;
+    width: 70px;
+    animation: cycloFloat 28s ease-in-out infinite;
+}
+
+@keyframes benzeneFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    20% { transform: translate(18px, -12px) rotate(72deg); }
+    40% { transform: translate(-8px, 18px) rotate(144deg); }
+    60% { transform: translate(14px, 8px) rotate(216deg); }
+    80% { transform: translate(-12px, -10px) rotate(288deg); }
+}
+
+@keyframes alkaneFloat {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-16px, 18px); }
+    50% { transform: translate(12px, -14px); }
+    75% { transform: translate(-8px, 8px); }
+}
+
+@keyframes methaneFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(22px, 10px) scale(1.04); }
+    50% { transform: translate(8px, -18px) scale(0.96); }
+    75% { transform: translate(-18px, -4px) scale(1.02); }
+}
+
+@keyframes cycloFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(12px, 14px) rotate(-120deg); }
+    66% { transform: translate(-10px, -12px) rotate(-240deg); }
 }
 
 #quiz-view header {

@@ -1577,6 +1577,7 @@ const resultsContainer = document.getElementById('results-container');
 const retryMockBtn = document.getElementById('retry-mock-btn');
 const revisionNotesView = document.getElementById('revision-notes-view');
 const backToBasicsRevision = document.getElementById('back-to-basics-revision');
+const bgMolecules = document.getElementById('bg-molecules');
 
 // SmilesDrawer initialization
 let smilesDrawer;
@@ -1766,6 +1767,13 @@ function renderTutorialCanvases() {
     }
 }
 
+function updateBgMolecules() {
+    const show = !quizView.classList.contains('hidden') ||
+                 !mockTestView.classList.contains('hidden') ||
+                 !mockResultsView.classList.contains('hidden');
+    bgMolecules.style.display = show ? 'block' : 'none';
+}
+
 function goHome() {
     window.scrollTo(0, 0);
     document.body.classList.add('theme-home');
@@ -1778,6 +1786,7 @@ function goHome() {
     revisionNotesView.classList.add('hidden');
     currentMode = 'home';
     updateStatsDisplay();
+    updateBgMolecules();
     
     // Clean up tutorial observer to prevent memory leak
     destroyTutorialObserver();
@@ -2093,6 +2102,7 @@ function startMockTest() {
     qaView.classList.add('hidden');
     mockTestView.classList.remove('hidden');
     mockResultsView.classList.add('hidden');
+    updateBgMolecules();
 
     mockCurrentIndex = 0;
     mockScore = 0;
@@ -2410,6 +2420,7 @@ function nextMockQuestion() {
 function showMockResults() {
     mockTestView.classList.add('hidden');
     mockResultsView.classList.remove('hidden');
+    updateBgMolecules();
     
     // Accessibility: Manage focus
     manageFocus('mock-results-view');
@@ -2474,6 +2485,7 @@ function startQuiz(mode) {
     homeView.classList.add('hidden');
     quizView.classList.remove('hidden');
     document.body.classList.remove('theme-home');
+    updateBgMolecules();
 
     loadQuestion();
     
