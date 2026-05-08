@@ -2187,6 +2187,17 @@ function renderMockQuestionStructure(q, canvas) {
         return;
     }
     
+    // Fallback: check if data is a descriptive sentence or common name — show as text instead of placeholder
+    if (dataStr.includes(' ') && /[a-z].*[a-z]/.test(dataStr) && (dataStr.includes('with') || dataStr.includes(' at ') || dataStr.includes(' and ') || dataStr.includes('group') || dataStr.includes('position'))) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(57, 255, 20, 0.08)';
+        ctx.font = '18px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(dataStr, canvas.width / 2, canvas.height / 2);
+        return;
+    }
+    
     // Fallback: draw safe placeholder
     drawMockFallback(ctx, canvas.width, canvas.height, dataStr);
 }
@@ -2229,7 +2240,17 @@ function drawMockFallback(ctx, w, h, dataStr) {
         return;
     }
     
-    // Neutral placeholder
+    // Common name or formula-like text — display as readable text
+    if ((!/^[A-Z][a-z]?\d/.test(dataStr) && dataStr.length > 1) || dataStr.includes('--')) {
+        ctx.fillStyle = 'rgba(57, 255, 20, 0.08)';
+        ctx.font = '18px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(dataStr, cx, cy);
+        return;
+    }
+    
+    // Neutral placeholder — clean circle without text label
     ctx.strokeStyle = 'rgba(57, 255, 20, 0.20)';
     ctx.lineWidth = 2;
     ctx.setLineDash([4, 4]);
@@ -2237,12 +2258,6 @@ function drawMockFallback(ctx, w, h, dataStr) {
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.stroke();
     ctx.setLineDash([]);
-    
-    ctx.fillStyle = 'rgba(57, 255, 20, 0.10)';
-    ctx.font = '14px Inter, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('Structure', cx, cy);
 }
 
 function renderMockQuestion(filteredQuestions) {
