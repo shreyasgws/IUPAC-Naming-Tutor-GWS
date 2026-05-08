@@ -681,8 +681,8 @@ const questions = [
         difficulty: 'Medium'
     },
     {
-        type: 'condensed',
-        data: '1,2,4-Trimethylbenzene',
+        type: 'smiles',
+        data: 'Cc1c(C)cc(C)cc1',
         correct: '1,2,4-Trimethylbenzene',
         alternates: ['Pseudocumene'],
         options: ['1,2,4-Trimethylbenzene', '1,3,5-Trimethylbenzene', '1,2,3-Trimethylbenzene', 'Mesitylene'],
@@ -690,8 +690,8 @@ const questions = [
         difficulty: 'Medium'
     },
     {
-        type: 'condensed',
-        data: 'Cyclohexene with methyl group at position 3',
+        type: 'smiles',
+        data: 'CC1=CCCCC1',
         correct: '3-Methylcyclohexene',
         options: ['3-Methylcyclohexene', '1-Methylcyclohexene', '4-Methylcyclohexene', '3,3-Methylcyclohexene'],
         explanation: 'Number the ring to give the double bond the lowest locant, then the substituent.',
@@ -797,8 +797,8 @@ const questions = [
         difficulty: 'Hard'
     },
     {
-        type: 'condensed',
-        data: '1,3-Dimethyl-5-nitrobenzene',
+        type: 'smiles',
+        data: 'Cc1cc(C)cc([N+](=O)[O-])c1',
         correct: '1,3-Dimethyl-5-nitrobenzene',
         alternates: ['5-Nitro-1,3-dimethylbenzene'],
         options: ['1,3-Dimethyl-5-nitrobenzene', '3,5-Dimethylnitrobenzene', 'm-Dimethyl-p-nitrobenzene', '1,3-Dimethyl-2-nitrobenzene'],
@@ -806,8 +806,8 @@ const questions = [
         difficulty: 'Hard'
     },
     {
-        type: 'condensed',
-        data: 'Cyclohexene with CH<sub>3</sub> at position 3 and Cl at position 5',
+        type: 'smiles',
+        data: 'C1=CC(C)CC(Cl)C1',
         correct: '5-Chloro-3-methylcyclohexene',
         alternates: ['3-Methyl-5-chlorocyclohexene'],
         options: ['5-Chloro-3-methylcyclohexene', '3-Chloro-5-methylcyclohexene', '3-Methyl-5-chlorohexene', 'Chloro-methylcyclohexene'],
@@ -957,8 +957,8 @@ const questions = [
         difficulty: 'Medium'
     },
     {
-        type: 'condensed',
-        data: 'Benzene with methyl and chlorine at 1,2 positions',
+        type: 'smiles',
+        data: 'Cc1ccccc1Cl',
         correct: '1-Chloro-2-methylbenzene',
         alternates: ['o-Chlorotoluene'],
         options: ['1-Chloro-2-methylbenzene', '2-Chloro-1-methylbenzene', 'Chloromethylbenzene', '1-Chloro-3-methylbenzene'],
@@ -966,8 +966,8 @@ const questions = [
         difficulty: 'Medium'
     },
     {
-        type: 'condensed',
-        data: 'Cyclohexane with CH<sub>3</sub> at 1 and C<sub>2</sub>H<sub>5</sub> at 4',
+        type: 'smiles',
+        data: 'CCC1CCC(C)CC1',
         correct: '1-Ethyl-4-methylcyclohexane',
         alternates: ['4-Methyl-1-ethylcyclohexane'],
         options: ['1-Ethyl-4-methylcyclohexane', '4-Ethyl-1-methylcyclohexane', '1-Methyl-4-ethylcyclohexane', 'Ethylmethylcyclohexane'],
@@ -1178,8 +1178,8 @@ const questions = [
         difficulty: 'Hard'
     },
     {
-        type: 'condensed',
-        data: '1-Chloro-2,4-dimethylbenzene',
+        type: 'smiles',
+        data: 'Cc1ccc(C)c(Cl)c1',
         correct: '1-Chloro-2,4-dimethylbenzene',
         alternates: ['2,4-Dimethylchlorobenzene', '4-Chloro-1,3-dimethylbenzene'],
         options: ['1-Chloro-2,4-dimethylbenzene', '3,3-Dimethylchlorobenzene', '1-Chloro-3,5-dimethylbenzene', '1-Bromo-2,4-dimethylbenzene'],
@@ -1187,8 +1187,8 @@ const questions = [
         difficulty: 'Hard'
     },
     {
-        type: 'condensed',
-        data: '3-Nitrophenol',
+        type: 'smiles',
+        data: 'Oc1cccc([N+](=O)[O-])c1',
         correct: '3-Nitrophenol',
         alternates: ['m-Nitrophenol'],
         options: ['3-Nitrophenol', '2-Nitrophenol', '4-Nitrophenol', '3-Nitrobenzene'],
@@ -1196,8 +1196,8 @@ const questions = [
         difficulty: 'Hard'
     },
     {
-        type: 'condensed',
-        data: 'Phenylbutane',
+        type: 'smiles',
+        data: 'CCCCc1ccccc1',
         correct: 'Phenylbutane',
         alternates: ['Butylbenzene', '1-Phenylbutane'],
         options: ['Phenylbutane', 'Benzylpropane', 'Phenylpropane', 'Butylcyclohexane'],
@@ -1205,8 +1205,8 @@ const questions = [
         difficulty: 'Medium'
     },
     {
-        type: 'condensed',
-        data: 'Cyclohexene with CH<sub>3</sub> at 3 and C<sub>2</sub>H<sub>5</sub> at 5',
+        type: 'smiles',
+        data: 'CCC1CC=CC(C)C1',
         correct: '5-Ethyl-3-methylcyclohexene',
         alternates: ['3-Methyl-5-ethylcyclohexene'],
         options: ['5-Ethyl-3-methylcyclohexene', '3-Ethyl-5-methylcyclohexene', '5-Methyl-3-ethylcyclohexene', 'Ethyl-methylcyclohexene'],
@@ -1290,6 +1290,9 @@ const mockTestQuestions = [
     { section: 'B', marks: 2, data: 'CH₃–CO–CH₂–CH₃', correct: 'Butan-2-one', alternatives: ['Butanone', 'Methyl ethyl ketone'], options: ['Butan-2-one', 'Butan-3-one', 'Pentan-2-one', 'Propanone'], difficulty: 'Medium' },
     { section: 'F', marks: 5, data: 'CH₃–CH(Cl)–CH₂–CH₂–OH', correct: '3-Chlorobutan-1-ol', options: ['3-Chlorobutan-1-ol', '4-Chlorobutan-1-ol', 'Chlorobutanol', '1-Chlorobutan-3-ol'], alternatives: [], difficulty: 'Hard' }
 ];
+
+// Render counter to prevent stale async callbacks
+let renderCounter = 0;
 
 // Application State (solves Global State Pollution)
 const AppState = {
@@ -1443,7 +1446,7 @@ function createTutorialObserver() {
     let localDrawer = new SmilesDrawer.Drawer({
         width: 280,
         height: 100,
-        bondThickness: 2,
+        bondThickness: 2.4,
         atomVisualization: 'default'
     });
 
@@ -1456,7 +1459,7 @@ function createTutorialObserver() {
             canvas.height = parseInt(height);
 
             SmilesDrawer.parse(smiles, function(tree) {
-                localDrawer.draw(tree, canvas, 'light', false);
+                localDrawer.draw(tree, canvas, 'dark', false);
                 canvas.classList.add('rendered');
             }, function(err) {
                 console.error('Error parsing tutorial smiles:', err);
@@ -1592,7 +1595,7 @@ function init() {
         smilesDrawer = new SmilesDrawer.Drawer({
             width: 400,
             height: 300,
-            bondThickness: 2,
+            bondThickness: 2.4,
             atomVisualization: 'default'
         });
     } catch (e) {
@@ -2130,6 +2133,108 @@ function startMockTest() {
     manageFocus('mock-test-view');
 }
 
+function renderMockQuestionStructure(q, canvas) {
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    const currentRender = ++renderCounter;
+    const dataStr = q.structure || q.smiles || q.data;
+    
+    // Use explicit SMILES/structure field if available
+    if (q.smiles || q.structure) {
+        canvas.width = 400;
+        canvas.height = 300;
+        let mockDrawer = new SmilesDrawer.Drawer({
+            width: 400, height: 300, bondThickness: 2.4, atomVisualization: 'default'
+        });
+        SmilesDrawer.parse(dataStr, function(tree) {
+            if (currentRender !== renderCounter) return;
+            mockDrawer.draw(tree, canvas, 'dark', false);
+        }, function(err) {
+            if (currentRender !== renderCounter) return;
+            console.warn('Mock SMILES parse error:', err);
+            drawMockFallback(ctx, canvas.width, canvas.height, dataStr);
+        });
+        return;
+    }
+    
+    // Try convertToSmiles for text formula data
+    const smiles = convertToSmiles(q.data);
+    if (smiles) {
+        canvas.width = 400;
+        canvas.height = 300;
+        let mockDrawer = new SmilesDrawer.Drawer({
+            width: 400, height: 300, bondThickness: 2.4, atomVisualization: 'default'
+        });
+        SmilesDrawer.parse(smiles, function(tree) {
+            if (currentRender !== renderCounter) return;
+            mockDrawer.draw(tree, canvas, 'dark', false);
+        }, function(err) {
+            if (currentRender !== renderCounter) return;
+            console.warn('Mock SMILES render error:', err);
+            drawMockFallback(ctx, canvas.width, canvas.height, dataStr);
+        });
+        return;
+    }
+    
+    // Fallback: draw safe placeholder
+    drawMockFallback(ctx, canvas.width, canvas.height, dataStr);
+}
+
+function drawMockFallback(ctx, w, h, dataStr) {
+    ctx.clearRect(0, 0, w, h);
+    const cx = w / 2, cy = h / 2;
+    const r = Math.min(w, h) * 0.3;
+    
+    // Check if aromatic
+    if (dataStr.toLowerCase().includes('benzene') || dataStr.toLowerCase().includes('phenyl') || dataStr.toLowerCase().includes('phenol') || dataStr.toLowerCase().includes('xylene') || dataStr.toLowerCase().includes('toluene')) {
+        ctx.strokeStyle = 'rgba(57, 255, 20, 0.35)';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        for (let i = 0; i < 6; i++) {
+            const a = (i * 2 * Math.PI / 6) - Math.PI / 2;
+            const x = cx + r * Math.cos(a);
+            const y = cy + r * Math.sin(a);
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.stroke();
+        ctx.strokeStyle = 'rgba(57, 255, 20, 0.15)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r * 0.85, 0, Math.PI * 2);
+        ctx.stroke();
+        return;
+    }
+    
+    // Check if cyclic
+    if (dataStr.toLowerCase().includes('cyclo')) {
+        ctx.strokeStyle = 'rgba(57, 255, 20, 0.25)';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        return;
+    }
+    
+    // Neutral placeholder
+    ctx.strokeStyle = 'rgba(57, 255, 20, 0.20)';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    
+    ctx.fillStyle = 'rgba(57, 255, 20, 0.10)';
+    ctx.font = '14px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('Structure', cx, cy);
+}
+
 function renderMockQuestion(filteredQuestions) {
     filteredMockQuestions = filteredQuestions;
     const q = filteredMockQuestions[mockCurrentIndex];
@@ -2166,25 +2271,8 @@ function renderMockQuestion(filteredQuestions) {
     // Render question text
     mockQuestionText.textContent = q.data;
 
-    // Draw structure if not text-based
-    if (!q.data.includes('with') && !q.data.includes('Cyclo') && !q.data.includes('Benzene') && !q.data.includes('C₆')) {
-        const smiles = convertToSmiles(q.data);
-        if (smiles) {
-            mockStructureCanvas.width = 400;
-            mockStructureCanvas.height = 300;
-            let mockDrawer = new SmilesDrawer.Drawer({
-                width: 400,
-                height: 300,
-                bondThickness: 2,
-                atomVisualization: 'default'
-            });
-            SmilesDrawer.parse(smiles, function(tree) {
-                mockDrawer.draw(tree, mockStructureCanvas, 'light', false);
-            }, function(err) {
-                console.error('Error parsing SMILES:', err);
-            });
-        }
-    }
+    // Draw structure using safe pipeline
+    renderMockQuestionStructure(q, mockStructureCanvas);
 
     // Render options with accessibility attributes
     mockOptionsContainer.innerHTML = '';
@@ -2221,15 +2309,40 @@ function convertToSmiles(data) {
         'HO–CH₂–CH₂–CHO': 'OCC=O',
         'CH₃–CO–CH₂–CH₂–OH': 'CC(=O)CCO',
         'CH₃–CH(Cl)–CH₂–OH': 'CC(Cl)CO',
-        'HO–CH₂–CH(NH₂)–COOH': 'NCC(O)CO',
+        'HO–CH₂–CH(NH₂)–COOH': 'C(C(C(=O)O)N)O',
         'CH₂=CH–CH=CH₂': 'C=CC=C',
         'CH₂=CH–CH(CH₃)–CH=CH₂': 'C=CC(C)C=C',
-        'CH≡C–CH₂–CH₃': 'C#CCCC',
+        'CH≡C–CH₂–CH₃': 'C#CCC',
         'CH₂=CH–C≡CH': 'C=CC#C',
         'CH₃–CH(CH₃)–CH(CH₃)–CH₃': 'CC(C)C(C)C',
         'CH₃–CH₂–CH(CH₃)–CH₂–CH₃': 'CCC(C)CC',
         'CH₃–CO–CH₂–CHO': 'CC(=O)CC=O',
-        'CH₃–CH(CH₃)–CH₂–CH₂–OH': 'CC(C)CCO'
+        'CH₃–CH(CH₃)–CH₂–CH₂–OH': 'CC(C)CCO',
+        'CH₃–CH₂–CH₂–CH₂–CH₃': 'CCCCC',
+        'CH₃–CH₂–CH₂–CH₂–CH₂–CH₃': 'CCCCCC',
+        'CH₃–CH₂–CH₂–CH₂–CH₂–CH₂–CH₃': 'CCCCCCC',
+        'CH₃–CH₂–CH₂–OH': 'CCCO',
+        'CH₃–CO–CH₃': 'CC(=O)C',
+        'CH₃–CH₂–CHO': 'CCC=O',
+        'CH₃–CH₂–COOH': 'CCC(=O)O',
+        'CH₂=CH–CH=CH–CH₃': 'C=CC=CC',
+        'CH₃–CH₂–CH(OH)–CH₃': 'CCC(C)O',
+        'CH₃–CO–CH₂–CH₂–CH₂–OH': 'CC(=O)CCCO',
+        'CH₃–CH(Cl)–CH₂–CH₂–OH': 'CC(Cl)CCO',
+        'CH₃–CH₂–CH₂–CH₂–CHO': 'CCCCC=O',
+        'CH₃–CH₂–CH₂–CH₂–COOH': 'CCCCC(=O)O',
+        'CH₂=CH–CH₂–CH₂–CH₂–CH₃': 'C=CCCCC',
+        'CH≡C–CH₂–CH₂–CH₂–CH₃': 'C#CCCCC',
+        'CH₃–CH(CH₃)–CH₂–CH₂–CH₃': 'CC(C)CCC',
+        'CH₃–CH₂–CH(CH₃)–CH₂–CH₃': 'CCC(C)CC',
+        'CH₃–CO–CH₂–CH₂–CH₂–CH₃': 'CC(=O)CCCC',
+        'CH₃–CH₂–CH₂–CH₂–CO–CH₃': 'CCCCC(=O)C',
+        'CH₃–CH₂–CH₂–CH₂–CH₂–CHO': 'CCCCCC=O',
+        'CH₃–CH₂–CH₂–CH₂–CH₂–COOH': 'CCCCCC(=O)O',
+        'CH₂=CH–CH₂–CH₂–CH₂–CH₂–CH₃': 'C=CCCCCC',
+        'CH≡C–CH₂–CH₂–CH₂–CH₂–CH₃': 'C#CCCCCC',
+        'CH₃–CH₂–C≡C–CH₃': 'CCC#CC',
+        'CH₃–CH₂–CH₂–CH₂–CH₂–CO–CH₃': 'CCCCCC(=O)C'
     };
     return map[data] || null;
 }
@@ -2368,6 +2481,154 @@ function startQuiz(mode) {
     manageFocus('quiz-view');
 }
 
+function isChemicalName(str) {
+    if (!str) return false;
+    const namePatterns = [
+        /^[A-Z][a-z]/, 'benzene', 'methyl', 'ethyl', 'propyl', 'butyl', 'pentyl',
+        'hexyl', 'heptyl', 'octyl', 'cyclo', 'phenol', 'amine', 'acid',
+        'chloro', 'bromo', 'iodo', 'fluoro', 'nitro', 'hydroxy', 'oxo',
+        'phenyl', 'benzyl', 'methoxy', 'ethoxy'
+    ];
+    for (const p of namePatterns) {
+        if (p instanceof RegExp && p.test(str)) return true;
+        if (typeof p === 'string' && str.toLowerCase().includes(p)) return true;
+    }
+    return false;
+}
+
+function isCondensedFormula(str) {
+    if (!str) return false;
+    // Has HTML subscript tags (real condensed formula)
+    if (str.includes('<sub>')) return true;
+    // Contains triple bond symbol
+    if (str.includes('&equiv;')) return true;
+    // Starts with CH followed by subscript number or special chars (condensed pattern)
+    if (/^CH[₃₂]/.test(str) || /^CH<sub>/.test(str)) return true;
+    // Has chemical bond patterns like CH₃–CH₂ or CH=CH or CH≡CH
+    if (/CH[₃₂]?[-–=≡]CH/.test(str)) return true;
+    // Contains explicit condensed formula patterns (C followed by numbers in subscripts or sub)
+    if (/C<sub>\d+/.test(str)) return true;
+    // Unicode condensed formulas
+    if (/^[CHON][₃₂₁]?[-–=≡]/.test(str)) return true;
+    return false;
+}
+
+function drawNeutralPlaceholder(ctx, w, h, label) {
+    ctx.clearRect(0, 0, w, h);
+    const cx = w / 2, cy = h / 2;
+    const r = Math.min(w, h) * 0.3;
+    
+    ctx.strokeStyle = 'rgba(57, 255, 20, 0.25)';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    
+    ctx.fillStyle = 'rgba(57, 255, 20, 0.06)';
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.fillStyle = 'rgba(57, 255, 20, 0.15)';
+    ctx.font = '14px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(label || 'Molecule', cx, cy);
+}
+
+function drawBenzeneRing(ctx, w, h) {
+    ctx.clearRect(0, 0, w, h);
+    const cx = w / 2, cy = h / 2;
+    const r = Math.min(w, h) * 0.28;
+    const sides = 6;
+    const innerR = r * 0.85;
+    
+    ctx.strokeStyle = 'rgba(57, 255, 20, 0.35)';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    for (let i = 0; i < sides; i++) {
+        const angle = (i * 2 * Math.PI / sides) - Math.PI / 2;
+        const x = cx + r * Math.cos(angle);
+        const y = cy + r * Math.sin(angle);
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.stroke();
+    
+    ctx.strokeStyle = 'rgba(57, 255, 20, 0.15)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+    ctx.stroke();
+}
+
+function renderQuestionStructure(q, canvas, condensedDisplay) {
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    condensedDisplay.classList.add('hidden');
+    canvas.classList.remove('hidden');
+    
+    const currentRender = ++renderCounter;
+    const dataStr = q.structure || q.smiles || q.data;
+    
+    // Name-to-structure: the name IS the question prompt, display it
+    if (q.type === 'name-to-structure') {
+        canvas.classList.add('hidden');
+        condensedDisplay.classList.remove('hidden');
+        condensedDisplay.innerHTML = `<span style="font-size:1.4rem;color:var(--text-chemical);">${q.data}</span>`;
+        return;
+    }
+    
+    // SMILES or explicit structure field
+    if (q.type === 'smiles' || (q.structure && !q.structure.includes('<sub>'))) {
+        canvas.classList.remove('hidden');
+        condensedDisplay.classList.add('hidden');
+        const smilesStr = q.smiles || q.structure || q.data;
+        SmilesDrawer.parse(smilesStr, function (tree) {
+            if (currentRender !== renderCounter) return;
+            try {
+                smilesDrawer.draw(tree, canvas, 'dark', false);
+            } catch (e) {
+                console.warn('SmilesDrawer draw failed:', e);
+                drawNeutralPlaceholder(ctx, canvas.width, canvas.height, '');
+            }
+        }, function (err) {
+            if (currentRender !== renderCounter) return;
+            console.warn('Smiles parse error:', err);
+            if (dataStr.toLowerCase().includes('benzene') || dataStr.toLowerCase().includes('phenyl') || dataStr.toLowerCase().includes('phenol')) {
+                drawBenzeneRing(ctx, canvas.width, canvas.height);
+            } else if (dataStr.includes('c1') || dataStr.includes('C1') || dataStr.includes('1')) {
+                drawBenzeneRing(ctx, canvas.width, canvas.height);
+            } else {
+                drawNeutralPlaceholder(ctx, canvas.width, canvas.height, '');
+            }
+        });
+        return;
+    }
+    
+    // Condensed structure (real chemical formula with HTML subscripts)
+    if (isCondensedFormula(q.data)) {
+        canvas.classList.add('hidden');
+        condensedDisplay.classList.remove('hidden');
+        condensedDisplay.innerHTML = q.data;
+        return;
+    }
+    
+    // Data is a chemical name or description - show safe placeholder
+    canvas.classList.remove('hidden');
+    condensedDisplay.classList.add('hidden');
+    if (dataStr.toLowerCase().includes('benzene') || dataStr.toLowerCase().includes('phenyl') || dataStr.toLowerCase().includes('phenol') || dataStr.toLowerCase().includes('xylene') || dataStr.toLowerCase().includes('toluene')) {
+        drawBenzeneRing(ctx, canvas.width, canvas.height);
+    } else if (dataStr.toLowerCase().includes('cyclo')) {
+        drawNeutralPlaceholder(ctx, canvas.width, canvas.height, '');
+    } else {
+        drawNeutralPlaceholder(ctx, canvas.width, canvas.height, '');
+    }
+}
+
 function loadQuestion() {
     isAnswered = false;
     selectedOption = null;
@@ -2392,24 +2653,8 @@ function loadQuestion() {
     
     const currentQuestion = filteredQuestions[currentQuestionIndex];
     
-    // Render structure depending on type
-    if (currentQuestion.type === 'smiles') {
-        canvas.classList.remove('hidden');
-        condensedDisplay.classList.add('hidden');
-        
-        const ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        SmilesDrawer.parse(currentQuestion.data, function (tree) {
-            smilesDrawer.draw(tree, canvas, 'light', false);
-        }, function (err) {
-            console.error(err);
-        });
-    } else {
-        canvas.classList.add('hidden');
-        condensedDisplay.classList.remove('hidden');
-        condensedDisplay.innerHTML = currentQuestion.data;
-    }
+    // Render structure using safe pipeline
+    renderQuestionStructure(currentQuestion, canvas, condensedDisplay);
 
     if (currentMode === 'mcq') {
         // Render options with accessibility attributes
