@@ -826,56 +826,56 @@ header p {
     top: 4%;
     left: 2%;
     width: 85px;
-    animation: benzeneFloat 20s ease-in-out infinite;
+    animation: benzeneFloat 10s ease-in-out infinite;
 }
 
 .mol-alkane {
     bottom: 4%;
     left: 2%;
     width: 125px;
-    animation: alkaneFloat 18s ease-in-out infinite;
+    animation: alkaneFloat 9s ease-in-out infinite;
 }
 
 .mol-methane {
     top: 4%;
     right: 2%;
     width: 75px;
-    animation: methaneFloat 22s ease-in-out infinite;
+    animation: methaneFloat 11s ease-in-out infinite;
 }
 
 .mol-cyclo {
     bottom: 4%;
     right: 2%;
     width: 70px;
-    animation: cycloFloat 16s ease-in-out infinite;
+    animation: cycloFloat 8s ease-in-out infinite;
 }
 
 .mol-propanone {
     top: 22%;
     left: 2%;
     width: 75px;
-    animation: propanoneFloat 15s ease-in-out infinite;
+    animation: propanoneFloat 7s ease-in-out infinite;
 }
 
 .mol-ethanol {
     top: 50%;
     left: 2%;
     width: 80px;
-    animation: ethanolFloat 19s ease-in-out infinite;
+    animation: ethanolFloat 9s ease-in-out infinite;
 }
 
 .mol-chloromethane {
     top: 22%;
     right: 2%;
     width: 70px;
-    animation: chloromethaneFloat 14s ease-in-out infinite;
+    animation: chloromethaneFloat 7s ease-in-out infinite;
 }
 
 .mol-ethene {
     top: 50%;
     right: 2%;
     width: 90px;
-    animation: etheneFloat 17s ease-in-out infinite;
+    animation: etheneFloat 8s ease-in-out infinite;
 }
 
 @keyframes benzeneFloat {
