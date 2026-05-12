@@ -638,10 +638,10 @@ const questions = [
     {
         type: 'condensed',
         data: 'CH<sub>3</sub>–CO–CH<sub>2</sub>–CH(CH<sub>3</sub>)–CHO',
-        correct: '4-Methyl-3-oxopentanal',
-        alternates: ['3-Oxo-4-methylpentanal'],
-        options: ['4-Methyl-3-oxopentanal', '4-Methylpentanal', '5-Methyl-3-oxopentanal', '4-Methylpentan-3-one'],
-        explanation: 'Aldehyde has higher priority. Ketone is named as oxo prefix at position 3, methyl at position 4.',
+        correct: '2-Methyl-4-oxopentanal',
+        alternates: ['4-Oxo-2-methylpentanal'],
+        options: ['2-Methyl-4-oxopentanal', '4-Oxo-2-methylpentanal', '5-Methyl-3-oxopentanal', '4-Methylpentan-3-one'],
+        explanation: 'Aldehyde has highest priority (C1). Count: C2 bears the methyl group, C4 is the ketone (oxo). Alphabetical: methyl before oxo. Name: 2-Methyl-4-oxopentanal.',
         difficulty: 'Hard'
     },
     {
@@ -692,9 +692,10 @@ const questions = [
     {
         type: 'smiles',
         data: 'CC1=CCCCC1',
-        correct: '3-Methylcyclohexene',
-        options: ['3-Methylcyclohexene', '1-Methylcyclohexene', '4-Methylcyclohexene', '3,3-Methylcyclohexene'],
-        explanation: 'Number the ring to give the double bond the lowest locant, then the substituent.',
+        correct: '1-Methylcyclohexene',
+        alternates: ['1-Methylcyclohex-1-ene'],
+        options: ['1-Methylcyclohexene', '3-Methylcyclohexene', '4-Methylcyclohexene', '3,3-Methylcyclohexene'],
+        explanation: 'The double bond is at C1–C2. The methyl substituent is on C1, giving lowest locant set. IUPAC name: 1-Methylcyclohexene.',
         difficulty: 'Medium'
     },
     {
@@ -763,10 +764,10 @@ const questions = [
     {
         type: 'condensed',
         data: 'CH<sub>3</sub>–CO–CH<sub>2</sub>–CH<sub>2</sub>–CH(CH<sub>3</sub>)–CHO',
-        correct: '5-Methyl-4-oxohexanal',
-        alternates: ['4-Oxo-5-methylhexanal'],
-        options: ['5-Methyl-4-oxohexanal', '5-Methylhexanal-4-one', '4-Keto-5-methylhexanal', '4-Methyl-3-oxohexanal'],
-        explanation: 'Aldehyde has priority. Ketone is oxo prefix at position 4, methyl at position 5.',
+        correct: '2-Methyl-5-oxohexanal',
+        alternates: ['5-Oxo-2-methylhexanal'],
+        options: ['2-Methyl-5-oxohexanal', '5-Oxo-2-methylhexanal', '5-Methylhexanal-4-one', '4-Keto-5-methylhexanal'],
+        explanation: 'Aldehyde has highest priority (C1). Count: C1=CHO, C2=CH(CH<sub>3</sub>), C3=CH<sub>2</sub>, C4=CH<sub>2</sub>, C5=CO, C6=CH<sub>3</sub>. Ketone is oxo at C5, methyl at C2. Alphabetical: methyl before oxo.',
         difficulty: 'Hard'
     },
     {
@@ -1144,10 +1145,10 @@ const questions = [
     {
         type: 'condensed',
         data: 'CH<sub>3</sub>–CO–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CH(CH<sub>3</sub>)–CHO',
-        correct: '6-Methyl-5-oxoheptanal',
-        alternates: ['5-Oxo-6-methylheptanal'],
-        options: ['6-Methyl-5-oxoheptanal', '2-Methyl-4-oxoheptanal', 'Methyl-oxoheptanal', '5-Methyl-4-oxoheptanal'],
-        explanation: 'Aldehyde priority. Ketone is oxo at 5, methyl at 6.',
+        correct: '2-Methyl-6-oxoheptanal',
+        alternates: ['6-Oxo-2-methylheptanal'],
+        options: ['2-Methyl-6-oxoheptanal', '6-Oxo-2-methylheptanal', '2-Methyl-4-oxoheptanal', '5-Methyl-4-oxoheptanal'],
+        explanation: 'Aldehyde highest priority (C1). Count: C1=CHO, C2=CH(CH<sub>3</sub>), C3=CH<sub>2</sub>, C4=CH<sub>2</sub>, C5=CH<sub>2</sub>, C6=CO, C7=CH<sub>3</sub>. Ketone is oxo at C6, methyl at C2. Alphabetical: methyl before oxo.',
         difficulty: 'Hard'
     },
     {
@@ -1227,68 +1228,68 @@ questions.forEach(q => {
 const mockTestQuestions = [
     // Section A – Basic Naming (1 mark each)
     { section: 'A', marks: 1, data: 'CH₃–CH₂–CH₃', correct: 'Propane', options: ['Propane', 'Ethane', 'Butane', 'Methane'], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'CH₃–CH(CH₃)–CH₃', correct: '2-Methylpropane', options: ['2-Methylpropane', 'Methylpropane', 'Propane', 'Butane'], alternatives: [], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'CH₂=CH–CH₃', correct: 'Propene', options: ['Propene', 'Propane', 'Methylmethane', 'Butene'], alternatives: [], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'CH₃–CH(CH₃)–CH₃', correct: '2-Methylpropane', options: ['2-Methylpropane', 'Methylpropane', 'Propane', 'Butane'], alternates: [], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'CH₂=CH–CH₃', correct: 'Propene', options: ['Propene', 'Propane', 'Methylmethane', 'Butene'], alternates: [], difficulty: 'Easy' },
     { section: 'A', marks: 1, data: 'CH₃–CH₂–OH', correct: 'Ethanol', options: ['Ethanol', 'Methanol', 'Propanol', 'Ethane'], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'CH₃–CHO', correct: 'Ethanal', alternatives: ['Acetaldehyde'], options: ['Ethanal', 'Propanal', 'Formaldehyde', 'Propenal'], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'CH₃–CHO', correct: 'Ethanal', alternates: ['Acetaldehyde'], options: ['Ethanal', 'Propanal', 'Formaldehyde', 'Propenal'], difficulty: 'Easy' },
     // Section B – Intermediate (2 marks each)
     { section: 'B', marks: 2, data: 'CH₃–CH₂–CH₂–CH₃', correct: 'Butane', options: ['Butane', 'Propane', 'Pentane', 'Hexane'], difficulty: 'Easy' },
-    { section: 'B', marks: 2, data: 'CH₃–CH(CH₃)–CH₂–CH₃', correct: '2-Methylbutane', options: ['2-Methylbutane', '3-Methylbutane', '3,3-Methylbutane', 'Pentane'], alternatives: [], difficulty: 'Medium' },
-    { section: 'B', marks: 2, data: 'CH₃–CH₂–CO–CH₃', correct: 'Butan-2-one', alternatives: ['Butanone', 'Methyl ethyl ketone'], options: ['Butan-2-one', 'Butan-3-one', 'Pentan-2-one', 'Propanone'], difficulty: 'Medium' },
-    { section: 'B', marks: 2, data: 'CH₃–CH₂–CH₂–CHO', correct: 'Butanal', options: ['Butanal', 'Propanal', 'Butyric aldehyde', 'Pentanal'], alternatives: [], difficulty: 'Medium' },
-    { section: 'B', marks: 2, data: 'CH₃–CH₂–CH₂–COOH', correct: 'Butanoic acid', alternatives: ['Butyric acid'], options: ['Butanoic acid', 'Propanoic acid', 'Pentanoic acid', 'Butanal'], difficulty: 'Medium' },
+    { section: 'B', marks: 2, data: 'CH₃–CH(CH₃)–CH₂–CH₃', correct: '2-Methylbutane', options: ['2-Methylbutane', '3-Methylbutane', '3,3-Methylbutane', 'Pentane'], alternates: [], difficulty: 'Medium' },
+    { section: 'B', marks: 2, data: 'CH₃–CH₂–CO–CH₃', correct: 'Butan-2-one', alternates: ['Butanone', 'Methyl ethyl ketone'], options: ['Butan-2-one', 'Butan-3-one', 'Pentan-2-one', 'Propanone'], difficulty: 'Medium' },
+    { section: 'B', marks: 2, data: 'CH₃–CH₂–CH₂–CHO', correct: 'Butanal', options: ['Butanal', 'Propanal', 'Butyric aldehyde', 'Pentanal'], alternates: [], difficulty: 'Medium' },
+    { section: 'B', marks: 2, data: 'CH₃–CH₂–CH₂–COOH', correct: 'Butanoic acid', alternates: ['Butyric acid'], options: ['Butanoic acid', 'Propanoic acid', 'Pentanoic acid', 'Butanal'], difficulty: 'Medium' },
     // Section C – Functional Groups & Priority (3 marks each)
-    { section: 'C', marks: 3, data: 'HO–CH₂–CH₂–CHO', correct: '3-Hydroxypropanal', alternatives: ['3-Hydroxy-1-propanal'], options: ['3-Hydroxypropanal', '2-Hydroxypropanal', '4-Hydroxybutanal', 'Hydroxy propanal'], difficulty: 'Hard' },
-    { section: 'C', marks: 3, data: 'CH₃–CO–CH₂–CH₂–OH', correct: '4-Hydroxybutan-2-one', options: ['4-Hydroxybutan-2-one', '3-Hydroxybutan-2-one', 'Hydroxybutanone', 'Pentan-2-one'], alternatives: [], difficulty: 'Hard' },
-    { section: 'C', marks: 3, data: 'CH₃–CH(Cl)–CH₂–OH', correct: '2-Chloropropan-1-ol', options: ['2-Chloropropan-1-ol', '3-Chloropropan-1-ol', '3,3-Chloropropanol', 'Methylchloropropanol'], alternatives: [], difficulty: 'Hard' },
-    { section: 'C', marks: 3, data: 'HO–CH₂–CH(NH₂)–COOH', correct: '2-Amino-3-hydroxypropanoic acid', alternatives: ['Serine'], options: ['2-Amino-3-hydroxypropanoic acid', 'Aminohydroxypropanoic acid', 'Threonine', '3-Amino-2-hydroxypropanoic acid'], difficulty: 'Hard' },
+    { section: 'C', marks: 3, data: 'HO–CH₂–CH₂–CHO', correct: '3-Hydroxypropanal', alternates: ['3-Hydroxy-1-propanal'], options: ['3-Hydroxypropanal', '2-Hydroxypropanal', '4-Hydroxybutanal', 'Hydroxy propanal'], difficulty: 'Hard' },
+    { section: 'C', marks: 3, data: 'CH₃–CO–CH₂–CH₂–OH', correct: '4-Hydroxybutan-2-one', options: ['4-Hydroxybutan-2-one', '3-Hydroxybutan-2-one', 'Hydroxybutanone', 'Pentan-2-one'], alternates: [], difficulty: 'Hard' },
+    { section: 'C', marks: 3, data: 'CH₃–CH(Cl)–CH₂–OH', correct: '2-Chloropropan-1-ol', options: ['2-Chloropropan-1-ol', '3-Chloropropan-1-ol', '3,3-Chloropropanol', 'Methylchloropropanol'], alternates: [], difficulty: 'Hard' },
+    { section: 'C', marks: 3, data: 'HO–CH₂–CH(NH₂)–COOH', correct: '2-Amino-3-hydroxypropanoic acid', alternates: ['Serine'], options: ['2-Amino-3-hydroxypropanoic acid', 'Aminohydroxypropanoic acid', 'Threonine', '3-Amino-2-hydroxypropanoic acid'], difficulty: 'Hard' },
     // Section D – Multiple Bonds & Substituents (3 marks each)
-    { section: 'D', marks: 3, data: 'CH₂=CH–CH=CH₂', correct: 'Buta-1,3-diene', alternatives: ['1,3-Butadiene', 'Butadiene'], options: ['Buta-1,3-diene', 'Buta-1,2-diene', 'Pentadiene', 'Hexadiene'], difficulty: 'Medium' },
-    { section: 'D', marks: 3, data: 'CH₂=CH–CH(CH₃)–CH=CH₂', correct: '3-Methylpenta-1,4-diene', options: ['3-Methylpenta-1,4-diene', '4-Methylpenta-1,3-diene', '3,3-Methylbutadiene', 'Pentadiene'], alternatives: [], difficulty: 'Hard' },
-    { section: 'D', marks: 3, data: 'CH≡C–CH₂–CH₃', correct: 'But-1-yne', alternatives: ['1-Butyne', 'Ethylacetylene'], options: ['But-1-yne', 'But-1-ene', 'Butyne', 'Pent-1-yne'], difficulty: 'Medium' },
-    { section: 'D', marks: 3, data: 'CH₂=CH–C≡CH', correct: 'But-1-en-3-yne', alternatives: ['1-Buten-3-yne'], options: ['But-1-en-3-yne', 'But-1-en-2-yne', 'Vinylacetylene', 'Pent-1-en-3-yne'], difficulty: 'Hard' },
+    { section: 'D', marks: 3, data: 'CH₂=CH–CH=CH₂', correct: 'Buta-1,3-diene', alternates: ['1,3-Butadiene', 'Butadiene'], options: ['Buta-1,3-diene', 'Buta-1,2-diene', 'Pentadiene', 'Hexadiene'], difficulty: 'Medium' },
+    { section: 'D', marks: 3, data: 'CH₂=CH–CH(CH₃)–CH=CH₂', correct: '3-Methylpenta-1,4-diene', options: ['3-Methylpenta-1,4-diene', '4-Methylpenta-1,3-diene', '3,3-Methylbutadiene', 'Pentadiene'], alternates: [], difficulty: 'Hard' },
+    { section: 'D', marks: 3, data: 'CH≡C–CH₂–CH₃', correct: 'But-1-yne', alternates: ['1-Butyne', 'Ethylacetylene'], options: ['But-1-yne', 'But-1-ene', 'Butyne', 'Pent-1-yne'], difficulty: 'Medium' },
+    { section: 'D', marks: 3, data: 'CH₂=CH–C≡CH', correct: 'But-1-en-3-yne', alternates: ['1-Buten-3-yne'], options: ['But-1-en-3-yne', 'But-1-en-2-yne', 'Vinylacetylene', 'Pent-1-en-3-yne'], difficulty: 'Hard' },
     // Section E – Cyclic & Aromatic (4 marks each)
-    { section: 'E', marks: 4, data: 'Cyclohexane with one methyl group', correct: 'Methylcyclohexane', options: ['Methylcyclohexane', 'Cyclohexylmethane', 'Hexylmethane', '3,3-Dimethylcyclohexane'], alternatives: [], difficulty: 'Medium' },
-    { section: 'E', marks: 4, data: 'Benzene with two methyl groups at 1,3 position', correct: '1,3-Dimethylbenzene', alternatives: ['m-Xylene'], options: ['1,3-Dimethylbenzene', '1,2-Dimethylbenzene', '1,4-Dimethylbenzene', 'Trimethylbenzene'], difficulty: 'Medium' },
-    { section: 'E', marks: 4, data: 'Benzene with –OH and –CH₃ at 1,2 position', correct: '2-Methylphenol', alternatives: ['o-Cresol', '1-Hydroxy-2-methylbenzene'], options: ['2-Methylphenol', '4-Methylphenol', 'Methylphenol', 'Hydroxy toluene'], difficulty: 'Medium' },
-    { section: 'E', marks: 4, data: 'C₆H₅–CH₂–Cl', correct: 'Benzyl chloride', options: ['Benzyl chloride', 'Phenyl chloride', 'Chlorobenzene', 'Chloromethylbenzene'], alternatives: [], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Cyclohexane with one methyl group', correct: 'Methylcyclohexane', options: ['Methylcyclohexane', 'Cyclohexylmethane', 'Hexylmethane', '3,3-Dimethylcyclohexane'], alternates: [], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Benzene with two methyl groups at 1,3 position', correct: '1,3-Dimethylbenzene', alternates: ['m-Xylene'], options: ['1,3-Dimethylbenzene', '1,2-Dimethylbenzene', '1,4-Dimethylbenzene', 'Trimethylbenzene'], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Benzene with –OH and –CH₃ at 1,2 position', correct: '2-Methylphenol', alternates: ['o-Cresol', '1-Hydroxy-2-methylbenzene'], options: ['2-Methylphenol', '4-Methylphenol', 'Methylphenol', 'Hydroxy toluene'], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'C₆H₅–CH₂–Cl', correct: 'Benzyl chloride', options: ['Benzyl chloride', 'Phenyl chloride', 'Chlorobenzene', 'Benzal chloride'], alternates: ['(Chloromethyl)benzene', 'Chloromethylbenzene'], difficulty: 'Medium' },
     // Section F – Tricky / Special Cases (5 marks each)
-    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH(CH₃)–CH₃', correct: '2,3-Dimethylbutane', options: ['2,3-Dimethylbutane', '2-Methyl-3-methylbutane', 'Hexane', 'Pentane'], alternatives: [], difficulty: 'Hard' },
-    { section: 'F', marks: 5, data: 'CH₃–CH₂–CH(CH₃)–CH₂–CH₃', correct: '3-Methylpentane', options: ['3-Methylpentane', '2-Methylpentane', '3,3-Methylpentane', 'Isohexane'], alternatives: [], difficulty: 'Medium' },
-    { section: 'F', marks: 5, data: 'CH₃–CO–CH₂–CHO', correct: '3-Oxobutanal', alternatives: ['Acetoacetaldehyde'], options: ['3-Oxobutanal', '2-Oxobutanal', '4-Oxobutanal', 'Ketoacetaldehyde'], difficulty: 'Hard' },
-    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH₂–CH₂–OH', correct: '3-Methylbutan-1-ol', alternatives: [], options: ['3-Methylbutan-1-ol', '4-Methylbutan-1-ol', '2-Methylbutan-1-ol', '2-Methylpropanol'], difficulty: 'Hard' },
+    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH(CH₃)–CH₃', correct: '2,3-Dimethylbutane', options: ['2,3-Dimethylbutane', '2-Methyl-3-methylbutane', 'Hexane', 'Pentane'], alternates: [], difficulty: 'Hard' },
+    { section: 'F', marks: 5, data: 'CH₃–CH₂–CH(CH₃)–CH₂–CH₃', correct: '3-Methylpentane', options: ['3-Methylpentane', '2-Methylpentane', '3,3-Methylpentane', 'Isohexane'], alternates: [], difficulty: 'Medium' },
+    { section: 'F', marks: 5, data: 'CH₃–CO–CH₂–CHO', correct: '3-Oxobutanal', alternates: ['Acetoacetaldehyde'], options: ['3-Oxobutanal', '2-Oxobutanal', '4-Oxobutanal', 'Ketoacetaldehyde'], difficulty: 'Hard' },
+    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH₂–CH₂–OH', correct: '3-Methylbutan-1-ol', alternates: [], options: ['3-Methylbutan-1-ol', '4-Methylbutan-1-ol', '2-Methylbutan-1-ol', '2-Methylpropanol'], difficulty: 'Hard' },
     // Additional questions
-    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH₂–CH(CH₃)–CH₃', correct: '2,4-Dimethylpentane', options: ['2,4-Dimethylpentane', '3,3-Dimethylpentane', '4-Methylhexane', 'Pentane'], alternatives: [], difficulty: 'Hard' },
-    { section: 'D', marks: 3, data: 'CH₃–CH(CH₂CH₃)–CH₂–CH₃', correct: '3-Methylpentane', alternatives: [], options: ['3-Methylpentane', '2-Methylpentane', '2-Ethylbutane', '3-Methylbutane'], difficulty: 'Medium' },
-    { section: 'E', marks: 4, data: 'Cyclohexane with one ethyl group', correct: 'Ethylcyclohexane', alternatives: ['1-Ethylcyclohexane'], options: ['Ethylcyclohexane', 'Methylcyclohexane', 'Cyclohexylethane', 'Diethylcyclohexane'], difficulty: 'Medium' },
-    { section: 'E', marks: 4, data: 'Cyclohexane with two methyl groups at 1,2 positions', correct: '1,2-Dimethylcyclohexane', options: ['1,2-Dimethylcyclohexane', 'o-Dimethylcyclohexane', '1,2-Cyclohexadiene', '3,3-Dimethylcyclohexane'], alternatives: [], difficulty: 'Hard' },
-    { section: 'E', marks: 4, data: 'Benzene with two methyl groups at 1,4 positions', correct: '1,4-Dimethylbenzene', alternatives: ['p-Xylene'], options: ['1,4-Dimethylbenzene', '1,3-Dimethylbenzene', '4-Methylbenzene', 'Toluene'], difficulty: 'Medium' },
-    { section: 'E', marks: 4, data: 'Benzene with –OH and –CH₃ at 1,4 positions', correct: '4-Methylphenol', options: ['4-Methylphenol', 'p-Cresol', '1-Hydroxy-4-methylbenzene', 'Phenol'], alternatives: [], difficulty: 'Medium' },
-    { section: 'A', marks: 1, data: 'CH₃–CH₂–CH₂–OH', correct: 'Propan-1-ol', alternatives: ['1-Propanol', 'Propanol'], options: ['Propan-1-ol', 'Butan-1-ol', 'Pentan-1-ol', 'Ethanol'], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'CH₃–CO–CH₃', correct: 'Propanone', alternatives: ['Acetone', 'Propan-2-one'], options: ['Propanone', 'Butanone', 'Propanal', 'Pentanone'], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'CH₃–CH₂–CHO', correct: 'Propanal', alternatives: ['Propionaldehyde'], options: ['Propanal', 'Propanoic acid', 'Propan-1-al', 'Acetaldehyde'], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'CH₃–CH₂–COOH', correct: 'Propanoic acid', alternatives: ['Propionic acid'], options: ['Propanoic acid', 'Propan-1-ol', 'Propanic acid', 'Carboxypropane'], difficulty: 'Easy' },
-    { section: 'B', marks: 2, data: 'CH₃–CH(CH₃)–CH₃', correct: '2-Methylpropane', alternatives: ['Isobutane'], options: ['2-Methylpropane', 'Methylpropane', 'Propane', 'Butane'], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'Isopropyl alcohol', correct: 'Propan-2-ol', alternatives: ['Isopropyl alcohol', '2-Propanol'], options: ['Propan-2-ol', 'Propan-1-ol', 'Butan-2-ol', 'Pentan-2-ol'], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'Acetone', correct: 'Propanone', alternatives: ['Acetone', 'Propan-2-one'], options: ['Propanone', 'Butanone', 'Propanal', 'Propan-1-ol'], difficulty: 'Easy' },
-    { section: 'A', marks: 1, data: 'Acetic acid', correct: 'Ethanoic acid', alternatives: ['Acetic acid'], options: ['Ethanoic acid', 'Butanoic acid', 'Methane carboxylic acid', 'Acidic acid'], difficulty: 'Easy' },
-    { section: 'B', marks: 2, data: 'Chloroform', correct: 'Trichloromethane', alternatives: ['Chloroform'], options: ['Trichloromethane', 'Dichloromethane', 'Methenyl chloride', 'Methyl chloride'], difficulty: 'Medium' },
+    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH₂–CH(CH₃)–CH₃', correct: '2,4-Dimethylpentane', options: ['2,4-Dimethylpentane', '3,3-Dimethylpentane', '4-Methylhexane', 'Pentane'], alternates: [], difficulty: 'Hard' },
+    { section: 'D', marks: 3, data: 'CH₃–CH(CH₂CH₃)–CH₂–CH₃', correct: '3-Methylpentane', alternates: [], options: ['3-Methylpentane', '2-Methylpentane', '2-Ethylbutane', '3-Methylbutane'], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Cyclohexane with one ethyl group', correct: 'Ethylcyclohexane', alternates: ['1-Ethylcyclohexane'], options: ['Ethylcyclohexane', 'Methylcyclohexane', 'Cyclohexylethane', 'Diethylcyclohexane'], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Cyclohexane with two methyl groups at 1,2 positions', correct: '1,2-Dimethylcyclohexane', options: ['1,2-Dimethylcyclohexane', 'o-Dimethylcyclohexane', '1,2-Cyclohexadiene', '3,3-Dimethylcyclohexane'], alternates: [], difficulty: 'Hard' },
+    { section: 'E', marks: 4, data: 'Benzene with two methyl groups at 1,4 positions', correct: '1,4-Dimethylbenzene', alternates: ['p-Xylene'], options: ['1,4-Dimethylbenzene', '1,3-Dimethylbenzene', '4-Methylbenzene', 'Toluene'], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Benzene with –OH and –CH₃ at 1,4 positions', correct: '4-Methylphenol', options: ['4-Methylphenol', 'p-Cresol', '1-Hydroxy-4-methylbenzene', 'Phenol'], alternates: [], difficulty: 'Medium' },
+    { section: 'A', marks: 1, data: 'CH₃–CH₂–CH₂–OH', correct: 'Propan-1-ol', alternates: ['1-Propanol', 'Propanol'], options: ['Propan-1-ol', 'Butan-1-ol', 'Pentan-1-ol', 'Ethanol'], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'CH₃–CO–CH₃', correct: 'Propanone', alternates: ['Acetone', 'Propan-2-one'], options: ['Propanone', 'Butanone', 'Propanal', 'Pentanone'], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'CH₃–CH₂–CHO', correct: 'Propanal', alternates: ['Propionaldehyde'], options: ['Propanal', 'Propanoic acid', 'Propan-1-al', 'Acetaldehyde'], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'CH₃–CH₂–COOH', correct: 'Propanoic acid', alternates: ['Propionic acid'], options: ['Propanoic acid', 'Propan-1-ol', 'Propanic acid', 'Carboxypropane'], difficulty: 'Easy' },
+    { section: 'B', marks: 2, data: 'CH₃–CH(CH₃)–CH₃', correct: '2-Methylpropane', alternates: ['Isobutane'], options: ['2-Methylpropane', 'Methylpropane', 'Propane', 'Butane'], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'Isopropyl alcohol', correct: 'Propan-2-ol', alternates: ['Isopropyl alcohol', '2-Propanol'], options: ['Propan-2-ol', 'Propan-1-ol', 'Butan-2-ol', 'Pentan-2-ol'], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'Acetone', correct: 'Propanone', alternates: ['Acetone', 'Propan-2-one'], options: ['Propanone', 'Butanone', 'Propanal', 'Propan-1-ol'], difficulty: 'Easy' },
+    { section: 'A', marks: 1, data: 'Acetic acid', correct: 'Ethanoic acid', alternates: ['Acetic acid'], options: ['Ethanoic acid', 'Butanoic acid', 'Methane carboxylic acid', 'Acidic acid'], difficulty: 'Easy' },
+    { section: 'B', marks: 2, data: 'Chloroform', correct: 'Trichloromethane', alternates: ['Chloroform'], options: ['Trichloromethane', 'Dichloromethane', 'Methenyl chloride', 'Methyl chloride'], difficulty: 'Medium' },
     // New multiple substituents questions
-    { section: 'F', marks: 5, data: 'CH₃–CH₂–CH(CH₃)–CH(CH₃)–CH₃', correct: '2,3-Dimethylpentane', alternatives: [], options: ['2,3-Dimethylpentane', '3,4-Dimethylpentane', '2,4-Dimethylpentane', '3-Methylhexane'], difficulty: 'Hard' },
-    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH₂–CH(CH₃)–CH₂–CH₃', correct: '2,4-Dimethylhexane', alternatives: [], options: ['2,4-Dimethylhexane', '3,5-Dimethylhexane', '2,5-Dimethylhexane', '3,4-Dimethylhexane'], difficulty: 'Hard' },
+    { section: 'F', marks: 5, data: 'CH₃–CH₂–CH(CH₃)–CH(CH₃)–CH₃', correct: '2,3-Dimethylpentane', alternates: [], options: ['2,3-Dimethylpentane', '3,4-Dimethylpentane', '2,4-Dimethylpentane', '3-Methylhexane'], difficulty: 'Hard' },
+    { section: 'F', marks: 5, data: 'CH₃–CH(CH₃)–CH₂–CH(CH₃)–CH₂–CH₃', correct: '2,4-Dimethylhexane', alternates: [], options: ['2,4-Dimethylhexane', '3,5-Dimethylhexane', '2,5-Dimethylhexane', '3,4-Dimethylhexane'], difficulty: 'Hard' },
     // New cyclic compound questions
-    { section: 'E', marks: 4, data: 'Cyclohexane with ethyl and methyl groups at 1,3 positions', correct: '1-Ethyl-3-methylcyclohexane', alternatives: [], options: ['1-Ethyl-3-methylcyclohexane', '1-Ethyl-4-methylcyclohexane', '1-Ethyl-2-methylcyclohexane', '3-Ethylcyclohexane'], difficulty: 'Hard' },
-    { section: 'E', marks: 4, data: 'Cyclohexene with methyl at position 3', correct: '3-Methylcyclohexene', options: ['3-Methylcyclohexene', '1-Methylcyclohexene', '3,3-Methylcyclohexene', '3-Methylcyclohex-1-ene'], alternatives: [], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Cyclohexane with ethyl and methyl groups at 1,3 positions', correct: '1-Ethyl-3-methylcyclohexane', alternates: [], options: ['1-Ethyl-3-methylcyclohexane', '1-Ethyl-4-methylcyclohexane', '1-Ethyl-2-methylcyclohexane', '3-Ethylcyclohexane'], difficulty: 'Hard' },
+    { section: 'E', marks: 4, data: 'Cyclohexene with methyl at position 3', correct: '3-Methylcyclohexene', options: ['3-Methylcyclohexene', '1-Methylcyclohexene', '3,3-Methylcyclohexene', '3-Methylcyclohex-1-ene'], alternates: [], difficulty: 'Medium' },
     // New benzene derivative questions
-    { section: 'E', marks: 4, data: 'Benzene with methyl and chlorine at 1,3 positions', correct: '1-Chloro-3-methylbenzene', alternatives: ['m-Chlorotoluene', '3-Chlorotoluene'], options: ['1-Chloro-3-methylbenzene', '1-Chloro-4-methylbenzene', '3-Chloro-1-methylbenzene', 'Benzyl chloride'], difficulty: 'Hard' },
-    { section: 'E', marks: 4, data: 'Benzene with methyl and chlorine at 1,2 positions', correct: '1-Chloro-2-methylbenzene', alternatives: ['o-Chlorotoluene', '2-Chlorotoluene'], options: ['1-Chloro-2-methylbenzene', '1-Chloro-3-methylbenzene', '2-Chloro-1-methylbenzene', 'Benzyl chloride'], difficulty: 'Medium' },
-    { section: 'E', marks: 4, data: 'Benzene with nitro and chlorine at 1,2 positions', correct: '1-Chloro-2-nitrobenzene', alternatives: ['o-Chloronitrobenzene'], options: ['1-Chloro-2-nitrobenzene', '1-Chloro-3-nitrobenzene', '2-Chloro-1-nitrobenzene', 'Nitrochlorobenzene'], difficulty: 'Hard' },
-    { section: 'E', marks: 4, data: 'C₆H₅–CH₂–CH₃', correct: 'Ethylbenzene', alternatives: ['Phenylethane'], options: ['Ethylbenzene', 'Propylbenzene', 'Toluene', 'Benzene'], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Benzene with methyl and chlorine at 1,3 positions', correct: '1-Chloro-3-methylbenzene', alternates: ['m-Chlorotoluene', '3-Chlorotoluene'], options: ['1-Chloro-3-methylbenzene', '1-Chloro-4-methylbenzene', '3-Chloro-1-methylbenzene', 'Benzyl chloride'], difficulty: 'Hard' },
+    { section: 'E', marks: 4, data: 'Benzene with methyl and chlorine at 1,2 positions', correct: '1-Chloro-2-methylbenzene', alternates: ['o-Chlorotoluene', '2-Chlorotoluene'], options: ['1-Chloro-2-methylbenzene', '1-Chloro-3-methylbenzene', '2-Chloro-1-methylbenzene', 'Benzyl chloride'], difficulty: 'Medium' },
+    { section: 'E', marks: 4, data: 'Benzene with nitro and chlorine at 1,2 positions', correct: '1-Chloro-2-nitrobenzene', alternates: ['o-Chloronitrobenzene'], options: ['1-Chloro-2-nitrobenzene', '1-Chloro-3-nitrobenzene', '2-Chloro-1-nitrobenzene', 'Nitrochlorobenzene'], difficulty: 'Hard' },
+    { section: 'E', marks: 4, data: 'C₆H₅–CH₂–CH₃', correct: 'Ethylbenzene', alternates: ['Phenylethane'], options: ['Ethylbenzene', 'Propylbenzene', 'Toluene', 'Benzene'], difficulty: 'Medium' },
     // Structure to name (reverse)
-    { section: 'B', marks: 2, data: 'CH₃–CH(CH₃)–CH₂–CH₃', correct: '2-Methylbutane', options: ['2-Methylbutane', '3-Methylbutane', '3,3-Methylbutane', 'Pentane'], alternatives: [], difficulty: 'Easy' },
-    { section: 'B', marks: 2, data: 'CH₃–CH₂–CH(OH)–CH₃', correct: 'Butan-2-ol', alternatives: ['2-Butanol', 'sec-Butanol'], options: ['Butan-2-ol', 'Pentan-2-ol', 'Butan-1-ol', 'Hexanol'], difficulty: 'Medium' },
-    { section: 'B', marks: 2, data: 'CH₃–CO–CH₂–CH₃', correct: 'Butan-2-one', alternatives: ['Butanone', 'Methyl ethyl ketone'], options: ['Butan-2-one', 'Butan-3-one', 'Pentan-2-one', 'Propanone'], difficulty: 'Medium' },
-    { section: 'F', marks: 5, data: 'CH₃–CH(Cl)–CH₂–CH₂–OH', correct: '3-Chlorobutan-1-ol', options: ['3-Chlorobutan-1-ol', '4-Chlorobutan-1-ol', 'Chlorobutanol', '1-Chlorobutan-3-ol'], alternatives: [], difficulty: 'Hard' }
+    { section: 'B', marks: 2, data: 'CH₃–CH(CH₃)–CH₂–CH₃', correct: '2-Methylbutane', options: ['2-Methylbutane', '3-Methylbutane', '3,3-Methylbutane', 'Pentane'], alternates: [], difficulty: 'Easy' },
+    { section: 'B', marks: 2, data: 'CH₃–CH₂–CH(OH)–CH₃', correct: 'Butan-2-ol', alternates: ['2-Butanol', 'sec-Butanol'], options: ['Butan-2-ol', 'Pentan-2-ol', 'Butan-1-ol', 'Hexanol'], difficulty: 'Medium' },
+    { section: 'B', marks: 2, data: 'CH₃–CO–CH₂–CH₃', correct: 'Butan-2-one', alternates: ['Butanone', 'Methyl ethyl ketone'], options: ['Butan-2-one', 'Butan-3-one', 'Pentan-2-one', 'Propanone'], difficulty: 'Medium' },
+    { section: 'F', marks: 5, data: 'CH₃–CH(Cl)–CH₂–CH₂–OH', correct: '3-Chlorobutan-1-ol', options: ['3-Chlorobutan-1-ol', '4-Chlorobutan-1-ol', 'Chlorobutanol', '1-Chlorobutan-3-ol'], alternates: [], difficulty: 'Hard' }
 ];
 
 // Render counter to prevent stale async callbacks
@@ -1848,6 +1849,10 @@ function renderRevisionNotes() {
                 <tr><td>4</td><td>but</td></tr>
                 <tr><td>5</td><td>pent</td></tr>
                 <tr><td>6</td><td>hex</td></tr>
+                <tr><td>7</td><td>hept</td></tr>
+                <tr><td>8</td><td>oct</td></tr>
+                <tr><td>9</td><td>non</td></tr>
+                <tr><td>10</td><td>dec</td></tr>
             </table>
         </div>
 
@@ -1890,7 +1895,7 @@ function renderRevisionNotes() {
         <div class="revision-section">
             <h3>🔹 6. PRIORITY ORDER (🔥 MUST MEMORIZE)</h3>
             <div class="revision-highlight">
-                👉 COOH > CHO > CO > OH > NH₂ > C=C > X
+                👉 COOH > –CN > CHO > CO > OH > NH₂ > C≡C > C=C > X (halogen)
             </div>
         </div>
 
@@ -2080,8 +2085,8 @@ function renderQA() {
             const qDiv = document.createElement('div');
             qDiv.className = 'qa-answer-row';
             let displayAnswer = q.correct;
-            if (q.alternatives) {
-                displayAnswer = q.correct + ' / ' + q.alternatives.join(' / ');
+            if (q.alternates) {
+                displayAnswer = q.correct + ' / ' + q.alternates.join(' / ');
             }
             qDiv.innerHTML = `<span class="qa-question-text">${q.data}</span><span class="qa-answer">${displayAnswer}</span>`;
             sectionDiv.appendChild(qDiv);
@@ -2111,7 +2116,7 @@ function startMockTest() {
     mockTestResults = [];
 
     // Filter mock test questions by difficulty
-    let filteredMockQuestions;
+    filteredMockQuestions = [];
     if (selectedDifficulty === 'all') {
         filteredMockQuestions = [...mockTestQuestions];
     } else {
@@ -2294,7 +2299,7 @@ function renderMockQuestion(filteredQuestions) {
     }
 
     // Render question text
-    mockQuestionText.textContent = q.data;
+    mockQuestionText.innerHTML = q.data;
 
     // Draw structure using safe pipeline
     renderMockQuestionStructure(q, mockStructureCanvas);
@@ -2382,8 +2387,8 @@ function selectMockOption(option, btn) {
         b.style.borderColor = '';
         b.setAttribute('aria-checked', 'false');
     });
-    btn.style.background = '#e0e7ff';
-    btn.style.borderColor = '#667eea';
+    btn.style.background = 'rgba(57, 255, 20, 0.15)';
+    btn.style.borderColor = 'rgba(57, 255, 20, 0.8)';
     btn.setAttribute('aria-checked', 'true');
 }
 
@@ -2464,8 +2469,8 @@ function showMockResults() {
         <div class="results-breakdown">
             ${filteredMockQuestions.map((q, i) => {
                 let correctDisplay = q.correct;
-                if (q.alternatives) {
-                    correctDisplay = q.correct + ' / ' + q.alternatives.join(' / ');
+                if (q.alternates) {
+                    correctDisplay = q.correct + ' / ' + q.alternates.join(' / ');
                 }
                 return `
                 <div class="results-breakdown-item">
