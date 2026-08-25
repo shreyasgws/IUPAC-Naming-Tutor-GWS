@@ -115,8 +115,7 @@ Not decorative — implemented and load-bearing:
   every view switch
 - Keyboard navigation for the mode cards (arrow keys + Enter) and a
   radio-role difficulty filter with managed `tabindex`
-- `prefers-reduced-motion` support; decorative particle layers are
-  `pointer-events: none`
+- `prefers-reduced-motion` support
 
 ---
 
@@ -127,22 +126,24 @@ Not decorative — implemented and load-bearing:
 | Structure | HTML5 | Content is static; no templating needed |
 | Styling | CSS3 custom properties, Grid, Flexbox | Theme system without preprocessor |
 | Logic | Vanilla ES6 | Zero build step; runs from `file://` |
-| Molecular rendering | [SmilesDrawer](https://github.com/reymond-group/smiles-drawer) v2.0.1 (CDN) | Only external dependency; everything else is hand-rolled |
+| Molecular rendering | [SmilesDrawer](https://github.com/reymond-group/smiles-drawer) v2.0.1 (CDN) | Skeletal formula rendering |
+| Background fog | [Three.js](https://threejs.org/) r134 + [Vanta.js](https://vantajs.com/) FOG (CDN) | Animated fluid background on home screen |
 | Persistence | `localStorage` | No backend; stats survive refresh |
 | Icons | Unicode / inline SVG | No icon library |
 
-Exactly **one** runtime dependency. All other effects (drifting molecules)
-are pure CSS/JS.
+Exactly **three** CDN dependencies (SmilesDrawer, Three.js, Vanta.js).
+All other effects (drifting molecule SVGs, CSS animations) are hand-rolled.
 
 ---
 
 ## File structure
 
 ```
-index.html    # All views + tutorial content (8 units), inline tutorial logic
-style.css     # Theme, layout, animations (molecules, effects)
-script.js     # State, questions (136) + mock questions (53), quiz/mock logic,
-              # rendering pipeline, stats, accessibility
+.gitignore     # desktop.ini
+index.html     # All views + tutorial content (8 units), inline tutorial logic
+style.css      # Theme, layout, animations
+script.js      # State, questions (136) + mock questions (53), quiz/mock logic,
+               # rendering pipeline, stats, accessibility
 README.md
 ```
 
@@ -156,7 +157,7 @@ cd IUPAC-Naming-Tutor-GWS
 start index.html        # Windows — or just open it in any browser
 ```
 
-No build step, no package manager, no server. The one CDN script tag requires
+No build step, no package manager, no server. The CDN script tags require
 network access on first load; everything else works offline.
 
 ---
@@ -184,10 +185,6 @@ network access on first load; everything else works offline.
 - **`showUnit`/`showMainIndex` inline in `index.html`.** Kept separate from
   `script.js` on purpose: the tutorial is self-contained HTML and its tiny
   view logic travels with it.
-- **Particle layers are decorative.** Five CSS particle layers + ~2k lines of
-  CSS animation exist purely for the dark-theme aesthetic; the visual layer is
-  the largest single block of the stylesheet and the first thing to cut if
-  bundle size ever matters.
 - **Typo analysis is heuristic.** "Partial Match" is a substring/normalized
   guess, not a distance metric. It errs toward the lenient side deliberately;
   strict correctness is always enforced first.
