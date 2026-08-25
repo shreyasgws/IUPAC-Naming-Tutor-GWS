@@ -1316,6 +1316,8 @@ const POINTS = { Easy: 1, Medium: 2, Hard: 3 };
 
 // External library detection (SmilesDrawer loads via CDN before script.js)
 const smilesDrawerLoaded = typeof SmilesDrawer !== 'undefined';
+const threeJSLoaded = typeof THREE !== 'undefined';
+const vantaLoaded = typeof VANTA !== 'undefined';
 
 // Input Validation (solves No Input Validation)
 const InputValidator = {
@@ -1482,9 +1484,13 @@ const backToBasicsRevision = document.getElementById('back-to-basics-revision');
 const bgMolecules = document.getElementById('bg-molecules');
 
 function init() {
-    // Warn but continue if SmilesDrawer failed to load
+    // Warn but continue if external libraries failed to load
     if (!smilesDrawerLoaded) {
+        console.warn('SmilesDrawer not loaded - molecular rendering disabled');
         document.getElementById('quiz-view').classList.add('library-warning');
+    }
+    if (!threeJSLoaded) {
+        console.warn('Three.js not loaded - background effects disabled');
     }
 
     // Event Listeners for Views
