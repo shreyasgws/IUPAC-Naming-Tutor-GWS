@@ -91,58 +91,6 @@ body::after {
     }
 }
 
-/* --- Cursor Glow --- */
-#cursor-glow {
-    position: fixed; width: 80px; height: 80px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(57,255,20,0.35) 0%, rgba(57,255,20,0.12) 30%, transparent 70%);
-    pointer-events: none; z-index: 9999;
-    transform: translate(-50%,-50%);
-    filter: blur(4px); opacity: 0;
-}
-body.theme-home #cursor-glow { display: block; opacity: 0; }
-body:not(.theme-home) #cursor-glow { display: none; }
-
-/* --- Fog --- */
-#fog-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
-body:not(.theme-home) #fog-bg { display: none; }
-
-/* --- Particle atoms on home --- */
-body.theme-home .particles {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    overflow: hidden; z-index: -1; pointer-events: none;
-}
-body.theme-home .particle {
-    position: absolute;
-    background-image: url('atom-icon.png');
-    background-size: contain; background-repeat: no-repeat;
-    opacity: 0; transform-origin: center center;
-    animation: atomFloat linear infinite;
-    will-change: transform, opacity;
-}
-@keyframes atomFloat {
-    from { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-    5% { opacity: 0.7; }
-    95% { opacity: 0.7; }
-    to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-}
-body.theme-home .particle:nth-child(1) { width: 40px; height: 40px; left: 5%; animation-duration: 22s; animation-delay: 0s; }
-body.theme-home .particle:nth-child(2) { width: 30px; height: 30px; left: 20%; animation-duration: 26s; animation-delay: 2s; }
-body.theme-home .particle:nth-child(3) { width: 35px; height: 35px; left: 35%; animation-duration: 24s; animation-delay: 4s; }
-body.theme-home .particle:nth-child(4) { width: 28px; height: 28px; left: 50%; animation-duration: 28s; animation-delay: 1s; }
-body.theme-home .particle:nth-child(5) { width: 38px; height: 38px; left: 65%; animation-duration: 25s; animation-delay: 3s; }
-body.theme-home .particle:nth-child(6) { width: 32px; height: 32px; left: 80%; animation-duration: 27s; animation-delay: 5s; }
-body.theme-home .particle:nth-child(7) { width: 36px; height: 36px; left: 12%; animation-duration: 23s; animation-delay: 7s; }
-body.theme-home .particle:nth-child(8) { width: 34px; height: 34px; left: 45%; animation-duration: 29s; animation-delay: 6s; }
-@media (min-width: 601px) {
-    body.theme-home .particle:nth-child(9) { width: 42px; height: 42px; left: 75%; animation-duration: 21s; animation-delay: 9s; }
-    body.theme-home .particle:nth-child(10) { width: 30px; height: 30px; left: 90%; animation-duration: 26s; animation-delay: 4s; }
-    body.theme-home .particle:nth-child(11) { width: 80px; height: 80px; left: -30%; animation-duration: 22s; animation-delay: -18s; }
-    body.theme-home .particle:nth-child(12) { width: 65px; height: 65px; left: 110%; animation-duration: 26s; animation-delay: -5s; }
-    body.theme-home .particle:nth-child(13) { width: 90px; height: 90px; left: -45%; animation-duration: 20s; animation-delay: -12s; }
-    body.theme-home .particle:nth-child(14) { width: 70px; height: 70px; left: 25%; animation-duration: 24s; animation-delay: -20s; }
-    body.theme-home .particle:nth-child(15) { width: 85px; height: 85px; left: 130%; animation-duration: 28s; animation-delay: -8s; }
-}
-
 /* --- Molecule SVGs (landing page) --- */
 body.theme-home .molecule {
     position: fixed; opacity: 0.1; z-index: -1;
@@ -265,10 +213,6 @@ header p {
     padding-top: 40px;
 }
 
-#home-view .particles {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: -1;
-}
 #home-view .molecule { position: fixed; z-index: -1; }
 
 #home-view header {
@@ -535,7 +479,11 @@ header p {
     z-index: 0;
 }
 
-.quiz-bg-particles {
+.quiz-bg-particles,
+.quiz-bg-particles-2,
+.quiz-bg-particles-3,
+.quiz-bg-particles-4,
+.quiz-bg-particles-5 {
     position: fixed;
     inset: 0;
     pointer-events: none;
@@ -593,13 +541,6 @@ header p {
 }
 
 /* 2nd particle layer — faster, green-teal */
-.quiz-bg-particles-2 {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-}
 .quiz-bg-particles-2::before,
 .quiz-bg-particles-2::after {
     content: '';
@@ -641,13 +582,6 @@ header p {
 }
 
 /* 3rd particle layer — medium speed, wider drift */
-.quiz-bg-particles-3 {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-}
 .quiz-bg-particles-3::before,
 .quiz-bg-particles-3::after {
     content: '';
@@ -690,13 +624,6 @@ header p {
 }
 
 /* 4th particle layer — fast, warm gold/orange */
-.quiz-bg-particles-4 {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-}
 .quiz-bg-particles-4::before,
 .quiz-bg-particles-4::after {
     content: '';
@@ -737,13 +664,6 @@ header p {
 }
 
 /* 5th particle layer — fastest, cool purple/pink */
-.quiz-bg-particles-5 {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-}
 .quiz-bg-particles-5::before,
 .quiz-bg-particles-5::after {
     content: '';
@@ -1891,14 +1811,12 @@ body.theme-home footer {
     body.theme-home { height: auto; min-height: 100vh; }
     body:not(.theme-home) { height: auto; min-height: 100vh; }
     body.theme-home footer { position: relative; }
-    body.theme-home .particles, body.theme-home .particle { display: block; opacity: 0.6; z-index: -1; }
     #home-view header { padding: 1.5rem; padding-top: 30px; }
     #home-view { padding-top: 20px; }
     #home-view header h1 { font-size: 1.6rem; }
     .mode-card { padding: 1.5rem 1rem; }
     .mode-card h2 { font-size: 1.3rem; }
     .nav-btn { padding: 1rem 1.25rem; font-size: 0.9rem; }
-    #cursor-glow { display: none !important; }
     .tutorial-index { padding: 1rem; }
     .tutorial-index-list > li > a { font-size: 0.85rem; word-wrap: break-word; overflow-wrap: break-word; }
     .tutorial-index-list > li > ul > li > a { font-size: 0.75rem; }

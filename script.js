@@ -1295,118 +1295,27 @@ const mockTestQuestions = [
 // Render counter to prevent stale async callbacks
 let renderCounter = 0;
 
-// Application State (solves Global State Pollution)
-const AppState = {
-    currentMode: 'home',
-    currentQuestionIndex: 0,
-    score: 0,
-    selectedOption: null,
-    isAnswered: false,
-    selectedDifficulty: 'all',
-    mcqStats: {
-        totalAnswered: 0,
-        correctAnswers: 0,
-        totalPoints: 0,
-        correctPoints: 0
-    },
-    manualStats: {
-        totalAnswered: 0,
-        correctAnswers: 0,
-        totalPoints: 0,
-        correctPoints: 0
-    },
-    filteredQuestions: [],
+// Application State
+let currentMode = 'home';
+let currentQuestionIndex = 0;
+let score = 0;
+let selectedOption = null;
+let isAnswered = false;
+let selectedDifficulty = 'all';
+let mcqStats = { totalAnswered: 0, correctAnswers: 0, totalPoints: 0, correctPoints: 0 };
+let manualStats = { totalAnswered: 0, correctAnswers: 0, totalPoints: 0, correctPoints: 0 };
+let filteredQuestions = [];
+let mockCurrentIndex = 0;
+let mockScore = 0;
+let mockAnswered = false;
+let mockSelectedOption = null;
+let mockTestResults = [];
+let filteredMockQuestions = [];
 
-    // Mock test state
-    mockCurrentIndex: 0,
-    mockScore: 0,
-    mockAnswered: false,
-    mockSelectedOption: null,
-    mockTestResults: [],
-    filteredMockQuestions: [],
+const POINTS = { Easy: 1, Medium: 2, Hard: 3 };
 
-    // Reset quiz state
-    resetQuiz() {
-        this.currentQuestionIndex = 0;
-        this.score = 0;
-        this.selectedOption = null;
-        this.isAnswered = false;
-        this.filteredQuestions = [];
-    },
-
-    // Reset mock test state
-    resetMockTest() {
-        this.mockCurrentIndex = 0;
-        this.mockScore = 0;
-        this.mockAnswered = false;
-        this.mockSelectedOption = null;
-        this.mockTestResults = [];
-        this.filteredMockQuestions = [];
-    },
-
-    // Reset all stats
-    resetStats() {
-        this.mcqStats = { totalAnswered: 0, correctAnswers: 0, totalPoints: 0, correctPoints: 0 };
-        this.manualStats = { totalAnswered: 0, correctAnswers: 0, totalPoints: 0, correctPoints: 0 };
-    }
-};
-
-// Backward compatibility aliases (deprecated - use AppState instead)
-let currentMode = AppState.currentMode;
-let currentQuestionIndex = AppState.currentQuestionIndex;
-let score = AppState.score;
-let selectedOption = AppState.selectedOption;
-let isAnswered = AppState.isAnswered;
-let selectedDifficulty = AppState.selectedDifficulty;
-let mcqStats = AppState.mcqStats;
-let manualStats = AppState.manualStats;
-let filteredQuestions = AppState.filteredQuestions;
-let mockCurrentIndex = AppState.mockCurrentIndex;
-let mockScore = AppState.mockScore;
-let mockAnswered = AppState.mockAnswered;
-let mockSelectedOption = AppState.mockSelectedOption;
-let mockTestResults = AppState.mockTestResults;
-let filteredMockQuestions = AppState.filteredMockQuestions;
-
-// Error Boundary System (solves No Error Boundaries)
-const ErrorBoundary = {
-    libraries: {
-        smilesDrawer: false,
-        threeJS: false,
-        vanta: false
-    },
-
-    checkAll() {
-        return this.libraries.smilesDrawer && this.libraries.threeJS && this.libraries.vanta;
-    },
-
-    init() {
-        // Check SmilesDrawer
-        this.libraries.smilesDrawer = typeof SmilesDrawer !== 'undefined';
-        
-        // Check Three.js
-        this.libraries.threeJS = typeof THREE != 'undefined';
-        
-        // Check Vanta - will be checked after initialization
-        
-        if (!this.libraries.smilesDrawer) {
-            console.warn('SmilesDrawer not loaded - molecular rendering disabled');
-        }
-        if (!this.libraries.threeJS) {
-            console.warn('Three.js not loaded - background effects disabled');
-        }
-    },
-
-    showError(message) {
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-banner';
-        errorDiv.setAttribute('role', 'alert');
-        errorDiv.setAttribute('aria-live', 'assertive');
-        errorDiv.innerHTML = `<strong>Warning:</strong> ${message}`;
-        document.body.insertBefore(errorDiv, document.body.firstChild);
-        setTimeout(() => errorDiv.remove(), 5000);
-    }
-};
+// External library detection (SmilesDrawer loads via CDN before script.js)
+const smilesDrawerLoaded = typeof SmilesDrawer !== 'undefined';
 
 // Input Validation (solves No Input Validation)
 const InputValidator = {
@@ -1501,15 +1410,11 @@ const AccessibilityAnnouncer = {
     },
 
     announceScore(points) {
-        this.announce(`Score increased by ${points}. New score: ${AppState.score}`);
+        this.announce(`Score increased by ${points}. New score: ${score}`);
     },
 
     announceAccuracy(accuracy) {
         this.announce(`Accuracy is now ${accuracy} percent`);
-    },
-
-    announceQuestionNumber(current, total) {
-        this.announce(`Question ${current + 1} of ${total}`);
     }
 };
 
@@ -1534,9 +1439,7 @@ function loadStats() {
 }
 
 // DOM Elements
-const homeView = document.getElementById('home-view');
 const quizView = document.getElementById('quiz-view');
-const basicsView = document.getElementById('basics-view');
 const modeMcqBtn = document.getElementById('mode-mcq');
 const modeManualBtn = document.getElementById('mode-manual');
 const modeBasicsBtn = document.getElementById('mode-basics');
@@ -1559,7 +1462,6 @@ const explanationBox = document.getElementById('explanation-box');
 const explanationText = document.getElementById('explanation-text');
 
 // Mock Test DOM Elements
-const qaView = document.getElementById('qa-view');
 const mockTestView = document.getElementById('mock-test-view');
 const mockResultsView = document.getElementById('mock-results-view');
 const backToBasicsQa = document.getElementById('back-to-basics-qa');
@@ -1576,44 +1478,14 @@ const mockNextBtn = document.getElementById('mock-next-btn');
 const mockFeedback = document.getElementById('mock-feedback');
 const resultsContainer = document.getElementById('results-container');
 const retryMockBtn = document.getElementById('retry-mock-btn');
-const revisionNotesView = document.getElementById('revision-notes-view');
 const backToBasicsRevision = document.getElementById('back-to-basics-revision');
 const bgMolecules = document.getElementById('bg-molecules');
 
-// SmilesDrawer initialization
-let smilesDrawer;
-
 function init() {
-    // Initialize Error Boundary - check all external libraries
-    ErrorBoundary.init();
-    
-    // Check if SmilesDrawer loaded, if not show warning but continue
-    if (!ErrorBoundary.libraries.smilesDrawer) {
+    // Warn but continue if SmilesDrawer failed to load
+    if (!smilesDrawerLoaded) {
         document.getElementById('quiz-view').classList.add('library-warning');
     }
-
-    // Initialize SmilesDrawer setup (with error handling)
-    try {
-        smilesDrawer = new SmilesDrawer.Drawer({
-            width: 400,
-            height: 300,
-            bondThickness: 2.4,
-            atomVisualization: 'default'
-        });
-    } catch (e) {
-        console.warn('Could not initialize SmilesDrawer:', e);
-    }
-
-    // Cursor glow functionality
-    const cursorGlow = document.getElementById('cursor-glow');
-    document.addEventListener('mousemove', (e) => {
-        cursorGlow.style.left = e.clientX + 'px';
-        cursorGlow.style.top = e.clientY + 'px';
-        cursorGlow.style.opacity = '1';
-    });
-    document.addEventListener('mouseleave', () => {
-        cursorGlow.style.opacity = '0';
-    });
 
     // Event Listeners for Views
     modeMcqBtn.addEventListener('click', () => startQuiz('mcq'));
@@ -1707,65 +1579,23 @@ function init() {
     mockNextBtn.addEventListener('click', nextMockQuestion);
 }
 
-function openBasics() {
+const VIEWS = ['home-view', 'quiz-view', 'basics-view', 'qa-view', 'mock-test-view', 'mock-results-view', 'revision-notes-view'];
+
+function showView(viewId) {
     window.scrollTo(0, 0);
-    document.body.classList.remove('theme-home');
-    homeView.classList.add('hidden');
-    quizView.classList.add('hidden');
-    basicsView.classList.remove('hidden');
+    VIEWS.forEach(id => document.getElementById(id).classList.add('hidden'));
+    document.getElementById(viewId).classList.remove('hidden');
+    document.body.classList.toggle('theme-home', viewId === 'home-view');
+    manageFocus(viewId);
+}
+
+function openBasics() {
+    showView('basics-view');
     currentMode = 'basics';
 
     setTimeout(() => {
         createTutorialObserver();
     }, 150);
-    
-    // Accessibility: Manage focus
-    manageFocus('basics-view');
-}
-
-function renderTutorialCanvases() {
-    const canvases = document.querySelectorAll('.tutorial-smiles:not(.rendered)');
-    
-    if (canvases.length === 0) return;
-    
-    let localDrawer = new SmilesDrawer.Drawer({
-        width: 280,
-        height: 100,
-        bondThickness: 2,
-        atomVisualization: 'default'
-    });
-
-    const renderCanvas = (canvas) => {
-        const smiles = canvas.getAttribute('data-smiles');
-        if (smiles) {
-            const width = canvas.getAttribute('width') || 280;
-            const height = canvas.getAttribute('height') || 100;
-            canvas.width = parseInt(width);
-            canvas.height = parseInt(height);
-            
-            SmilesDrawer.parse(smiles, function(tree) {
-                localDrawer.draw(tree, canvas, 'light', false);
-                canvas.classList.add('rendered');
-            }, function(err) {
-                console.error('Error parsing tutorial smiles:', err);
-            });
-        }
-    };
-
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    renderCanvas(entry.target);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { rootMargin: '100px' });
-
-        canvases.forEach(canvas => observer.observe(canvas));
-    } else {
-        canvases.forEach(canvas => renderCanvas(canvas));
-    }
 }
 
 function updateBgMolecules() {
@@ -1776,58 +1606,23 @@ function updateBgMolecules() {
 }
 
 function goHome() {
-    window.scrollTo(0, 0);
-    document.body.classList.add('theme-home');
-    homeView.classList.remove('hidden');
-    quizView.classList.add('hidden');
-    basicsView.classList.add('hidden');
-    qaView.classList.add('hidden');
-    mockTestView.classList.add('hidden');
-    mockResultsView.classList.add('hidden');
-    revisionNotesView.classList.add('hidden');
+    showView('home-view');
     currentMode = 'home';
     updateStatsDisplay();
     updateBgMolecules();
     
     // Clean up tutorial observer to prevent memory leak
     destroyTutorialObserver();
-    
-    // Accessibility: Manage focus
-    manageFocus('home-view');
 }
 
 function openQAView() {
-    window.scrollTo(0, 0);
-    document.body.classList.remove('theme-home');
-    homeView.classList.add('hidden');
-    basicsView.classList.add('hidden');
-    quizView.classList.add('hidden');
-    qaView.classList.remove('hidden');
-    mockTestView.classList.add('hidden');
-    mockResultsView.classList.add('hidden');
-    revisionNotesView.classList.add('hidden');
-    
-    // Accessibility: Manage focus
-    manageFocus('qa-view');
-    
+    showView('qa-view');
     renderQA();
 }
 
 function openRevisionNotes() {
-    window.scrollTo(0, 0);
-    document.body.classList.remove('theme-home');
-    homeView.classList.add('hidden');
-    basicsView.classList.add('hidden');
-    quizView.classList.add('hidden');
-    qaView.classList.add('hidden');
-    mockTestView.classList.add('hidden');
-    mockResultsView.classList.add('hidden');
-    revisionNotesView.classList.remove('hidden');
-
+    showView('revision-notes-view');
     renderRevisionNotes();
-    
-    // Accessibility: Manage focus
-    manageFocus('revision-notes-view');
 }
 
 function renderRevisionNotes() {
@@ -2084,11 +1879,7 @@ function renderQA() {
         data.questions.forEach(q => {
             const qDiv = document.createElement('div');
             qDiv.className = 'qa-answer-row';
-            let displayAnswer = q.correct;
-            if (q.alternates) {
-                displayAnswer = q.correct + ' / ' + q.alternates.join(' / ');
-            }
-            qDiv.innerHTML = `<span class="qa-question-text">${q.data}</span><span class="qa-answer">${displayAnswer}</span>`;
+            qDiv.innerHTML = `<span class="qa-question-text">${q.data}</span><span class="qa-answer">${formatAnswer(q)}</span>`;
             sectionDiv.appendChild(qDiv);
         });
 
@@ -2099,14 +1890,7 @@ function renderQA() {
 }
 
 function startMockTest() {
-    window.scrollTo(0, 0);
-    document.body.classList.remove('theme-home');
-    homeView.classList.add('hidden');
-    basicsView.classList.add('hidden');
-    quizView.classList.add('hidden');
-    qaView.classList.add('hidden');
-    mockTestView.classList.remove('hidden');
-    mockResultsView.classList.add('hidden');
+    showView('mock-test-view');
     updateBgMolecules();
 
     mockCurrentIndex = 0;
@@ -2143,52 +1927,49 @@ function startMockTest() {
     });
 
     renderMockQuestion(filteredMockQuestions);
-    
-    // Accessibility: Manage focus
-    manageFocus('mock-test-view');
+}
+
+function drawMolecule(canvas, smiles, onError) {
+    const ctx = canvas.getContext('2d');
+    const currentRender = ++renderCounter;
+    canvas.width = 400;
+    canvas.height = 300;
+
+    const drawer = new SmilesDrawer.Drawer({
+        width: 400, height: 300, bondThickness: 2.4, atomVisualization: 'default'
+    });
+
+    SmilesDrawer.parse(smiles, function (tree) {
+        if (currentRender !== renderCounter) return;
+        try {
+            drawer.draw(tree, canvas, 'dark', false);
+        } catch (e) {
+            console.warn('SmilesDrawer draw failed:', e);
+            if (onError) onError(ctx, canvas.width, canvas.height);
+        }
+    }, function (err) {
+        if (currentRender !== renderCounter) return;
+        console.warn('Smiles parse error:', err);
+        if (onError) onError(ctx, canvas.width, canvas.height);
+    });
 }
 
 function renderMockQuestionStructure(q, canvas) {
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    const currentRender = ++renderCounter;
     const dataStr = q.structure || q.smiles || q.data;
     
     // Use explicit SMILES/structure field if available
     if (q.smiles || q.structure) {
-        canvas.width = 400;
-        canvas.height = 300;
-        let mockDrawer = new SmilesDrawer.Drawer({
-            width: 400, height: 300, bondThickness: 2.4, atomVisualization: 'default'
-        });
-        SmilesDrawer.parse(dataStr, function(tree) {
-            if (currentRender !== renderCounter) return;
-            mockDrawer.draw(tree, canvas, 'dark', false);
-        }, function(err) {
-            if (currentRender !== renderCounter) return;
-            console.warn('Mock SMILES parse error:', err);
-            drawMockFallback(ctx, canvas.width, canvas.height, dataStr);
-        });
+        drawMolecule(canvas, dataStr, (c, w, h) => drawMockFallback(c, w, h, dataStr));
         return;
     }
     
     // Try convertToSmiles for text formula data
     const smiles = convertToSmiles(q.data);
     if (smiles) {
-        canvas.width = 400;
-        canvas.height = 300;
-        let mockDrawer = new SmilesDrawer.Drawer({
-            width: 400, height: 300, bondThickness: 2.4, atomVisualization: 'default'
-        });
-        SmilesDrawer.parse(smiles, function(tree) {
-            if (currentRender !== renderCounter) return;
-            mockDrawer.draw(tree, canvas, 'dark', false);
-        }, function(err) {
-            if (currentRender !== renderCounter) return;
-            console.warn('Mock SMILES render error:', err);
-            drawMockFallback(ctx, canvas.width, canvas.height, dataStr);
-        });
+        drawMolecule(canvas, smiles, (c, w, h) => drawMockFallback(c, w, h, dataStr));
         return;
     }
     
@@ -2207,29 +1988,18 @@ function renderMockQuestionStructure(q, canvas) {
     drawMockFallback(ctx, canvas.width, canvas.height, dataStr);
 }
 
+function looksAromatic(str) {
+    return /benzene|phenyl|phenol|xylene|toluene/i.test(str);
+}
+
 function drawMockFallback(ctx, w, h, dataStr) {
     ctx.clearRect(0, 0, w, h);
     const cx = w / 2, cy = h / 2;
     const r = Math.min(w, h) * 0.3;
     
     // Check if aromatic
-    if (dataStr.toLowerCase().includes('benzene') || dataStr.toLowerCase().includes('phenyl') || dataStr.toLowerCase().includes('phenol') || dataStr.toLowerCase().includes('xylene') || dataStr.toLowerCase().includes('toluene')) {
-        ctx.strokeStyle = 'rgba(57, 255, 20, 0.35)';
-        ctx.lineWidth = 2.5;
-        ctx.beginPath();
-        for (let i = 0; i < 6; i++) {
-            const a = (i * 2 * Math.PI / 6) - Math.PI / 2;
-            const x = cx + r * Math.cos(a);
-            const y = cy + r * Math.sin(a);
-            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-        }
-        ctx.closePath();
-        ctx.stroke();
-        ctx.strokeStyle = 'rgba(57, 255, 20, 0.15)';
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.arc(cx, cy, r * 0.85, 0, Math.PI * 2);
-        ctx.stroke();
+    if (looksAromatic(dataStr)) {
+        drawBenzeneRing(ctx, w, h);
         return;
     }
     
@@ -2273,13 +2043,12 @@ function renderMockQuestion(filteredQuestions) {
     mockTotalDisplay.textContent = mockCurrentIndex + 1;
 
     // Calculate and display accuracy based on points
-    const pointsMap = { 'Easy': 1, 'Medium': 2, 'Hard': 3 };
     let totalPoints = 0;
     let correctPoints = 0;
     for (let i = 0; i < mockTestResults.length; i++) {
         if (mockTestResults[i] !== undefined) {
             const q = filteredMockQuestions[i];
-            const pts = pointsMap[q.difficulty] || 1;
+            const pts = POINTS[q.difficulty] || 1;
             totalPoints += pts;
             if (mockTestResults[i]) correctPoints += pts;
         }
@@ -2364,7 +2133,6 @@ function convertToSmiles(data) {
         'CH₂=CH–CH₂–CH₂–CH₂–CH₃': 'C=CCCCC',
         'CH≡C–CH₂–CH₂–CH₂–CH₃': 'C#CCCCC',
         'CH₃–CH(CH₃)–CH₂–CH₂–CH₃': 'CC(C)CCC',
-        'CH₃–CH₂–CH(CH₃)–CH₂–CH₃': 'CCC(C)CC',
         'CH₃–CO–CH₂–CH₂–CH₂–CH₃': 'CC(=O)CCCC',
         'CH₃–CH₂–CH₂–CH₂–CO–CH₃': 'CCCCC(=O)C',
         'CH₃–CH₂–CH₂–CH₂–CH₂–CHO': 'CCCCCC=O',
@@ -2437,13 +2205,13 @@ function nextMockQuestion() {
     }
 }
 
+function formatAnswer(q) {
+    return q.alternates ? q.correct + ' / ' + q.alternates.join(' / ') : q.correct;
+}
+
 function showMockResults() {
-    mockTestView.classList.add('hidden');
-    mockResultsView.classList.remove('hidden');
+    showView('mock-results-view');
     updateBgMolecules();
-    
-    // Accessibility: Manage focus
-    manageFocus('mock-results-view');
 
     const totalMarks = filteredMockQuestions.reduce((sum, q) => sum + q.marks, 0);
     const percentage = (mockScore / totalMarks) * 100;
@@ -2467,23 +2235,17 @@ function showMockResults() {
         <div class="results-score">${mockScore} / ${totalMarks}</div>
         <div class="results-message ${messageClass}">${message}</div>
         <div class="results-breakdown">
-            ${filteredMockQuestions.map((q, i) => {
-                let correctDisplay = q.correct;
-                if (q.alternates) {
-                    correctDisplay = q.correct + ' / ' + q.alternates.join(' / ');
-                }
-                return `
+            ${filteredMockQuestions.map((q, i) => `
                 <div class="results-breakdown-item">
                     <span>${q.data}</span>
-                    <span>${mockTestResults[i] ? '✓' : '✗'} ${correctDisplay}</span>
+                    <span>${mockTestResults[i] ? '✓' : '✗'} ${formatAnswer(q)}</span>
                 </div>
-            `}).join('')}
+            `).join('')}
         </div>
     `;
 }
 
 function startQuiz(mode) {
-    window.scrollTo(0, 0);
     currentMode = mode;
     currentQuestionIndex = 0;
     score = 0;
@@ -2502,30 +2264,10 @@ function startQuiz(mode) {
         q.options.sort(() => Math.random() - 0.5);
     });
 
-    homeView.classList.add('hidden');
-    quizView.classList.remove('hidden');
-    document.body.classList.remove('theme-home');
+    showView('quiz-view');
     updateBgMolecules();
 
     loadQuestion();
-    
-    // Accessibility: Manage focus
-    manageFocus('quiz-view');
-}
-
-function isChemicalName(str) {
-    if (!str) return false;
-    const namePatterns = [
-        /^[A-Z][a-z]/, 'benzene', 'methyl', 'ethyl', 'propyl', 'butyl', 'pentyl',
-        'hexyl', 'heptyl', 'octyl', 'cyclo', 'phenol', 'amine', 'acid',
-        'chloro', 'bromo', 'iodo', 'fluoro', 'nitro', 'hydroxy', 'oxo',
-        'phenyl', 'benzyl', 'methoxy', 'ethoxy'
-    ];
-    for (const p of namePatterns) {
-        if (p instanceof RegExp && p.test(str)) return true;
-        if (typeof p === 'string' && str.toLowerCase().includes(p)) return true;
-    }
-    return false;
 }
 
 function isCondensedFormula(str) {
@@ -2543,7 +2285,7 @@ function isCondensedFormula(str) {
     // Unicode condensed formulas
     if (/^[CHON][₃₂₁]?[-–=≡]/.test(str)) return true;
     // Plain condensed formula like HCOOH, CH3OH, C2H5OH, CHCl3 (element symbols + digits, no spaces)
-    if (/^[A-Z][a-z]?\d*([A-Z][a-z]?\d*)+\d*$/.test(str) && !isChemicalName(str) && !str.includes(' ')) return true;
+    if (/^[A-Z][a-z]?\d*([A-Z][a-z]?\d*)+\d*$/.test(str) && !str.includes(' ') && !/^[A-Z][a-z]|benzene|methyl|ethyl|propyl|butyl|pentyl|hexyl|heptyl|octyl|cyclo|phenol|amine|acid|chloro|bromo|iodo|fluoro|nitro|hydroxy|oxo|phenyl|benzyl|methoxy|ethoxy/.test(str)) return true;
     return false;
 }
 
@@ -2605,7 +2347,6 @@ function renderQuestionStructure(q, canvas, condensedDisplay) {
     condensedDisplay.classList.add('hidden');
     canvas.classList.remove('hidden');
     
-    const currentRender = ++renderCounter;
     const dataStr = q.structure || q.smiles || q.data;
     
     // Name-to-structure: the name IS the question prompt, display it
@@ -2621,23 +2362,11 @@ function renderQuestionStructure(q, canvas, condensedDisplay) {
         canvas.classList.remove('hidden');
         condensedDisplay.classList.add('hidden');
         const smilesStr = q.smiles || q.structure || q.data;
-        SmilesDrawer.parse(smilesStr, function (tree) {
-            if (currentRender !== renderCounter) return;
-            try {
-                smilesDrawer.draw(tree, canvas, 'dark', false);
-            } catch (e) {
-                console.warn('SmilesDrawer draw failed:', e);
-                drawNeutralPlaceholder(ctx, canvas.width, canvas.height, '');
-            }
-        }, function (err) {
-            if (currentRender !== renderCounter) return;
-            console.warn('Smiles parse error:', err);
-            if (dataStr.toLowerCase().includes('benzene') || dataStr.toLowerCase().includes('phenyl') || dataStr.toLowerCase().includes('phenol')) {
-                drawBenzeneRing(ctx, canvas.width, canvas.height);
-            } else if (dataStr.includes('c1') || dataStr.includes('C1') || dataStr.includes('1')) {
-                drawBenzeneRing(ctx, canvas.width, canvas.height);
+        drawMolecule(canvas, smilesStr, (ctx, w, h) => {
+            if (looksAromatic(dataStr) || dataStr.includes('c1') || dataStr.includes('C1') || dataStr.includes('1')) {
+                drawBenzeneRing(ctx, w, h);
             } else {
-                drawNeutralPlaceholder(ctx, canvas.width, canvas.height, '');
+                drawNeutralPlaceholder(ctx, w, h, '');
             }
         });
         return;
@@ -2662,7 +2391,7 @@ function renderQuestionStructure(q, canvas, condensedDisplay) {
     // Data is a chemical name or description — show safe placeholder
     canvas.classList.remove('hidden');
     condensedDisplay.classList.add('hidden');
-    if (dataStr.toLowerCase().includes('benzene') || dataStr.toLowerCase().includes('phenyl') || dataStr.toLowerCase().includes('phenol') || dataStr.toLowerCase().includes('xylene') || dataStr.toLowerCase().includes('toluene')) {
+    if (looksAromatic(dataStr)) {
         drawBenzeneRing(ctx, canvas.width, canvas.height);
     } else if (dataStr.toLowerCase().includes('cyclo')) {
         drawNeutralPlaceholder(ctx, canvas.width, canvas.height, '');
@@ -2809,8 +2538,7 @@ function checkAnswer() {
     }
 
     // Calculate points based on difficulty
-    const pointsMap = { 'Easy': 1, 'Medium': 2, 'Hard': 3 };
-    const points = pointsMap[currentQuestion.difficulty] || 1;
+    const points = POINTS[currentQuestion.difficulty] || 1;
 
     // Update statistics based on mode
     if (currentMode === 'mcq') {
