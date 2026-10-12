@@ -177,7 +177,7 @@
                 </div>
             </div>
             
-            <main class="quiz-card" id="basics-content">
+            <div class="quiz-card" id="basics-content">
 <div class="tutorial-container">
 <style>
 /* ── MAIN INDEX SCREEN ── */
@@ -1540,6 +1540,7 @@ canvas.tutorial-smiles {
 <button class="back-btn back-btn-bottom" onclick="showMainIndex()">← Back to Units</button>
 </div>
 <script>
+var unitRenderToken = 0; // ponytail: stale async renders from a prior unit must not paint over the current one
 function showUnit(unitPageId, anchorId) {
   document.getElementById('basics-main-index').style.display = 'none';
   document.querySelectorAll('.unit-page').forEach(function(page) {
@@ -1550,7 +1551,9 @@ function showUnit(unitPageId, anchorId) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   var bc = document.getElementById('basics-content');
   if (bc) { bc.scrollTo({ top: 0, behavior: 'smooth' }); }
+  var myRender = ++unitRenderToken;
   setTimeout(function() {
+    if (myRender !== unitRenderToken) return;
     if (anchorId) {
       var anchorEl = document.getElementById(anchorId);
       if (anchorEl) { anchorEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
@@ -1562,6 +1565,7 @@ function showUnit(unitPageId, anchorId) {
         var smiles = canvas.getAttribute('data-smiles');
         if (smiles) {
           SmilesDrawer.parse(smiles, function(tree) {
+            if (myRender !== unitRenderToken) return;
             sd.draw(tree, canvas, 'dark', false);
           }, function(err) { console.warn('SMILES parse error:', smiles, err); });
         }
@@ -1571,6 +1575,7 @@ function showUnit(unitPageId, anchorId) {
 }
 
 function showMainIndex() {
+  unitRenderToken++; // invalidate any pending unit renders
   document.querySelectorAll('.unit-page').forEach(function(page) {
     page.style.display = 'none';
   });
@@ -1583,7 +1588,7 @@ function showMainIndex() {
 
 </div>
 
-</main>
+</div>
         </div>
 
         <!-- Quiz View -->
@@ -1606,7 +1611,7 @@ function showMainIndex() {
                 <div class="accuracy-meter" aria-live="polite">Accuracy: <span id="quiz-accuracy">0%</span></div>
             </header>
             
-            <main class="quiz-card">
+            <div class="quiz-card">
                 <div class="structure-container" role="img" aria-label="Molecular structure display">
                     <canvas id="structure-canvas" width="400" height="300" aria-hidden="true"></canvas>
                     <div id="condensed-display" class="hidden condensed-text" aria-hidden="true"></div>
@@ -1635,7 +1640,7 @@ function showMainIndex() {
                     <button id="how-btn" class="btn secondary-btn hidden" aria-label="Show explanation">How?</button>
                     <button id="action-btn" class="btn primary-btn" disabled aria-label="Submit answer">Enter</button>
                 </div>
-            </main>
+            </div>
         </div>
 
         <!-- Questions and Answers View -->
@@ -1647,9 +1652,9 @@ function showMainIndex() {
                 <h1 id="qa-title">IUPAC Mock Test - Questions & Answers</h1>
                 <p>Read the questions and check your answers below.</p>
             </header>
-            <main class="quiz-card">
+            <div class="quiz-card">
                 <div class="qa-container" id="qa-container"></div>
-            </main>
+            </div>
         </div>
 
         <!-- Mock Test View -->
@@ -1668,7 +1673,7 @@ function showMainIndex() {
                 <div class="score-board" aria-live="polite">Score: <span id="mock-score">0</span> / <span id="mock-total">0</span></div>
                 <div class="accuracy-meter" aria-live="polite">Accuracy: <span id="mock-accuracy">0%</span></div>
             </header>
-            <main class="quiz-card">
+            <div class="quiz-card">
                 <div class="mock-test-progress" id="mock-progress" role="progressbar" aria-label="Test progress"></div>
                 <div class="structure-container" role="img" aria-label="Molecular structure display">
                     <canvas id="mock-structure-canvas" width="400" height="300" aria-hidden="true"></canvas>
@@ -1680,7 +1685,7 @@ function showMainIndex() {
                     <button id="mock-next-btn" class="btn secondary-btn hidden" aria-label="Go to next question">Next Question</button>
                 </div>
                 <div id="mock-feedback" class="feedback hidden"></div>
-            </main>
+            </div>
         </div>
 
         <!-- Mock Test Results View -->
@@ -1697,12 +1702,12 @@ function showMainIndex() {
                 </div>
                 <h1 id="results-title">Mock Test Results</h1>
             </header>
-            <main class="quiz-card">
+            <div class="quiz-card">
                 <div class="results-container" id="results-container" role="status" aria-live="polite"></div>
                 <div class="results-actions">
                     <button id="retry-mock-btn" class="btn primary-btn" aria-label="Retry the mock test">Retry Mock Test</button>
                 </div>
-            </main>
+            </div>
         </div>
 
         <!-- Revision Notes View -->
@@ -1713,9 +1718,9 @@ function showMainIndex() {
                 </div>
                 <h1 id="revision-title">IUPAC Naming – Quick Revision Chart</h1>
             </header>
-            <main class="quiz-card">
+            <div class="quiz-card">
                 <div class="revision-notes-container" id="revision-notes-container"></div>
-            </main>
+            </div>
         </div>
 
         <!-- Drifting molecule nodes (shown only during quiz/mock views) -->
@@ -1750,7 +1755,7 @@ function showMainIndex() {
     <!-- SmilesDrawer Library -->
     <script src="https://unpkg.com/smiles-drawer@2.0.1/dist/smiles-drawer.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.fog.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         if (document.getElementById('fog-bg')) {

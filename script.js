@@ -1896,9 +1896,6 @@ function renderQA() {
 }
 
 function startMockTest() {
-    showView('mock-test-view');
-    updateBgMolecules();
-
     mockCurrentIndex = 0;
     mockScore = 0;
     mockAnswered = false;
@@ -1912,6 +1909,14 @@ function startMockTest() {
     } else {
         filteredMockQuestions = mockTestQuestions.filter(q => q.difficulty === selectedDifficulty);
     }
+
+    if (filteredMockQuestions.length === 0) {
+        AccessibilityAnnouncer.announce('No questions available for this filter');
+        return;
+    }
+
+    showView('mock-test-view');
+    updateBgMolecules();
 
     // Shuffle questions within each section
     const sections = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -2263,7 +2268,17 @@ function startQuiz(mode) {
     } else {
         filteredQuestions = questions.filter(q => q.difficulty === selectedDifficulty);
     }
-    
+
+    // Manual mode needs a typable answer: name-to-structure Qs expect HTML tags
+    if (mode === 'manual') {
+        filteredQuestions = filteredQuestions.filter(q => q.type !== 'name-to-structure');
+    }
+
+    if (filteredQuestions.length === 0) {
+        AccessibilityAnnouncer.announce('No questions available for this filter');
+        return;
+    }
+
     // Reshuffle
     filteredQuestions.sort(() => Math.random() - 0.5);
     filteredQuestions.forEach(q => {
@@ -2449,6 +2464,11 @@ function loadQuestion() {
     }
 }
 
+// ponytail: strip tags so HTML answers (name-to-structure) compare like rendered text
+function stripTags(str) {
+    return (str || '').replace(/<[^>]*>/g, '');
+}
+
 function selectOption(btnElement, optionText) {
     if (isAnswered || currentMode !== 'mcq') return;
 
@@ -2486,15 +2506,17 @@ function checkAnswer() {
         const alternates = currentQuestion.alternates || [];
         allOptions.forEach(btn => {
             btn.disabled = true; // Disable further clicking
-            const isCorrectAnswer = btn.textContent === currentQuestion.correct || alternates.includes(btn.textContent);
-            const isWrongSelection = btn.textContent === selectedOption && !isCorrectAnswer;
+            const btnText = stripTags(btn.textContent);
+            const correctText = stripTags(currentQuestion.correct);
+            const isCorrectAnswer = btnText === correctText || alternates.map(stripTags).includes(btnText);
+            const isWrongSelection = btnText === stripTags(selectedOption) && !isCorrectAnswer;
             if (isCorrectAnswer) {
                 btn.classList.add('correct');
             } else if (isWrongSelection) {
                 btn.classList.add('incorrect');
             }
         });
-        isCorrect = (selectedOption === currentQuestion.correct || alternates.includes(selectedOption));
+        isCorrect = (stripTags(selectedOption) === stripTags(currentQuestion.correct) || alternates.map(stripTags).includes(stripTags(selectedOption)));
     } else {
         manualInput.disabled = true;
         let userInput = manualInput.value.trim();
@@ -2631,8 +2653,8 @@ function updateStatsDisplay() {
     if (accuracyEl) {
         accuracyEl.textContent = sessionAccuracy + '%';
         
-        // Accessibility: Announce accuracy changes during quiz (not on initial page load)
-        if (currentMode === 'mcq' || currentMode === 'manual') {
+        // Accessibility: Announce accuracy only after an answer (not on load)
+        if ((currentMode === 'mcq' || currentMode === 'manual') && currentStats.totalAnswered > 0) {
             AccessibilityAnnouncer.announceAccuracy(sessionAccuracy);
         }
     }
@@ -2701,36 +2723,8 @@ function manageFocus(viewId) {
     }, 100);
 }
 
-// Accessibility: Keyboard navigation for mode cards
+// ponytail: .mode-card elements removed in landing redesign; only diff filter nav remains
 function initKeyboardNavigation() {
-    const modeCards = document.querySelectorAll('.mode-card');
-    
-    modeCards.forEach((card, index) => {
-        card.addEventListener('keydown', (e) => {
-            let targetIndex;
-            
-            switch (e.key) {
-                case 'ArrowRight':
-                case 'ArrowDown':
-                    e.preventDefault();
-                    targetIndex = (index + 1) % modeCards.length;
-                    modeCards[targetIndex].focus();
-                    break;
-                case 'ArrowLeft':
-                case 'ArrowUp':
-                    e.preventDefault();
-                    targetIndex = (index - 1 + modeCards.length) % modeCards.length;
-                    modeCards[targetIndex].focus();
-                    break;
-                case 'Enter':
-                case ' ':
-                    e.preventDefault();
-                    card.click();
-                    break;
-            }
-        });
-    });
-    
     // Update aria-checked for difficulty filter
     const diffBtns = document.querySelectorAll('.diff-btn');
     diffBtns.forEach(btn => {
