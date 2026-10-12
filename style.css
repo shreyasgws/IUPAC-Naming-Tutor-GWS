@@ -13,7 +13,7 @@
     --border-active: rgba(57, 255, 20, 0.55);
     --border-yellow: rgba(212, 175, 55, 0.30);
     --error: #CC3333;
-    --font: 'Inter', sans-serif;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     --mono: 'Courier New', 'JetBrains Mono', monospace;
 }
 
@@ -91,12 +91,9 @@ body::after {
     }
 }
 
-/* --- Fog --- */
+/* --- Fog (Vanta.js canvas, home only) --- */
 #fog-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
 body:not(.theme-home) #fog-bg { display: none; }
-
-/* --- Molecule SVGs (landing page) --- */
-/* ponytail: old floating molecules removed, Vanta.js provides atmosphere */
 
 /* --- Theme override for home --- */
 body.theme-home {
@@ -206,74 +203,6 @@ header p {
 body.theme-home .container {
     max-width: 1200px;
     width: calc(100% - 64px);
-}
-
-/* =============================
-   SITE HEADER
-   ============================= */
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 16px 0;
-    margin-bottom: 48px;
-}
-
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.brand-logo {
-    color: var(--accent);
-    flex-shrink: 0;
-}
-
-.brand {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-}
-
-.brand-accent {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 0.5px;
-}
-
-.brand-main {
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(243, 245, 242, 0.72);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
-
-.stats-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
-    background: rgba(3, 15, 11, 0.78);
-    border: 1px solid rgba(155, 232, 63, 0.18);
-    border-radius: 9px;
-    color: rgba(243, 245, 242, 0.72);
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 200ms ease;
-    font-family: var(--font);
-}
-.stats-link svg {
-    color: var(--accent);
-    flex-shrink: 0;
-}
-.stats-link:hover {
-    border-color: rgba(155, 232, 63, 0.4);
-    color: #F3F5F2;
 }
 
 /* =============================
@@ -719,11 +648,7 @@ body.theme-home .container {
     z-index: 0;
 }
 
-.quiz-bg-particles,
-.quiz-bg-particles-2,
-.quiz-bg-particles-3,
-.quiz-bg-particles-4,
-.quiz-bg-particles-5 {
+.quiz-bg-particles {
     position: fixed;
     inset: 0;
     pointer-events: none;
@@ -780,320 +705,7 @@ body.theme-home .container {
     75% { transform: translate(30px, 12px); opacity: 0.7; }
 }
 
-/* 2nd particle layer — faster, green-teal */
-.quiz-bg-particles-2::before,
-.quiz-bg-particles-2::after {
-    content: '';
-    position: absolute;
-    width: 1.5px;
-    height: 1.5px;
-    border-radius: 50%;
-    background: rgba(57,255,20,0.12);
-    box-shadow:
-        80px 300px 0 0px rgba(57,255,20,0.10),
-        240px 80px 0 0px rgba(57,255,20,0.08),
-        560px 200px 0 0px rgba(57,255,20,0.12),
-        680px 500px 0 0px rgba(57,255,20,0.06),
-        120px 600px 0 0px rgba(57,255,20,0.10),
-        400px 400px 0 0px rgba(57,255,20,0.08),
-        620px 100px 0 0px rgba(57,255,20,0.10),
-        300px 550px 0 0px rgba(57,255,20,0.06);
-    animation: particleDrift2 5s ease-in-out infinite;
-}
-
-.quiz-bg-particles-2::after {
-    width: 1px;
-    height: 1px;
-    background: rgba(180,220,140,0.08);
-    box-shadow:
-        160px 220px 0 0px rgba(180,220,140,0.08),
-        520px 140px 0 0px rgba(180,220,140,0.06),
-        360px 480px 0 0px rgba(180,220,140,0.10),
-        650px 340px 0 0px rgba(180,220,140,0.06),
-        220px 140px 0 0px rgba(180,220,140,0.08),
-        480px 520px 0 0px rgba(180,220,140,0.06);
-    animation: particleDrift2 7s ease-in-out infinite reverse;
-}
-
-@keyframes particleDrift2 {
-    0%, 100% { transform: translate(0, 0); opacity: 0.3; }
-    33% { transform: translate(28px, 15px); opacity: 0.7; }
-    66% { transform: translate(-15px, -22px); opacity: 0.5; }
-}
-
-/* 3rd particle layer — medium speed, wider drift */
-.quiz-bg-particles-3::before,
-.quiz-bg-particles-3::after {
-    content: '';
-    position: absolute;
-    width: 1.5px;
-    height: 1.5px;
-    border-radius: 50%;
-    background: rgba(100,200,255,0.06);
-    box-shadow:
-        340px 60px 0 0px rgba(100,200,255,0.08),
-        100px 350px 0 0px rgba(100,200,255,0.06),
-        700px 180px 0 0px rgba(100,200,255,0.08),
-        440px 600px 0 0px rgba(100,200,255,0.05),
-        50px 500px 0 0px rgba(100,200,255,0.06),
-        600px 420px 0 0px rgba(100,200,255,0.08),
-        280px 200px 0 0px rgba(100,200,255,0.05),
-        500px 60px 0 0px rgba(100,200,255,0.06);
-    animation: particleDrift3 6s ease-in-out infinite;
-}
-
-.quiz-bg-particles-3::after {
-    width: 1px;
-    height: 1px;
-    background: rgba(180,160,200,0.05);
-    box-shadow:
-        200px 100px 0 0px rgba(180,160,200,0.06),
-        400px 350px 0 0px rgba(180,160,200,0.05),
-        150px 550px 0 0px rgba(180,160,200,0.06),
-        750px 280px 0 0px rgba(180,160,200,0.04),
-        320px 380px 0 0px rgba(180,160,200,0.06),
-        580px 200px 0 0px rgba(180,160,200,0.05);
-    animation: particleDrift3 8s ease-in-out infinite reverse;
-}
-
-@keyframes particleDrift3 {
-    0%, 100% { transform: translate(0, 0); opacity: 0.2; }
-    25% { transform: translate(-25px, 20px); opacity: 0.6; }
-    50% { transform: translate(20px, -15px); opacity: 0.4; }
-    75% { transform: translate(-10px, -30px); opacity: 0.5; }
-}
-
-/* 4th particle layer — fast, warm gold/orange */
-.quiz-bg-particles-4::before,
-.quiz-bg-particles-4::after {
-    content: '';
-    position: absolute;
-    width: 1.5px;
-    height: 1.5px;
-    border-radius: 50%;
-    background: rgba(255,200,100,0.07);
-    box-shadow:
-        140px 250px 0 0px rgba(255,200,100,0.08),
-        420px 100px 0 0px rgba(255,200,100,0.06),
-        600px 450px 0 0px rgba(255,200,100,0.07),
-        260px 500px 0 0px rgba(255,200,100,0.05),
-        720px 320px 0 0px rgba(255,200,100,0.08),
-        80px 80px 0 0px rgba(255,200,100,0.06),
-        500px 600px 0 0px rgba(255,200,100,0.05);
-    animation: particleDrift4 4s ease-in-out infinite;
-}
-.quiz-bg-particles-4::after {
-    width: 1px;
-    height: 1px;
-    background: rgba(255,160,60,0.06);
-    box-shadow:
-        320px 180px 0 0px rgba(255,160,60,0.07),
-        180px 420px 0 0px rgba(255,160,60,0.05),
-        660px 200px 0 0px rgba(255,160,60,0.06),
-        440px 550px 0 0px rgba(255,160,60,0.05),
-        100px 340px 0 0px rgba(255,160,60,0.07),
-        560px 80px 0 0px rgba(255,160,60,0.05);
-    animation: particleDrift4 6s ease-in-out infinite reverse;
-}
-
-@keyframes particleDrift4 {
-    0%, 100% { transform: translate(0, 0); opacity: 0.25; }
-    30% { transform: translate(30px, 18px); opacity: 0.7; }
-    60% { transform: translate(-20px, -25px); opacity: 0.4; }
-    85% { transform: translate(15px, -10px); opacity: 0.6; }
-}
-
-/* 5th particle layer — fastest, cool purple/pink */
-.quiz-bg-particles-5::before,
-.quiz-bg-particles-5::after {
-    content: '';
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
-    background: rgba(200,140,255,0.06);
-    box-shadow:
-        220px 120px 0 0px rgba(200,140,255,0.07),
-        480px 380px 0 0px rgba(200,140,255,0.05),
-        140px 480px 0 0px rgba(200,140,255,0.06),
-        680px 160px 0 0px rgba(200,140,255,0.05),
-        380px 600px 0 0px rgba(200,140,255,0.07),
-        80px 280px 0 0px rgba(200,140,255,0.05),
-        600px 520px 0 0px rgba(200,140,255,0.06);
-    animation: particleDrift5 3s ease-in-out infinite;
-}
-.quiz-bg-particles-5::after {
-    width: 1.5px;
-    height: 1.5px;
-    background: rgba(255,120,180,0.05);
-    box-shadow:
-        360px 60px 0 0px rgba(255,120,180,0.06),
-        120px 360px 0 0px rgba(255,120,180,0.05),
-        560px 280px 0 0px rgba(255,120,180,0.06),
-        240px 540px 0 0px rgba(255,120,180,0.04),
-        700px 420px 0 0px rgba(255,120,180,0.05),
-        460px 160px 0 0px rgba(255,120,180,0.06);
-    animation: particleDrift5 5s ease-in-out infinite reverse;
-}
-
-@keyframes particleDrift5 {
-    0%, 100% { transform: translate(0, 0); opacity: 0.2; }
-    20% { transform: translate(-22px, 28px); opacity: 0.65; }
-    40% { transform: translate(25px, -12px); opacity: 0.45; }
-    60% { transform: translate(-15px, 20px); opacity: 0.6; }
-    80% { transform: translate(18px, -18px); opacity: 0.35; }
-}
-
-.quiz-bg-glow {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background:
-        radial-gradient(ellipse at 20% 50%, rgba(57,255,20,0.04) 0%, transparent 40%),
-        radial-gradient(ellipse at 80% 50%, rgba(46,127,179,0.04) 0%, transparent 40%);
-    animation: ambientPulse 8s ease-in-out infinite;
-}
-
-@keyframes ambientPulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-}
-
-/* ── Drifting Molecule Nodes ── */
-#bg-molecules {
-    display: none;
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.bg-mol {
-    position: absolute;
-    pointer-events: none;
-    width: 95px;
-}
-
-.bg-mol svg {
-    width: 100%;
-    height: auto;
-    display: block;
-    overflow: visible;
-}
-
-.mol-benzene {
-    top: 4%;
-    left: 2%;
-    width: 85px;
-    animation: benzeneFloat 22s ease-in-out infinite;
-}
-
-.mol-alkane {
-    bottom: 4%;
-    left: 2%;
-    width: 125px;
-    animation: alkaneFloat 20s ease-in-out infinite;
-}
-
-.mol-methane {
-    top: 4%;
-    right: 2%;
-    width: 75px;
-    animation: methaneFloat 24s ease-in-out infinite;
-}
-
-.mol-cyclo {
-    bottom: 4%;
-    right: 2%;
-    width: 70px;
-    animation: cycloFloat 18s ease-in-out infinite;
-}
-
-.mol-propanone {
-    top: 22%;
-    left: 2%;
-    width: 75px;
-    animation: propanoneFloat 16s ease-in-out infinite;
-}
-
-.mol-ethanol {
-    top: 50%;
-    left: 2%;
-    width: 80px;
-    animation: ethanolFloat 20s ease-in-out infinite;
-}
-
-.mol-chloromethane {
-    top: 22%;
-    right: 2%;
-    width: 70px;
-    animation: chloromethaneFloat 16s ease-in-out infinite;
-}
-
-.mol-ethene {
-    top: 50%;
-    right: 2%;
-    width: 90px;
-    animation: etheneFloat 18s ease-in-out infinite;
-}
-
-@keyframes benzeneFloat {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(35px, -4px) rotate(90deg); }
-    50% { transform: translate(-3px, 6px) rotate(180deg); }
-    75% { transform: translate(30px, 3px) rotate(270deg); }
-}
-
-@keyframes alkaneFloat {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(-3px, 6px) rotate(45deg); }
-    50% { transform: translate(32px, -5px) rotate(90deg); }
-    75% { transform: translate(-4px, 4px) rotate(135deg); }
-}
-
-@keyframes methaneFloat {
-    0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-    25% { transform: translate(-35px, 3px) scale(1.02) rotate(30deg); }
-    50% { transform: translate(3px, -6px) scale(0.98) rotate(60deg); }
-    75% { transform: translate(-28px, -2px) scale(1.01) rotate(90deg); }
-}
-
-@keyframes ethanolFloat {
-    0%, 100% { transform: translate(0, 0) rotate(-3deg); }
-    25% { transform: translate(32px, -3px) rotate(10deg); }
-    50% { transform: translate(-4px, 5px) rotate(-6deg); }
-    75% { transform: translate(26px, 2px) rotate(14deg); }
-}
-
-@keyframes propanoneFloat {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(30px, -4px) rotate(15deg); }
-    50% { transform: translate(-3px, 5px) rotate(-10deg); }
-    75% { transform: translate(24px, 2px) rotate(18deg); }
-}
-
-@keyframes chloromethaneFloat {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(-32px, 3px) rotate(-20deg); }
-    50% { transform: translate(4px, -5px) rotate(20deg); }
-    75% { transform: translate(-26px, -2px) rotate(-14deg); }
-}
-
-@keyframes etheneFloat {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    20% { transform: translate(-30px, 4px) rotate(-18deg); }
-    40% { transform: translate(3px, -5px) rotate(16deg); }
-    60% { transform: translate(-24px, -3px) rotate(-12deg); }
-    80% { transform: translate(4px, 2px) rotate(14deg); }
-}
-
-@keyframes cycloFloat {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(-35px, 10px) rotate(-120deg); }
-    66% { transform: translate(3px, -10px) rotate(-240deg); }
-}
-
+/* ponytail: layers 2-5 collapsed into the base layer above — one drift system is enough */
 #quiz-view header {
     text-align: center;
     margin-bottom: 2rem;
@@ -1547,10 +1159,7 @@ body.theme-home .container {
 #mock-difficulty-filter .difficulty-filter label { font-size: 0.8rem; color: var(--text-muted) !important; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 #mock-difficulty-filter .diff-btn { padding: 0.25rem 0.5rem; font-size: 0.75rem; background: rgba(14,28,20,0.6); border-color: var(--border); color: var(--text-muted); font-weight: 600; }
 #mock-difficulty-filter .diff-btn:hover { background: rgba(14,28,20,0.9); border-color: var(--border-active); }
-#mock-difficulty-filter .diff-btn.active { background: rgba(57,255,20,0.15); border-color: var(--accent); color: var(--accent); box-shadow: 0 0 6px rgba(57,255,20,0.15); }
-#mock-difficulty-filter .diff-btn.easy.active { background: rgba(57,255,20,0.2); border-color: var(--accent); color: var(--accent); }
-#mock-difficulty-filter .diff-btn.medium.active { background: rgba(212,175,55,0.2); border-color: var(--warning); color: var(--warning); }
-#mock-difficulty-filter .diff-btn.hard.active { background: rgba(204,51,51,0.2); border-color: #CC3333; color: #CC3333; }
+/* ponytail: active-state colors inherit the base .diff-btn rules above */
 
 /* =============================
    REVISION & MOCK TEST (Basics)
@@ -1917,20 +1526,6 @@ body.theme-home .container {
 .revision-check li { margin: 0.25rem 0; color: var(--text); }
 
 /* =============================
-   STATS DISPLAY (home)
-   ============================= */
-.stats-display {
-    display: flex; justify-content: center; gap: 2rem;
-    margin-top: 1rem; padding: 1rem;
-    background: rgba(14,28,20,0.6);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-}
-.stat-item { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
-.stat-value { font-family: var(--font); font-size: 1.4rem; font-weight: 700; color: var(--accent); }
-.stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-
-/* =============================
    SCROLL-TO-TOP
    ============================= */
 #scroll-top-btn {
@@ -2055,9 +1650,6 @@ body.theme-home footer {
     body.theme-home { height: auto; min-height: 100vh; }
     body:not(.theme-home) { height: auto; min-height: 100vh; }
     #home-view { padding-top: 16px; }
-    #home-view .site-header { margin-bottom: 28px; }
-    #home-view .brand-accent { font-size: 15px; }
-    #home-view .brand-main { font-size: 11px; letter-spacing: 2px; }
     #home-view .hero h1 { font-size: 36px; letter-spacing: -0.5px; }
     #home-view .hero p { font-size: 16px; }
     #home-view .mode-divider { margin-bottom: 20px; }

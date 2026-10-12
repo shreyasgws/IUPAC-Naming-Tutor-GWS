@@ -50,8 +50,8 @@ Runtime state is module-level variables in `script.js`: `currentMode`,
 `filteredQuestions`, mock-test state (`mockCurrentIndex`, `mockScore`,
 `mockAnswered`, `mockSelectedOption`, `mockTestResults`,
 `filteredMockQuestions`), `renderCounter`, `POINTS = { Easy: 1, Medium: 2,
-Hard: 3 }`, plus library flags, `InputValidator`, `tutorialObserver`, and
-`AccessibilityAnnouncer`. Nothing is exported. Stats (`mcqStats`,
+Hard: 3 }`, plus `InputValidator` and `AccessibilityAnnouncer`. Nothing is
+exported. Stats (`mcqStats`,
 `manualStats`, each `{ totalAnswered, correctAnswers, totalPoints,
 correctPoints }`) are the only persisted state, via `localStorage` with a
 defensive `try/catch` on load.
@@ -79,15 +79,12 @@ renderQuestionStructure(q)
 `drawMolecule()` is the shared SmilesDrawer entry point for quiz and mock
 canvases only. It guards against stale async callbacks with a monotonic
 `renderCounter`. Tutorial canvases do NOT use it — they use the inline
-`showUnit()` drawer in `index.html` (with its own `unitRenderToken` guard)
-plus the `IntersectionObserver`-based `createTutorialObserver()` in
-`script.js`.
+`showUnit()` drawer in `index.html` (with its own `unitRenderToken` guard).
 
-The mock-test renderer (`renderMockQuestionStructure()`) has its own fallback
-ladder: explicit `smiles`/`structure` field → `convertToSmiles()` (curated
-formula→SMILES map) → descriptive-sentence text → `drawMockFallback()`
-(aromatic hexagon via `drawBenzeneRing()` / dashed circle / text, shared with
-`drawNeutralPlaceholder()`).
+Both quiz and mock fall back to one shared painter, `drawFallback()`
+(aromatic hexagon via `drawBenzeneRing()` / dashed ring / text). Option buttons
+and their correct/wrong marking are likewise shared (`buildOptionButtons()`,
+`paintMarkedOptions()`); only the scoring flows differ (points vs marks).
 
 ### Answer evaluation (manual mode)
 
@@ -171,14 +168,14 @@ rendering relies on the `data` string + `convertToSmiles()`.
 | Styling | CSS3 custom properties, Grid, Flexbox | Theme system without preprocessor |
 | Logic | Vanilla ES6 | Zero build step; runs from `file://` |
 | Molecular rendering | [SmilesDrawer](https://github.com/reymond-group/smiles-drawer) v2.0.1 (CDN) | Skeletal formula rendering |
-| Background fog (home only) | [Three.js](https://threejs.org/) r134 + [Vanta.js](https://vantajs.com/) FOG 0.5.24, both pinned (CDN) | Animated fluid background on `#fog-bg`, hidden off-home |
-| Quiz/mock atmosphere | Hand-rolled CSS | 5 particle layers + glow + 8 drifting molecule SVGs (`#bg-molecules`, toggled by `updateBgMolecules()`) |
+| Home atmosphere | [Three.js](https://threejs.org/) r134 + [Vanta.js](https://vantajs.com/) FOG 0.5.24, both pinned (CDN) | Animated fluid background on `#fog-bg`, hidden off-home; init guards on `window.VANTA` so offline load can't throw |
+| Quiz/mock atmosphere | Hand-rolled CSS | Single drifting particle layer |
 | Persistence | `localStorage` | No backend; stats survive refresh |
-| Type | Google Fonts Inter (CDN) | Display font |
+| Type | System font stack | No webfont dependency |
 | Icons | Unicode / inline SVG | No icon library |
 
-Four network dependencies on first load: SmilesDrawer, Three.js, Vanta Fog,
-Google Fonts. Everything else works offline.
+Three network dependencies on first load: SmilesDrawer, Three.js, Vanta Fog.
+Everything else works offline.
 
 ---
 
@@ -186,9 +183,9 @@ Google Fonts. Everything else works offline.
 
 ```
 .gitignore     # desktop.ini
-index.html     # ~1787 lines: 7 views + 8 tutorial units, inline showUnit/showMainIndex + Vanta init
-style.css      # ~2128 lines: theme, layout, animations, responsive
-script.js      # ~2751 lines: 136 quiz + 53 mock questions, quiz/mock logic,
+index.html     # ~1720 lines: 7 views + 8 tutorial units, inline showUnit/showMainIndex + Vanta init
+style.css      # ~1570 lines: theme, layout, animations, responsive
+script.js      # ~2430 lines: 136 quiz + 53 mock questions, quiz/mock logic,
                # rendering pipeline, stats, accessibility
 README.md
 ```
@@ -220,7 +217,7 @@ access on first load; everything else works offline.
 
 ## Deliberate tradeoffs
 
-- **No framework, no build.** ~2.7k lines of flat JS is far cheaper to serve
+- **No framework, no build.** ~2.4k lines of flat JS is far cheaper to serve
   and debug than a toolchain. If this grew to a multi-route app, the first
   step would be a build step, not a framework.
 - **Questions live in JS, not JSON.** Removing the JSON file removed a

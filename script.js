@@ -1216,14 +1216,6 @@ const questions = [
     }
 ];
 
-// Shuffle questions
-questions.sort(() => Math.random() - 0.5);
-
-// Shuffle options for each question
-questions.forEach(q => {
-    q.options.sort(() => Math.random() - 0.5);
-});
-
 // Mock Test Questions (Plus One)
 const mockTestQuestions = [
     // Section A – Basic Naming (1 mark each)
@@ -1316,8 +1308,6 @@ const POINTS = { Easy: 1, Medium: 2, Hard: 3 };
 
 // External library detection (SmilesDrawer loads via CDN before script.js)
 const smilesDrawerLoaded = typeof SmilesDrawer !== 'undefined';
-const threeJSLoaded = typeof THREE !== 'undefined';
-const vantaLoaded = typeof VANTA !== 'undefined';
 
 // Input Validation (solves No Input Validation)
 const InputValidator = {
@@ -1343,60 +1333,6 @@ const InputValidator = {
         return { valid: true, value: sanitized };
     }
 };
-
-// Tutorial Observer (fixes Event Listener Memory Leak)
-let tutorialObserver = null;
-
-function createTutorialObserver() {
-    if (tutorialObserver) {
-        tutorialObserver.disconnect();
-    }
-
-    const canvases = document.querySelectorAll('.tutorial-smiles:not(.rendered)');
-    if (canvases.length === 0) return;
-
-    let localDrawer = new SmilesDrawer.Drawer({
-        width: 280,
-        height: 100,
-        bondThickness: 2.4,
-        atomVisualization: 'default'
-    });
-
-    const renderCanvas = (canvas) => {
-        const smiles = canvas.getAttribute('data-smiles');
-        if (smiles) {
-            const width = canvas.getAttribute('width') || 280;
-            const height = canvas.getAttribute('height') || 100;
-            canvas.width = parseInt(width);
-            canvas.height = parseInt(height);
-
-            SmilesDrawer.parse(smiles, function(tree) {
-                localDrawer.draw(tree, canvas, 'dark', false);
-                canvas.classList.add('rendered');
-            }, function(err) {
-                console.error('Error parsing tutorial smiles:', err);
-            });
-        }
-    };
-
-    tutorialObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                renderCanvas(entry.target);
-                tutorialObserver.unobserve(entry.target);
-            }
-        });
-    }, { rootMargin: '100px' });
-
-    canvases.forEach(canvas => tutorialObserver.observe(canvas));
-}
-
-function destroyTutorialObserver() {
-    if (tutorialObserver) {
-        tutorialObserver.disconnect();
-        tutorialObserver = null;
-    }
-}
 
 // Accessibility Announcer (solves Accessibility Gap)
 const AccessibilityAnnouncer = {
@@ -1481,16 +1417,11 @@ const mockFeedback = document.getElementById('mock-feedback');
 const resultsContainer = document.getElementById('results-container');
 const retryMockBtn = document.getElementById('retry-mock-btn');
 const backToBasicsRevision = document.getElementById('back-to-basics-revision');
-const bgMolecules = document.getElementById('bg-molecules');
 
 function init() {
     // Warn but continue if external libraries failed to load
     if (!smilesDrawerLoaded) {
         console.warn('SmilesDrawer not loaded - molecular rendering disabled');
-        document.getElementById('quiz-view').classList.add('library-warning');
-    }
-    if (!threeJSLoaded) {
-        console.warn('Three.js not loaded - background effects disabled');
     }
 
     // Event Listeners for Views
@@ -1498,10 +1429,15 @@ function init() {
     modeManualBtn.addEventListener('click', () => startQuiz('manual'));
     modeBasicsBtn.addEventListener('click', openBasics);
 
-    // Difficulty filter buttons
-    document.querySelectorAll('.diff-btn').forEach(btn => {
+    // Difficulty filter buttons (single binding: active class + aria + value)
+    const diffBtns = document.querySelectorAll('.diff-btn');
+    diffBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+            diffBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-checked', b === btn ? 'true' : 'false');
+                b.setAttribute('tabindex', b === btn ? '0' : '-1');
+            });
             btn.classList.add('active');
             selectedDifficulty = btn.dataset.difficulty;
         });
@@ -1598,27 +1534,12 @@ function showView(viewId) {
 function openBasics() {
     showView('basics-view');
     currentMode = 'basics';
-
-    setTimeout(() => {
-        createTutorialObserver();
-    }, 150);
-}
-
-function updateBgMolecules() {
-    const show = !quizView.classList.contains('hidden') ||
-                 !mockTestView.classList.contains('hidden') ||
-                 !mockResultsView.classList.contains('hidden');
-    bgMolecules.style.display = show ? 'block' : 'none';
 }
 
 function goHome() {
     showView('home-view');
     currentMode = 'home';
     updateStatsDisplay();
-    updateBgMolecules();
-    
-    // Clean up tutorial observer to prevent memory leak
-    destroyTutorialObserver();
 }
 
 function openQAView() {
@@ -1916,7 +1837,6 @@ function startMockTest() {
     }
 
     showView('mock-test-view');
-    updateBgMolecules();
 
     // Shuffle questions within each section
     const sections = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -1973,14 +1893,14 @@ function renderMockQuestionStructure(q, canvas) {
     
     // Use explicit SMILES/structure field if available
     if (q.smiles || q.structure) {
-        drawMolecule(canvas, dataStr, (c, w, h) => drawMockFallback(c, w, h, dataStr));
+        drawMolecule(canvas, dataStr, (c, w, h) => drawFallback(c, w, h, dataStr));
         return;
     }
     
     // Try convertToSmiles for text formula data
     const smiles = convertToSmiles(q.data);
     if (smiles) {
-        drawMolecule(canvas, smiles, (c, w, h) => drawMockFallback(c, w, h, dataStr));
+        drawMolecule(canvas, smiles, (c, w, h) => drawFallback(c, w, h, dataStr));
         return;
     }
     
@@ -1988,7 +1908,7 @@ function renderMockQuestionStructure(q, canvas) {
     if (dataStr.includes(' ') && /[a-z].*[a-z]/.test(dataStr) && (dataStr.includes('with') || dataStr.includes(' at ') || dataStr.includes(' and ') || dataStr.includes('group') || dataStr.includes('position'))) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = 'rgba(57, 255, 20, 0.08)';
-        ctx.font = '18px Inter, sans-serif';
+        ctx.font = '18px sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(dataStr, canvas.width / 2, canvas.height / 2);
@@ -1996,54 +1916,43 @@ function renderMockQuestionStructure(q, canvas) {
     }
     
     // Fallback: draw safe placeholder
-    drawMockFallback(ctx, canvas.width, canvas.height, dataStr);
+    drawFallback(ctx, canvas.width, canvas.height, dataStr);
 }
 
 function looksAromatic(str) {
     return /benzene|phenyl|phenol|xylene|toluene/i.test(str);
 }
 
-function drawMockFallback(ctx, w, h, dataStr) {
+// ponytail: one fallback painter for quiz + mock (label set = explicit label, unset = text when readable)
+function isDisplayText(dataStr) {
+    if (!dataStr) return false;
+    if (dataStr.includes(' ') && /[a-z].*[a-z]/.test(dataStr) && (dataStr.includes('with') || dataStr.includes(' at ') || dataStr.includes(' and ') || dataStr.includes('group') || dataStr.includes('position'))) return true;
+    return ((!/^[A-Z][a-z]?\d/.test(dataStr) && dataStr.length > 1) || dataStr.includes('--'));
+}
+
+function drawFallback(ctx, w, h, dataStr, label) {
     ctx.clearRect(0, 0, w, h);
+    if (looksAromatic(dataStr)) { drawBenzeneRing(ctx, w, h); return; }
     const cx = w / 2, cy = h / 2;
     const r = Math.min(w, h) * 0.3;
-    
-    // Check if aromatic
-    if (looksAromatic(dataStr)) {
-        drawBenzeneRing(ctx, w, h);
-        return;
-    }
-    
-    // Check if cyclic
-    if (dataStr.toLowerCase().includes('cyclo')) {
-        ctx.strokeStyle = 'rgba(57, 255, 20, 0.25)';
-        ctx.lineWidth = 2;
-        ctx.setLineDash([4, 4]);
-        ctx.beginPath();
-        ctx.arc(cx, cy, r, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.setLineDash([]);
-        return;
-    }
-    
-    // Common name or formula-like text — display as readable text
-    if ((!/^[A-Z][a-z]?\d/.test(dataStr) && dataStr.length > 1) || dataStr.includes('--')) {
-        ctx.fillStyle = 'rgba(57, 255, 20, 0.08)';
-        ctx.font = '18px Inter, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(dataStr, cx, cy);
-        return;
-    }
-    
-    // Neutral placeholder — clean circle without text label
-    ctx.strokeStyle = 'rgba(57, 255, 20, 0.20)';
+    ctx.strokeStyle = 'rgba(57, 255, 20, 0.25)';
     ctx.lineWidth = 2;
     ctx.setLineDash([4, 4]);
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.stroke();
     ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(57, 255, 20, 0.06)';
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fill();
+    const text = (label !== undefined) ? label : (isDisplayText(dataStr) ? dataStr : '');
+    if (!text) return;
+    ctx.fillStyle = label ? 'rgba(57, 255, 20, 0.15)' : 'rgba(57, 255, 20, 0.08)';
+    ctx.font = (label ? '14px' : '18px') + ' sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text, cx, cy);
 }
 
 function renderMockQuestion(filteredQuestions) {
@@ -2084,18 +1993,7 @@ function renderMockQuestion(filteredQuestions) {
     // Draw structure using safe pipeline
     renderMockQuestionStructure(q, mockStructureCanvas);
 
-    // Render options with accessibility attributes
-    mockOptionsContainer.innerHTML = '';
-    q.options.forEach((opt, index) => {
-        const btn = document.createElement('button');
-        btn.className = 'option-btn';
-        btn.textContent = opt;
-        btn.setAttribute('role', 'radio');
-        btn.setAttribute('aria-label', `Option ${index + 1}: ${opt}`);
-        btn.setAttribute('aria-checked', 'false');
-        btn.addEventListener('click', () => selectMockOption(opt, btn));
-        mockOptionsContainer.appendChild(btn);
-    });
+    buildOptionButtons(mockOptionsContainer, q.options, selectMockOption);
 
     mockActionBtn.disabled = true;
     mockNextBtn.classList.add('hidden');
@@ -2156,7 +2054,7 @@ function convertToSmiles(data) {
     return map[data] || null;
 }
 
-function selectMockOption(option, btn) {
+function selectMockOption(btn, option) {
     if (mockAnswered) return;
     mockSelectedOption = option;
     mockActionBtn.disabled = false;
@@ -2175,8 +2073,8 @@ function handleMockAnswer() {
     if (!mockSelectedOption || mockAnswered) return;
     
     const q = filteredMockQuestions[mockCurrentIndex];
-    // Only check exact match for mock test - no alternatives
-    const isCorrect = mockSelectedOption === q.correct;
+    // Mock keeps exact-match grading: alternates listed in the QA key only
+    const isCorrect = paintMarkedOptions(document.querySelectorAll('#mock-options-container .option-btn'), q.correct, [], mockSelectedOption);
     mockAnswered = true;
 
     if (isCorrect) {
@@ -2191,16 +2089,6 @@ function handleMockAnswer() {
         mockFeedback.innerHTML = '<span>✗ Incorrect. The correct answer is: ' + q.correct + '</span>';
     }
     mockFeedback.classList.remove('hidden');
-
-    document.querySelectorAll('#mock-options-container .option-btn').forEach(btn => {
-        btn.disabled = true;
-        if (btn.textContent === q.correct) {
-            btn.classList.add('correct');
-        }
-        if (btn.textContent === mockSelectedOption && !isCorrect) {
-            btn.classList.add('incorrect');
-        }
-    });
 
     mockActionBtn.classList.add('hidden');
     mockNextBtn.classList.remove('hidden');
@@ -2222,7 +2110,6 @@ function formatAnswer(q) {
 
 function showMockResults() {
     showView('mock-results-view');
-    updateBgMolecules();
 
     const totalMarks = filteredMockQuestions.reduce((sum, q) => sum + q.marks, 0);
     const percentage = (mockScore / totalMarks) * 100;
@@ -2286,7 +2173,6 @@ function startQuiz(mode) {
     });
 
     showView('quiz-view');
-    updateBgMolecules();
 
     loadQuestion();
 }
@@ -2308,31 +2194,6 @@ function isCondensedFormula(str) {
     // Plain condensed formula like HCOOH, CH3OH, C2H5OH, CHCl3 (element symbols + digits, no spaces)
     if (/^[A-Z][a-z]?\d*([A-Z][a-z]?\d*)+\d*$/.test(str) && !str.includes(' ') && !/^[A-Z][a-z]|benzene|methyl|ethyl|propyl|butyl|pentyl|hexyl|heptyl|octyl|cyclo|phenol|amine|acid|chloro|bromo|iodo|fluoro|nitro|hydroxy|oxo|phenyl|benzyl|methoxy|ethoxy/.test(str)) return true;
     return false;
-}
-
-function drawNeutralPlaceholder(ctx, w, h, label) {
-    ctx.clearRect(0, 0, w, h);
-    const cx = w / 2, cy = h / 2;
-    const r = Math.min(w, h) * 0.3;
-    
-    ctx.strokeStyle = 'rgba(57, 255, 20, 0.25)';
-    ctx.lineWidth = 2;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.setLineDash([]);
-    
-    ctx.fillStyle = 'rgba(57, 255, 20, 0.06)';
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.fill();
-    
-    ctx.fillStyle = 'rgba(57, 255, 20, 0.15)';
-    ctx.font = '14px Inter, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(label || 'Molecule', cx, cy);
 }
 
 function drawBenzeneRing(ctx, w, h) {
@@ -2387,7 +2248,7 @@ function renderQuestionStructure(q, canvas, condensedDisplay) {
             if (looksAromatic(dataStr) || dataStr.includes('c1') || dataStr.includes('C1') || dataStr.includes('1')) {
                 drawBenzeneRing(ctx, w, h);
             } else {
-                drawNeutralPlaceholder(ctx, w, h, '');
+                drawFallback(ctx, w, h, dataStr, '');
             }
         });
         return;
@@ -2412,13 +2273,7 @@ function renderQuestionStructure(q, canvas, condensedDisplay) {
     // Data is a chemical name or description — show safe placeholder
     canvas.classList.remove('hidden');
     condensedDisplay.classList.add('hidden');
-    if (looksAromatic(dataStr)) {
-        drawBenzeneRing(ctx, canvas.width, canvas.height);
-    } else if (dataStr.toLowerCase().includes('cyclo')) {
-        drawNeutralPlaceholder(ctx, canvas.width, canvas.height, '');
-    } else {
-        drawNeutralPlaceholder(ctx, canvas.width, canvas.height, '');
-    }
+    drawFallback(ctx, canvas.width, canvas.height, dataStr, '');
 }
 
 function loadQuestion() {
@@ -2449,24 +2304,41 @@ function loadQuestion() {
     renderQuestionStructure(currentQuestion, canvas, condensedDisplay);
 
     if (currentMode === 'mcq') {
-        // Render options with accessibility attributes
-        optionsContainer.innerHTML = '';
-        currentQuestion.options.forEach((option, index) => {
-            const btn = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.innerHTML = option;
-            btn.setAttribute('role', 'radio');
-            btn.setAttribute('aria-label', `Option ${index + 1}: ${option}`);
-            btn.setAttribute('aria-checked', 'false');
-            btn.addEventListener('click', () => selectOption(btn, option));
-            optionsContainer.appendChild(btn);
-        });
+        buildOptionButtons(optionsContainer, currentQuestion.options, selectOption);
     }
 }
 
 // ponytail: strip tags so HTML answers (name-to-structure) compare like rendered text
 function stripTags(str) {
     return (str || '').replace(/<[^>]*>/g, '');
+}
+
+// ponytail: one option-button builder + one marker shared by quiz and mock engines
+function buildOptionButtons(container, options, onPick) {
+    container.innerHTML = '';
+    options.forEach((opt, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerHTML = opt;
+        btn.setAttribute('role', 'radio');
+        btn.setAttribute('aria-label', `Option ${index + 1}: ${opt}`);
+        btn.setAttribute('aria-checked', 'false');
+        btn.addEventListener('click', () => onPick(btn, opt));
+        container.appendChild(btn);
+    });
+}
+
+function paintMarkedOptions(buttons, correct, alternates, picked) {
+    const correctText = stripTags(correct);
+    const altTexts = (alternates || []).map(stripTags);
+    const pickedText = stripTags(picked);
+    buttons.forEach(btn => {
+        btn.disabled = true;
+        const t = stripTags(btn.textContent);
+        if (t === correctText || altTexts.includes(t)) btn.classList.add('correct');
+        else if (t === pickedText) btn.classList.add('incorrect');
+    });
+    return pickedText === correctText || altTexts.includes(pickedText);
 }
 
 function selectOption(btnElement, optionText) {
@@ -2502,21 +2374,7 @@ function checkAnswer() {
     let customExplanationPrefix = '';
 
     if (currentMode === 'mcq') {
-        const allOptions = document.querySelectorAll('.option-btn');
-        const alternates = currentQuestion.alternates || [];
-        allOptions.forEach(btn => {
-            btn.disabled = true; // Disable further clicking
-            const btnText = stripTags(btn.textContent);
-            const correctText = stripTags(currentQuestion.correct);
-            const isCorrectAnswer = btnText === correctText || alternates.map(stripTags).includes(btnText);
-            const isWrongSelection = btnText === stripTags(selectedOption) && !isCorrectAnswer;
-            if (isCorrectAnswer) {
-                btn.classList.add('correct');
-            } else if (isWrongSelection) {
-                btn.classList.add('incorrect');
-            }
-        });
-        isCorrect = (stripTags(selectedOption) === stripTags(currentQuestion.correct) || alternates.map(stripTags).includes(stripTags(selectedOption)));
+        isCorrect = paintMarkedOptions(document.querySelectorAll('.option-btn'), currentQuestion.correct, currentQuestion.alternates, selectedOption);
     } else {
         manualInput.disabled = true;
         let userInput = manualInput.value.trim();
@@ -2687,8 +2545,6 @@ function nextQuestion() {
 
 // Accessibility: Focus management for view changes
 function manageFocus(viewId) {
-    const mainContent = document.getElementById('main-content');
-    
     // Announce view change for screen readers
     const viewNames = {
         'home-view': 'Home page',
@@ -2699,18 +2555,9 @@ function manageFocus(viewId) {
         'mock-results-view': 'Test results',
         'revision-notes-view': 'Revision notes'
     };
-    
-    const announcement = document.createElement('div');
-    announcement.setAttribute('role', 'status');
-    announcement.setAttribute('aria-live', 'polite');
-    announcement.setAttribute('aria-atomic', 'true');
-    announcement.className = 'sr-only';
-    announcement.textContent = `Navigated to ${viewNames[viewId] || 'new view'}`;
-    mainContent.appendChild(announcement);
-    
-    // Remove announcement after screen reader has time to read it
-    setTimeout(() => announcement.remove(), 1000);
-    
+
+    AccessibilityAnnouncer.announce(`Navigated to ${viewNames[viewId] || 'new view'}`);
+
     // Focus the first focusable element in the new view
     setTimeout(() => {
         const newView = document.getElementById(viewId);
@@ -2723,23 +2570,8 @@ function manageFocus(viewId) {
     }, 100);
 }
 
-// ponytail: .mode-card elements removed in landing redesign; only diff filter nav remains
-function initKeyboardNavigation() {
-    // Update aria-checked for difficulty filter
-    const diffBtns = document.querySelectorAll('.diff-btn');
-    diffBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            diffBtns.forEach(b => {
-                b.setAttribute('aria-checked', b === btn ? 'true' : 'false');
-                b.setAttribute('tabindex', b === btn ? '0' : '-1');
-            });
-        });
-    });
-}
-
 // Start the app when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     loadStats();
     init();
-    initKeyboardNavigation();
 });
